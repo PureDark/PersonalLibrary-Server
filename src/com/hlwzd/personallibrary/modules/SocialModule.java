@@ -28,37 +28,34 @@ public class SocialModule extends Module {
 		if(action==null)return Error(1001);
 		try {
 		    if(action.equals("addRequest")){
-		    	String f = request.getParameter("fid");
-		    	int fid;
-		    	if(f==null)return Error(1001);		    	
-				fid = Integer.parseInt(f);
-				return addRequest(fid);
+		    	String fidStr = request.getParameter("fid");
+		    	if(fidStr==null)return Error(1001);		    	
+				int fid = Integer.parseInt(fidStr);
+				return addRequest(User.getUid(), fid);
 			}
 		    else if(action.equals("getRequestList")){
-		    	String p = request.getParameter("page");
-		    	int page;
-		    	if(p==null) page=1;
-		    	else page=Integer.parseInt(p);
-		    	return getRequestList(page);
+		    	String pageStr = request.getParameter("page");
+				int page = (pageStr==null)?1:Integer.parseInt(pageStr);
+		    	return getRequestList(User.getUid(), page);
 		    }
 			else if(action.equals("responseRequest")){
-				String rrid = request.getParameter("rrid");
+				String rid = request.getParameter("rid");
 				String acceptStr = request.getParameter("accept");
-				if(rrid==null||acceptStr==null)return Error(1001);
+				if(rid==null||acceptStr==null)return Error(1001);
 				boolean accept = (Integer.parseInt(acceptStr)==1);
-				return responseRequest(Integer.parseInt(rrid),accept);			
+				return responseRequest(User.getUid(), Integer.parseInt(rid),accept);			
 			}
 			else if(action.equals("deleteFriend")){
 				String fid = request.getParameter("fid");
 				if(fid==null)return Error(1001);
-				return deleteFriend(Integer.parseInt(fid));
+				return deleteFriend(User.getUid(), Integer.parseInt(fid));
 			}
 			else if(action.equals("getFriendList")){
-				String p = request.getParameter("page");
-				int page;
-				if(p==null) page=1;
-				else page=Integer.parseInt(p);
-				return getFriendList(page);
+				String uidStr = request.getParameter("uid");
+				String pageStr = request.getParameter("page");
+				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
+				int page = (pageStr==null)?1:Integer.parseInt(pageStr);
+				return getFriendList(uid, page);
 			}
 			else if(action.equals("addBookMark")){
 				String bid = request.getParameter("bid");
@@ -70,26 +67,25 @@ public class SocialModule extends Module {
 			}
 			else if(action.equals("getBookMarkList")){
 				String bidStr = request.getParameter("bid");
+				String uidStr = request.getParameter("uid");
 				String pageStr = request.getParameter("page");
 				if(bidStr==null) return Error(1001);
 				int bid = Integer.parseInt(bidStr);
+				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
 				int page= (pageStr==null)?1:Integer.parseInt(pageStr);
-				return getBookMarkList(bid, User.getUid(), page);
+				return getBookMarkList(bid, uid, page);
 			}
 			else if(action.equals("deleteMark")){
 				String mid = request.getParameter("mid");
 				if(mid==null)return Error(1001);
-				return deleteMark(Integer.parseInt(mid), User.getUid());
+				return deleteMark(User.getUid(), Integer.parseInt(mid));
 			}
-			else if(action.equals("getRecentMarks")){
-				String p = request.getParameter("page");
-				String u = request.getParameter("uid");
-				int page,uid;
-				if(u==null) uid=0;
-				else uid=Integer.parseInt(u);
-				if(p==null) page=1;
-				else page=Integer.parseInt(p);			
-				return getRecentMarks(uid,page);
+			else if(action.equals("getRecentBookMarks")){
+				String pageStr = request.getParameter("page");
+				String uidStr = request.getParameter("uid");
+				int page = (pageStr==null)?1:Integer.parseInt(pageStr);
+				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
+				return getRecentBookMarks(uid,page);
 			}
 			else if(action.equals("getMarkDetails")){
 				String m = request.getParameter("mid");
@@ -105,7 +101,7 @@ public class SocialModule extends Module {
 				if(keyword==null) return Error(1001);			
 				if(p==null) page=1;
 				else page=Integer.parseInt(p);
-				return searchUser(keyword,page);
+				return searchUser(User.getUid(), keyword,page);
 			}
 			else
 				return Error(1006);
@@ -120,54 +116,61 @@ public class SocialModule extends Module {
 	}
 
 	private JsonObject getBookMarkList(int bid, int uid, int page) throws SQLException {
-		ResultSet rs = DB.executeQuery("SELECT `mid`,`marks`.`title`, `bookmarks`.`summary`,`time`,`books`.`bid`,`books`.`title` AS `book_title`,`cover` FROM `bookmarks` "
-										+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
-										+ " WHERE `bookmarks`.`bid`=? ORDER BY `time` DESC LIMIT ?,10 ", bid,(page-1)*10);
+		String wherebid = (bid==0)?" 1 ":" `bookmarks`.`bid`= " + bid;
+		String whereuid = (uid==0)?" AND 1 ":" AND `bookmarks`.`uid`= " + uid;
+		String sql = "SELECT `mid`,`bookmarks`.`title`, `bookmarks`.`summary`,`time`,"
+					+ "`books`.`bid`,`isbn13`,`books`.`title` AS `book_title`,`cover`, "
+					+ "`userinfo`.`uid`,`userinfo`.`nickname` FROM `bookmarks` "
+					+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
+					+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `bookmarks`.`uid` "
+					+ " WHERE "+wherebid+whereuid
+					+ " ORDER BY `time` DESC LIMIT ?,10 ";
+		ResultSet rs = DB.executeQuery(sql, (page-1)*10);
 		List<BookMark> bookmarks = new ArrayList<BookMark>();
 		while(rs.next()){
 			BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), null, rs.getString("time"),
-											rs.getInt("bid"), rs.getString("book_title"), rs.getString("cover"));
+											rs.getInt("bid"), rs.getString("isbn13"), rs.getString("book_title"), rs.getString("cover"),
+											rs.getInt("uid"), rs.getString("nickname"));
 			bookmarks.add(bookmark);
 		}
 		return Data(bookmarks);
 	}
 
-	private JsonObject getRecentMarks(int uid, int page) throws SQLException {
-		String sql1 ="SELECT `userinfo`.uid,`userinfo`.nickname,`marks`.mid,`marks`.bid,`marks`.summary,`marks`.time FROM `marks`"
-				+ "INNER JOIN `userinfo` ON `userinfo`.`uid`=`marks`.`uid` "
-				+ "WHERE `marks`.`uid` IN (SELECT `fid` FROM `friend_list` WHERE `uid` = ?) OR `marks`.uid = ? "
-				+ "ORDER BY `marks`.time DESC  LIMIT ?,10 ";
-		
-		String sql2 = "SELECT `userinfo`.uid,`userinfo`.nickname,`marks`.mid,`marks`.bid,`marks`.summary,`marks`.time FROM `marks`"
-				+ "INNER JOIN `userinfo` ON `userinfo`.`uid`=`marks`.`uid` "
-				+ "WHERE `marks`.`uid` = ? "
-				+ "ORDER BY `marks`.time DESC  LIMIT ?,10 ";
-		ResultSet rs;
-		if(uid==0) 
-			rs = DB.executeQuery(sql1,User.getUid(),User.getUid(),(page-1)*10);
-		else 
-			rs = DB.executeQuery(sql2,uid,(page-1)*10);
-		List<Moment> moments = new ArrayList<Moment>();
+	private JsonObject getRecentBookMarks(int uid, int page) throws SQLException {
+		String sql = "SELECT `mid`,`bookmarks`.`title`, `bookmarks`.`summary`,`time`,"
+					+ "`books`.`bid`,`isbn13`,`books`.`title` AS `book_title`,`cover`, "
+					+ "`userinfo`.`uid`,`userinfo`.`nickname` FROM `bookmarks` "
+					+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
+					+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `bookmarks`.`uid` "
+					+ " WHERE `bookmarks`.`uid` = ? OR "
+					+ "(SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `bookmarks`.`uid`)=1 "
+					+ " ORDER BY `time` DESC LIMIT ?,10 ";
+		ResultSet rs = DB.executeQuery(sql, uid, uid, (page-1)*10);
+		List<BookMark> bookmarks = new ArrayList<BookMark>();
 		while(rs.next()){
-			Moment moment = new Moment(rs.getInt("uid"),rs.getInt("bid"),rs.getInt("mid")
-					                     ,rs.getString("nickname"),rs.getString("summary"),rs.getString("time"));
-			moments.add(moment);
+			BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), null, rs.getString("time"),
+											rs.getInt("bid"), rs.getString("isbn13"), rs.getString("book_title"), rs.getString("cover"),
+											rs.getInt("uid"), rs.getString("nickname"));
+			bookmarks.add(bookmark);
 		}
-		return Data(moments);
+		return Data(bookmarks);
 	}
 
 	private JsonObject getMarkDetails(int mid) throws SQLException {
-		ResultSet rs = DB.executeQuery("SELECT `bookmarks`.*,`books`.`title` AS `book_title`,`cover` FROM `bookmarks` "
+		ResultSet rs = DB.executeQuery("SELECT `bookmarks`.*,`books`.`title` AS `book_title`,`cover`,"
+										+ " `userinfo`.`uid`,`userinfo`.`nickname` FROM `bookmarks` "
 										+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
+										+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `bookmarks`.`uid` "
 										+ " WHERE `mid` = ?",mid);
 		if(!rs.next())return Error(1024);
 		BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), rs.getString("content"), rs.getString("time"),
-										rs.getInt("bid"), rs.getString("book_title"), rs.getString("cover"));
+										rs.getInt("bid"), rs.getString("isbn13"), rs.getString("book_title"), rs.getString("cover"),
+										rs.getInt("uid"), rs.getString("nickname"));
 		return Data(bookmark);
 	}
 
 
-	private JsonObject deleteMark(int mid, int uid) throws SQLException {
+	private JsonObject deleteMark(int uid, int mid) throws SQLException {
 		ResultSet rs = DB.executeQuery("SELECT 1 FROM `bookmarks` WHERE `mid`=? AND `uid` = ?", mid, uid);
 		if(!rs.next()) return Error(1051);
 		DB.executeNonQuery("DELETE FROM `bookmarks` WHERE mid=?", mid);
@@ -186,120 +189,112 @@ public class SocialModule extends Module {
 		return Success();
 	}
 
-	private JsonObject getFriendList(int page) throws SQLException {
-		int uid = User.getUid();
-		ResultSet rs = DB.executeQuery("SELECT `friend_list`.fid,`userinfo`.signature, `userinfo`.nickname FROM `friend_list`"
-				+ " INNER JOIN `userinfo` ON `friend_list`.fid=`userinfo`.uid WHERE `friend_list`.uid=?", uid);
-		List<UserInfo> friendInfos = new ArrayList<UserInfo>();
-		while(rs.next()){
-			UserInfo friendInfo = new UserInfo(rs.getInt("fid"),rs.getString("nickname"),rs.getString("signature"));
-			friendInfos.add(friendInfo);
-		}
-		return Data(friendInfos);
+	private JsonObject getFriendList(int uid, int page) throws SQLException {
+		ResultSet rs = DB.executeQuery("SELECT *,"
+									+ "(SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`) AS `isFriend` "
+									+ "FROM `userinfo` "
+									+ "WHERE (SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`)=1 "
+									+ " LIMIT ?,100", uid, uid, (page-1)*100);
+		List<Friend> friends = new ArrayList<Friend>();
+		while(rs.next())
+			friends.add(new Friend(rs.getInt("uid"), rs.getInt("sex"),rs.getString("nickname"), rs.getString("signature"), rs.getString("birthday"), rs.getInt("isFriend")==1));		
+		return Data(friends);
 	}
 
-	private JsonObject deleteFriend(int fid) throws SQLException {
-		int uid = User.getUid();
-		ResultSet rs = DB.executeQuery("SELECT 1 FROM `users` WHERE `uid`=?", fid);
-		if(!rs.next()) return Error(1012);
-		DB.executeNonQuery("DELETE FROM friend_list WHERE uid=? AND fid=?", uid,fid);
-		DB.executeNonQuery("DELETE FROM friend_list WHERE uid=? AND fid=?", fid,uid);
+	private JsonObject deleteFriend(int uid, int fid) throws SQLException {
+		DB.executeNonQuery("DELETE FROM `friends` WHERE `uid`=? AND `fid`=?", uid,fid);
+		DB.executeNonQuery("DELETE FROM `friends` WHERE `uid`=? AND `fid`=?", fid,uid);
 		return Success();
 	}
 
 
-	private JsonObject addRequest(int fid) throws SQLException {
-		int uid = User.getUid();
-		ResultSet rs = DB.executeQuery("SELECT 1 FROM `requests_record` WHERE `uid`=? AND `fid`=? AND `status` =0",uid,fid);
+	private JsonObject addRequest(int uid, int fid) throws SQLException {
+		ResultSet rs = DB.executeQuery("SELECT 1 FROM `requests` WHERE `uid`=? AND `fid`=? AND `status` =0", uid, fid);
 		if(rs.next()) return Error(1030);
-		DB.executeNonQuery("INSERT INTO requests_record (uid,fid,date,status) VALUES (?,?,NOW(),0)",uid,fid);
+		DB.executeNonQuery("INSERT INTO requests(`uid`,`fid`,`datetime`,`status`) VALUES (?,?,NOW(),0)", uid, fid);
 		return Success();
 	}
 
-	private JsonObject getRequestList(int page) throws SQLException {
-		int uid = User.getUid();
-		ResultSet rs = DB.executeQuery("SELECT * FROM `requests_record` "
-				+ "INNER JOIN `userinfo` ON `userinfo`.uid = `requests_record`.uid "
-				+ "WHERE fid=? AND `status`=0 LIMIT ?,10",User.getUid(),(page-1)*10);
-		List<RequestInfo> requestInfos = new ArrayList<RequestInfo>();
+	private JsonObject getRequestList(int uid, int page) throws SQLException {
+		ResultSet rs = DB.executeQuery("SELECT `rid`,`userinfo`.`uid`,`nickname`,`status` FROM `requests` "
+									+ "INNER JOIN `userinfo` ON `userinfo`.uid = `requests`.`uid` "
+									+ "WHERE `fid` = ? ORDER BY `datetime` DESC LIMIT ?,100", uid, (page-1)*100);
+		List<Request> requests = new ArrayList<Request>();
 		while(rs.next()){
-			RequestInfo requestInfo = new RequestInfo(rs.getInt("uid"),rs.getString("nickname"),rs.getString("signature"),rs.getInt("rrid"));
-			requestInfos.add(requestInfo);
+			Request request = new Request(rs.getInt("rid"), rs.getInt("uid"), rs.getString("nickname"), rs.getInt("status"));
+			requests.add(request);
 		}
-		return Data(requestInfos);
+		return Data(requests);
 	}
 
-	private JsonObject responseRequest(int rrid, boolean accept) throws SQLException{
-		int uid = User.getUid();
-		ResultSet rs = DB.executeQuery("SELECT `uid` FROM `requests_record` WHERE `rrid`=? AND `status` = 0", rrid);
+	private JsonObject responseRequest(int uid, int rid, boolean accept) throws SQLException{
+		ResultSet rs = DB.executeQuery("SELECT `uid` FROM `requests` WHERE `rid`=? AND `fid`= ? AND `status` = 0", rid, uid);
 		if(!rs.next()) return Error(1012);
 		if(accept==true){
-			DB.executeNonQuery("UPDATE requests_record SET `status`=1 WHERE `rrid`=?",rrid);
-			DB.executeNonQuery("INSERT INTO friend_list (uid,fid) VALUES (?,?)", uid,rs.getInt("uid"));	
-			DB.executeNonQuery("INSERT INTO friend_list (uid,fid) VALUES (?,?)", rs.getInt("uid"),uid);			
+			int fid = rs.getInt("uid");
+			DB.executeNonQuery("UPDATE `requests` SET `status`=1 WHERE `rid`=?",rid);
+			DB.executeNonQuery("INSERT INTO `friends` (`uid`,`fid`) VALUES (?,?)", uid, fid);	
+			DB.executeNonQuery("INSERT INTO `friends` (`uid`,`fid`) VALUES (?,?)", fid, uid);			
 		}
 		else
-			DB.executeNonQuery("UPDATE requests_record SET `status`=2 WHERE `rrid`=?",rrid);
+			DB.executeNonQuery("UPDATE `requests` SET `status` = 2 WHERE `rid`=?", rid);
 		return Success();
 	}
 
-	private JsonObject searchUser(String keyword, int page) throws SQLException {
+	private JsonObject searchUser(int uid, String keyword, int page) throws SQLException {
 		keyword = "%"+keyword+"%";
-		ResultSet rs = DB.executeQuery("SELECT * FROM `userinfo` WHERE `nickname` LIKE ? LIMIT ?,10",keyword,(page-1)*10);
-		List<UserInfo> userInfos = new ArrayList<UserInfo>();
+		ResultSet rs = DB.executeQuery("SELECT *,"
+									+ "(SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`) AS `isFriend` "
+									+ "FROM `userinfo` WHERE `nickname` LIKE ? LIMIT ?,10", uid, keyword, (page-1)*10);
+		List<Friend> friends = new ArrayList<Friend>();
 		while(rs.next())
-			userInfos.add(new UserInfo(rs.getInt("uid"),rs.getString("nickname"),rs.getString("signature")));		
-		return Data(userInfos);
+			friends.add(new Friend(rs.getInt("uid"), rs.getInt("sex"),rs.getString("nickname"), rs.getString("signature"), rs.getString("birthday"), rs.getInt("isFriend")==1));		
+		return Data(friends);
 	}
 	
+	private static class Friend{
+	    public int uid;
+	    public int sex;
+	    public String nickname,signature;
+	    public String birthday;
+	    public boolean isFriend = false;
+	    public Friend(int uid, int sex, String nickname, String signature, String birthday, boolean isFriend){
+	        this.uid = uid;
+	        this.sex = sex;
+	        this.nickname = nickname;
+	        this.signature = signature;
+	        this.birthday = birthday;
+	        this.isFriend = isFriend;
+	    }
+	}
 	
-	
-	private static class UserInfo{
-		int uid;
-		String name,signature;
-		public UserInfo(int uid, String name, String signature) {
+	private static class Request{
+		int rid,uid,status;
+		String nickname;
+		public Request(int rid, int uid, String nickname, int status) {
+			this.rid = rid;
 			this.uid = uid;
-			this.name = name;
-			this.signature = signature;
-		}
-	}
-	
-	private static class RequestInfo extends UserInfo{
-		int rrid;
-		public RequestInfo(int uid, String name, String signature, int rrid) {
-			super(uid, name, signature);
-			this.rrid = rrid;
+			this.nickname = nickname;
+			this.status = status;
 		}
 	}
 	
 	private static class BookMark{
-		int mid, bid;
-		String title, summary, content, time, book_title, book_cover;
-		public BookMark(int mid, String title, String summary, String content, String time, int bid, String book_title, String book_cover) {
-			this.mid = mid;
-			this.title = title;
-			this.summary = summary;
-			this.content = content;
-			this.time = time;
-			this.bid = bid;
-			this.book_title = book_title;
-			this.book_cover = book_cover;
-		}		
+	    int mid, bid, uid;
+	    String title, summary, content, time, isbn13, book_title, book_cover, nickname;
+	    public BookMark(int mid, String title, String summary, String content, String time, int bid, String isbn13, String book_title, String book_cover, int uid, String nickname) {
+	        this.mid = mid;
+	        this.title = title;
+	        this.summary = summary;
+	        this.content = content;
+	        this.time = time;
+	        this.bid = bid;
+	        this.isbn13 = isbn13;
+	        this.book_title = book_title;
+	        this.book_cover = book_cover;
+	        this.uid = uid;
+	        this.nickname = nickname;
+	    }	
 	}
-
-	private static class Moment{
-		int uid,bid,mid;
-		String name,summary,time;
-		public Moment(int uid, int bid, int mid, String name, String summary,String time) {
-			this.uid = uid;
-			this.bid = bid;
-			this.mid = mid;
-			this.name = name;
-			this.summary = summary;
-			this.time = time;
-		}
-	}
-	
-	
 	
 }

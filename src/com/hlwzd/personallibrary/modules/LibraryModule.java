@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.google.gson.JsonArray;
@@ -61,11 +62,12 @@ public class LibraryModule extends Module {
 				return getTagList();
 			}
 			else if(action.equals("getBookList")){
-				int uid = User.getUid();
+				String uidStr = request.getParameter("uid");
 				String tidsStr = request.getParameter("tids");
 				String keyword = request.getParameter("keyword");
 				JsonParser parser = new JsonParser();
 				JsonArray tids = (tidsStr==null)?new JsonArray():parser.parse(tidsStr).getAsJsonArray();
+				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
 				return getBookList(uid, tids, keyword);
 			}
 			else if(action.equals("exchangeBook")){

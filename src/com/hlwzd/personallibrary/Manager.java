@@ -13,7 +13,7 @@ import com.hlwzd.personallibrary.Manager.Module.CallBack;
  * 加载不同模块进行请求派发 
  * @Author       梁雨聪 (PureDark)
  * @CreateDate   2015-07-10 
- * @Version      v1.0FdQUU5E5tuie
+ * @Version      v1.0
  */
 
 public class Manager {
@@ -47,13 +47,7 @@ public class Manager {
 			//根据指定的模块名获取到对应的module并实例化
 			Module mod = (Module)Class.forName(com).getConstructor(DBHelper.class, User.class).newInstance(db,user);
 			//执行对应的module的操作
-		    return mod.action(request, new CallBack(){
-				@Override
-				public JsonObject onComputeEnd(JsonObject result) {
-					//System.out.println("Callback test!");
-					return result;
-				}
-		    });
+		    return mod.action(request);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return Module.Error(1010);
@@ -111,6 +105,20 @@ public class Manager {
 			JsonObject result = new JsonObject();
 			result.addProperty("status", false);
 			result.addProperty("errorCode", errorcode);
+			return result;
+		}
+		
+		/**
+		 * 用于返回包含错误信息的JsonObject
+		 * @param error 需要返回的错误对象
+		 * @return JsonObject 固定格式的Json对象，包含boolean status = false, int errorCode.
+		 */
+		protected static JsonObject Error(int errorcode, Object error){
+			Gson gson = new Gson();
+			JsonObject result = new JsonObject();
+			result.addProperty("status", false);
+			result.addProperty("errorCode", errorcode);
+			result.add("errorMessage", gson.toJsonTree(error));
 			return result;
 		}
 		

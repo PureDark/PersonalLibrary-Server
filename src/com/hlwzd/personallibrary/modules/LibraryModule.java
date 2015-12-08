@@ -31,10 +31,10 @@ public class LibraryModule extends Module {
 				String title = request.getParameter("title");
 				String cover = request.getParameter("cover");
 				String author = request.getParameter("author");
-				String description = request.getParameter("description");
+				String summary = request.getParameter("summary");
 				if((isbn13==null||title==null))
 					return Error(1001);
-				return addBook(User.getUid(), isbn13, title, cover, author, description);
+				return addBook(User.getUid(), isbn13, title, cover, author, summary);
 			}
 			else if(action.equals("deleteBook")){
 				String bidstr = request.getParameter("bid");
@@ -63,9 +63,10 @@ public class LibraryModule extends Module {
 			else if(action.equals("getBookList")){
 				int uid = User.getUid();
 				String tidsStr = request.getParameter("tids");
+				String keyword = request.getParameter("keyword");
 				JsonParser parser = new JsonParser();
 				JsonArray tids = (tidsStr==null)?new JsonArray():parser.parse(tidsStr).getAsJsonArray();
-				return getBookList(uid, tids);
+				return getBookList(uid, tids, keyword);
 			}
 			else if(action.equals("exchangeBook")){
 				String bidstr = request.getParameter("bid");
@@ -88,15 +89,15 @@ public class LibraryModule extends Module {
 		}
 	}
 
-	private JsonObject addBook(int uid, String isbn13, String title, String cover, String author, String description) throws SQLException{
+	private JsonObject addBook(int uid, String isbn13, String title, String cover, String author, String summary) throws SQLException{
 		ResultSet rs = DB.executeQuery("SELECT `bid` FROM `books` WHERE `isbn13` = ?", isbn13);
 		int bid;
 		if(rs.next()){
 			bid = rs.getInt("bid");
 		}else{
 			DB.executeNonQuery("INSERT INTO `books` "+
-							   "(`isbn13`,`title`,`cover`,`author`,`description`,`regdate`) "+
-							   "VALUES (?,?,?,?,?,NOW())", isbn13, title, cover, author, description);
+							   "(`isbn13`,`title`,`cover`,`author`,`summary`,`regdate`) "+
+							   "VALUES (?,?,?,?,?,NOW())", isbn13, title, cover, author, summary);
 			bid = DB.getLastInsertId();
 		}
 		rs = DB.executeQuery("SELECT 1 FROM `userbook` WHERE `uid` = ? AND `bid` = ?", uid, bid);
@@ -148,13 +149,17 @@ public class LibraryModule extends Module {
 		return Data(tags);
 	}
 	
-	private JsonObject getBookList(int uid, JsonArray tids) throws SQLException{
+	private JsonObject getBookList(int uid, JsonArray tids, String keyword) throws SQLException{
+		keyword = (keyword==null)?null:"%"+keyword+"%";
+		String where = (keyword==null)?"":" AND (`books`.`title` LIKE ? OR `books`.`author` LIKE ?) ";
 		ResultSet rs;
-		if(tids.size()==0)
-			rs = DB.executeQuery("SELECT `books`.* FROM `books` "+
-								 "INNER JOIN `userbook` ON `userbook`.`bid`=`books`.`bid` "+
-								 "WHERE `userbook`.`uid`=?", uid);
-		else{
+		String sql = "";
+		if(tids.size()==0){
+			sql = "SELECT `books`.* FROM `books` "
+				 + "INNER JOIN `userbook` ON `userbook`.`bid`=`books`.`bid` "
+				 + "WHERE `userbook`.`uid`=? "+where
+				 + "ORDER BY `datetime` DESC";
+		}else{
 			String tidClause = "";
 			for(int i=0;i<tids.size();i++){
 				if(i!=tids.size()-1)
@@ -165,12 +170,17 @@ public class LibraryModule extends Module {
 			if(tidClause.equals(""))
 				tidClause = " 1 ";
 
-			rs = DB.executeQuery("SELECT `books`.* FROM `books` "
-								+ "INNER JOIN `userbook` ON `userbook`.`bid` = `books`.`bid`"
-								+ "WHERE `userbook`.`uid` = 1 AND "
-								+ "(SELECT COUNT(1) FROM `booktags` WHERE `booktags`.`bid` = `books`.`bid` "
-								+ "AND ("+ tidClause +"))>0");
+			sql = "SELECT `books`.* FROM `books` "
+					+ "INNER JOIN `userbook` ON `userbook`.`bid` = `books`.`bid`"
+					+ "WHERE `userbook`.`uid` = ? AND "
+					+ "(SELECT COUNT(1) FROM `booktags` WHERE `booktags`.`bid` = `books`.`bid` "
+					+ "AND ("+ tidClause +"))>0 " +where
+					+ "ORDER BY `datetime` DESC";
 		}
+		if(keyword==null)
+			rs = DB.executeQuery(sql, uid);
+		else
+			rs = DB.executeQuery(sql, uid, keyword, keyword);
 		List<Book> books = new ArrayList<Book>();
 		while(rs.next()){
 			int bid = rs.getInt("bid");
@@ -181,8 +191,8 @@ public class LibraryModule extends Module {
 			while(tagRs.next())
 				tags.add(new Tag(tagRs.getInt("tid"),tagRs.getString("title")));
 			
-			Book book = new Book(bid, rs.getString("name"), rs.getString("summary"), 
-							rs.getString("cover"), rs.getDouble("price"), tags);
+			Book book = new Book(bid, rs.getString("isbn13"), rs.getString("cover"), rs.getString("title"),
+					rs.getString("author"), rs.getString("summary"), tags);
 			books.add(book);
 		}
 		return Data(books);
@@ -199,15 +209,15 @@ public class LibraryModule extends Module {
 	
 	private static class Book{
 		int bid;
-		String name,summary,cover;
-		double price;
+		String isbn13,title,cover,author,summary;
 		List<Tag> tags = new ArrayList<Tag>();
-		public Book(int bid, String name, String summary, String cover, double price, List<Tag> tags){
+		public Book(int bid, String isbn13, String cover, String title, String author, String summary, List<Tag> tags){
 			this.bid = bid;
-			this.name = name;
-			this.summary = summary;
+			this.isbn13 = isbn13;
 			this.cover = cover;
-			this.price = price;
+			this.title = title;
+			this.author = author;
+			this.summary = summary;
 			this.tags = tags;
 		}
 	}

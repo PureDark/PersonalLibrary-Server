@@ -19,9 +19,9 @@ import com.google.gson.JsonObject;
  */
 
 @MultipartConfig()
-public class Manager_Servlet extends HttpServlet {
+public class ManagerServlet extends HttpServlet {
 
-	public Manager_Servlet() {
+	public ManagerServlet() {
 		super();
 	}
 

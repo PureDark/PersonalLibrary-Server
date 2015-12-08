@@ -23,22 +23,26 @@
 	    <description>Send request to Manager, which dispatches action.</description>
 	    <display-name>Manager</display-name>
 	    <servlet-name>manager</servlet-name>
-	    <servlet-class>com.hlwzd.personallibrary.Manager_Servlet</servlet-class>
+	    <servlet-class>com.hlwzd.personallibrary.ManagerServlet</servlet-class>
 	  </servlet>
 	
 	  <servlet-mapping>
 	    <servlet-name>manager</servlet-name>
 	    <url-pattern>/servlet/manager</url-pattern>
 	  </servlet-mapping>
+	    
+	  <servlet>
+	    <description>Test for debuging.</description>
+	    <display-name>Test</display-name>
+	    <servlet-name>test</servlet-name>
+	    <servlet-class>com.hlwzd.personallibrary.TestServlet</servlet-class>
+	  </servlet>
+	
+	  <servlet-mapping>
+	    <servlet-name>test</servlet-name>
+	    <url-pattern>/servlet/test</url-pattern>
+	  </servlet-mapping>
 	  
-	<servlet>
-		<servlet-name>validateCodeServlet</servlet-name>
-		<servlet-class>cn.dsna.util.images.ValidateCodeServlet</servlet-class>
-	</servlet>	
-	<servlet-mapping>
-		<servlet-name>validateCodeServlet</servlet-name>
-		<url-pattern>*.images</url-pattern>
-	</servlet-mapping>
 	  
 	  <welcome-file-list>  
 	    <welcome-file>index.jsp</welcome-file>  

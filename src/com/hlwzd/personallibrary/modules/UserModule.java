@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import com.google.gson.JsonObject;
 import com.hlwzd.personallibrary.DBHelper;
@@ -14,6 +15,7 @@ import com.hlwzd.personallibrary.Manager.Module;
 import com.hlwzd.personallibrary.Manager.User;
 
 public class UserModule extends Module {
+	private String basePath;
 
 	public UserModule(DBHelper db, User user) {
 		super(db, user);
@@ -21,6 +23,8 @@ public class UserModule extends Module {
 
 	@Override
 	public JsonObject action(HttpServletRequest request) {
+		String classPath = this.getClass().getClassLoader().getResource("").getPath();
+		basePath= classPath.substring(0, classPath.indexOf("PersonalLibrary"));
 		String action = request.getParameter("action");
 		if(action==null)return Error(1001);
 		try {
@@ -77,12 +81,13 @@ public class UserModule extends Module {
 			}
     		else if(action.equals("modifyUserInfo")){//改用户信息
 				if(!User.isLogedIn())return Error(1002);
-				int sex =Integer.parseInt(request.getParameter("sex"));
-				String signature = request.getParameter("signature");
+				String sexStr = request.getParameter("sex");
+				if(sexStr==null)return Error(1001);
+				int sex =Integer.parseInt(sexStr);
 				String nickname = request.getParameter("nickname");
+				String signature = request.getParameter("signature");
 				String birthday = request.getParameter("birthday");
-				if(sex==0)return Error(1001);
-		        return modifyUserInfo(User.getUid(),sex,signature,nickname,birthday);
+		        return modifyUserInfo(User.getUid(), sex, nickname, signature, birthday);
 			}
 			else if(action.equals("getUserinfo")){	//获取用户个人信息
 				return getUserInfo(User.getUid());
@@ -92,6 +97,15 @@ public class UserModule extends Module {
 				if(cellphone==null)
 					return Error(1001);
 				return getUidByCellphone(cellphone);
+			}
+			else if(action.equals("uploadAvatar")){
+				if(!User.isLogedIn())return Error(1002);
+				Part avatar = null;
+				String contentType = request.getContentType();
+				if(contentType!=null&&contentType.contains("multipart/form-data"))
+					avatar = request.getPart("avatar");
+				if(avatar==null)return Error(1001);
+				return uploadAvatar(avatar);
 			}
 			else
 				return Error(1006);
@@ -145,7 +159,7 @@ public class UserModule extends Module {
 		if(rs.next())return Error(1032);
 		DB.executeNonQuery("INSERT INTO `users`(`cellphone`,`password`,`regdate`,`lastlogin`) VALUES(?,?,NOW(),NOW())", 
 												cellphone, password);
-		DB.executeNonQuery("INSERT INTO `userinfo`(`uid`) VALUES(?)", DB.getLastInsertId());
+		DB.executeNonQuery("INSERT INTO `userinfo`(`uid`,`nickname`,`signature`) VALUES(?,?,?)", DB.getLastInsertId(),"点击设置昵称","点击设置个性签名");
 		
 		return Success();
 	}
@@ -165,10 +179,10 @@ public class UserModule extends Module {
 	}
 
 	
-	private JsonObject modifyUserInfo(int uid,int sex,String signature,String nickname,String birthday) throws IOException, SQLException{
-		DB.executeNonQuery("UPDATE `userinfo` SET `sex`=? WHERE `uid`=?", sex, uid);
-		if(signature!=null)DB.executeNonQuery("UPDATE `userinfo` SET `signature`=? WHERE `uid`=?", signature, uid);
+	private JsonObject modifyUserInfo(int uid, int sex, String nickname, String signature, String birthday) throws IOException, SQLException{
+		if(sex!=0)DB.executeNonQuery("UPDATE `userinfo` SET `sex`=? WHERE `uid`=?", sex, uid);
 		if(nickname!=null)DB.executeNonQuery("UPDATE `userinfo` SET `nickname`=? WHERE `uid`=?", nickname, uid);
+		if(signature!=null)DB.executeNonQuery("UPDATE `userinfo` SET `signature`=? WHERE `uid`=?", signature, uid);
 		if(birthday!=null)DB.executeNonQuery("UPDATE `userinfo` SET `birthday`=? WHERE `uid`=?", birthday, uid);
 		return Success();
 	}
@@ -192,6 +206,16 @@ public class UserModule extends Module {
 		data.addProperty("uid", rs.getInt("uid"));
 		return Data(data);
 	}
+
+	private JsonObject uploadAvatar(Part avatar) throws IOException {
+		if(avatar!=null&&avatar.getContentType()!=null){
+			avatar.write(basePath+"images/users/avatars/"+User.getUid()+".png");
+		}
+		else return Error(1001);
+		return Success();
+	}
+
+	
 	
 	public class UserInfo{
 		int uid, sex;

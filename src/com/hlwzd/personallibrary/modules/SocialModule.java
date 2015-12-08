@@ -22,6 +22,8 @@ public class SocialModule extends Module {
 
 	@Override
 	public JsonObject action(HttpServletRequest request) {
+		if(!User.isLogedIn())
+			return Error(1002);
 		String action = request.getParameter("action");
 		if(action==null)return Error(1001);
 		try {
@@ -58,28 +60,28 @@ public class SocialModule extends Module {
 				else page=Integer.parseInt(p);
 				return getFriendList(page);
 			}
-			else if(action.equals("addMark")){
+			else if(action.equals("addBookMark")){
 				String bid = request.getParameter("bid");
+				String title = request.getParameter("title");
 				String content = request.getParameter("content");
-				if(bid==null||content==null)return Error(1001);
-				return addMark(Integer.parseInt(bid),content);
+				if(bid==null||title==null||content==null)
+					return Error(1001);
+				return addBookMark(User.getUid(), Integer.parseInt(bid), title, content);
 			}
-			else if(action.equals("getMarks")){
-				String b = request.getParameter("bid");
-				String p = request.getParameter("page");
-				int bid,page;
-				if(b==null) return Error(1001);
-				else bid=Integer.parseInt(b);
-				if(p==null) page=1;
-				else page=Integer.parseInt(p);
-				return getMarks(bid,page);
+			else if(action.equals("getBookMarkList")){
+				String bidStr = request.getParameter("bid");
+				String pageStr = request.getParameter("page");
+				if(bidStr==null) return Error(1001);
+				int bid = Integer.parseInt(bidStr);
+				int page= (pageStr==null)?1:Integer.parseInt(pageStr);
+				return getBookMarkList(bid, User.getUid(), page);
 			}
 			else if(action.equals("deleteMark")){
 				String mid = request.getParameter("mid");
 				if(mid==null)return Error(1001);
-				return deleteMark(Integer.parseInt(mid));
+				return deleteMark(Integer.parseInt(mid), User.getUid());
 			}
-			else if(action.equals("getMoments")){
+			else if(action.equals("getRecentMarks")){
 				String p = request.getParameter("page");
 				String u = request.getParameter("uid");
 				int page,uid;
@@ -87,7 +89,7 @@ public class SocialModule extends Module {
 				else uid=Integer.parseInt(u);
 				if(p==null) page=1;
 				else page=Integer.parseInt(p);			
-				return getMoments(uid,page);
+				return getRecentMarks(uid,page);
 			}
 			else if(action.equals("getMarkDetails")){
 				String m = request.getParameter("mid");
@@ -117,18 +119,20 @@ public class SocialModule extends Module {
 		}
 	}
 
-	private JsonObject searchUser(String keyword, int page) throws SQLException {
-		keyword = "%"+keyword+"%";
-		ResultSet rs = DB.executeQuery("SELECT * FROM `userinfo` WHERE `nickname` LIKE ? LIMIT ?,10",keyword,(page-1)*10);
-		List<UserInfo> userInfos = new ArrayList<UserInfo>();
-		while(rs.next())
-			userInfos.add(new UserInfo(rs.getInt("uid"),rs.getString("nickname"),rs.getString("signature")));		
-		return Data(userInfos);
+	private JsonObject getBookMarkList(int bid, int uid, int page) throws SQLException {
+		ResultSet rs = DB.executeQuery("SELECT `mid`,`marks`.`title`, `bookmarks`.`summary`,`time`,`books`.`bid`,`books`.`title` AS `book_title`,`cover` FROM `bookmarks` "
+										+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
+										+ " WHERE `bookmarks`.`bid`=? ORDER BY `time` DESC LIMIT ?,10 ", bid,(page-1)*10);
+		List<BookMark> bookmarks = new ArrayList<BookMark>();
+		while(rs.next()){
+			BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), null, rs.getString("time"),
+											rs.getInt("bid"), rs.getString("book_title"), rs.getString("cover"));
+			bookmarks.add(bookmark);
+		}
+		return Data(bookmarks);
 	}
 
-
-
-	private JsonObject getMoments(int uid, int page) throws SQLException {
+	private JsonObject getRecentMarks(int uid, int page) throws SQLException {
 		String sql1 ="SELECT `userinfo`.uid,`userinfo`.nickname,`marks`.mid,`marks`.bid,`marks`.summary,`marks`.time FROM `marks`"
 				+ "INNER JOIN `userinfo` ON `userinfo`.`uid`=`marks`.`uid` "
 				+ "WHERE `marks`.`uid` IN (SELECT `fid` FROM `friend_list` WHERE `uid` = ?) OR `marks`.uid = ? "
@@ -153,43 +157,32 @@ public class SocialModule extends Module {
 	}
 
 	private JsonObject getMarkDetails(int mid) throws SQLException {
-		ResultSet rs = DB.executeQuery("SELECT * FROM `marks` WHERE `mid`=?",mid);
-		MarkDetail markDetail = null;
-		while(rs.next()){
-			markDetail = new MarkDetail(rs.getInt("mid"),rs.getString("summary"),rs.getString("time"),rs.getString("content"));
-		}	
-		return Data(markDetail);
-	}
-
-	private JsonObject getMarks(int bid, int page) throws SQLException {
-		ResultSet rs = DB.executeQuery("SELECT `mid`,`summary`,`time` FROM marks "
-										+ "WHERE `bid`=? ORDER BY `time` DESC LIMIT ?,10 ", bid,(page-1)*10);
-		List<Mark> marks = new ArrayList<Mark>();
-		while(rs.next()){
-			Mark mark = new Mark(rs.getInt("mid"),rs.getString("summary"),rs.getString("time"));
-			marks.add(mark);
-		}
-		return Data(marks);
+		ResultSet rs = DB.executeQuery("SELECT `bookmarks`.*,`books`.`title` AS `book_title`,`cover` FROM `bookmarks` "
+										+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
+										+ " WHERE `mid` = ?",mid);
+		if(!rs.next())return Error(1024);
+		BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), rs.getString("content"), rs.getString("time"),
+										rs.getInt("bid"), rs.getString("book_title"), rs.getString("cover"));
+		return Data(bookmark);
 	}
 
 
-	private JsonObject deleteMark(int mid) throws SQLException {
-		ResultSet rs = DB.executeQuery("SELECT 1 FROM `marks` WHERE `mid`=? AND `uid` = ?", mid,User.getUid());
-		if(!rs.next()) return Error(1012);
-		DB.executeNonQuery("DELETE FROM marks WHERE mid=?",mid);
+	private JsonObject deleteMark(int mid, int uid) throws SQLException {
+		ResultSet rs = DB.executeQuery("SELECT 1 FROM `bookmarks` WHERE `mid`=? AND `uid` = ?", mid, uid);
+		if(!rs.next()) return Error(1051);
+		DB.executeNonQuery("DELETE FROM `bookmarks` WHERE mid=?", mid);
 		return Success();
 	}
 
-	private JsonObject addMark(int bid,String content) throws SQLException {
-		int uid = User.getUid();
+	private JsonObject addBookMark(int uid, int bid, String title, String content) throws SQLException {
 		ResultSet rs = DB.executeQuery("SELECT 1 FROM `books` WHERE `bid`=?", bid);
-		if(!rs.next()) return Error(1012);
+		if(!rs.next()) return Error(1022);
 		String summary;
 		if(content.length()>100)
 			summary = content.substring(0,99);
 		else 
 			summary = content;
-		DB.executeNonQuery("INSERT INTO marks (content,time,bid,uid,summary) VALUES (?,NOW(),?,?,?)",content,bid,uid,summary);
+		DB.executeNonQuery("INSERT INTO `bookmarks` (`uid`,`bid`,`title`,`summary`,`content`,`time`) VALUES (?,?,?,?,?,NOW())", uid, bid, title, summary, content);
 		return Success();
 	}
 
@@ -249,6 +242,15 @@ public class SocialModule extends Module {
 			DB.executeNonQuery("UPDATE requests_record SET `status`=2 WHERE `rrid`=?",rrid);
 		return Success();
 	}
+
+	private JsonObject searchUser(String keyword, int page) throws SQLException {
+		keyword = "%"+keyword+"%";
+		ResultSet rs = DB.executeQuery("SELECT * FROM `userinfo` WHERE `nickname` LIKE ? LIMIT ?,10",keyword,(page-1)*10);
+		List<UserInfo> userInfos = new ArrayList<UserInfo>();
+		while(rs.next())
+			userInfos.add(new UserInfo(rs.getInt("uid"),rs.getString("nickname"),rs.getString("signature")));		
+		return Data(userInfos);
+	}
 	
 	
 	
@@ -270,23 +272,19 @@ public class SocialModule extends Module {
 		}
 	}
 	
-	private static class Mark{
-		int mid;
-		String summary,time;
-		public Mark(int mid, String summary,String time) {
-			super();
+	private static class BookMark{
+		int mid, bid;
+		String title, summary, content, time, book_title, book_cover;
+		public BookMark(int mid, String title, String summary, String content, String time, int bid, String book_title, String book_cover) {
 			this.mid = mid;
+			this.title = title;
 			this.summary = summary;
-			this.time = time;
-		}		
-	}
-	
-	private static class MarkDetail extends Mark{
-		String content;
-		public MarkDetail(int mid, String summary, String time,String content) {
-			super(mid, summary,time);
 			this.content = content;
-		}	
+			this.time = time;
+			this.bid = bid;
+			this.book_title = book_title;
+			this.book_cover = book_cover;
+		}		
 	}
 
 	private static class Moment{

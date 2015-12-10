@@ -69,16 +69,15 @@ public class SocialModule extends Module {
 				String bidStr = request.getParameter("bid");
 				String uidStr = request.getParameter("uid");
 				String pageStr = request.getParameter("page");
-				if(bidStr==null) return Error(1001);
-				int bid = Integer.parseInt(bidStr);
+				int bid = (bidStr==null)?0:Integer.parseInt(bidStr);
 				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
 				int page= (pageStr==null)?1:Integer.parseInt(pageStr);
 				return getBookMarkList(bid, uid, page);
 			}
-			else if(action.equals("deleteMark")){
+			else if(action.equals("deleteBookMark")){
 				String mid = request.getParameter("mid");
 				if(mid==null)return Error(1001);
-				return deleteMark(User.getUid(), Integer.parseInt(mid));
+				return deleteBookMark(User.getUid(), Integer.parseInt(mid));
 			}
 			else if(action.equals("getRecentBookMarks")){
 				String pageStr = request.getParameter("page");
@@ -87,12 +86,11 @@ public class SocialModule extends Module {
 				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
 				return getRecentBookMarks(uid,page);
 			}
-			else if(action.equals("getMarkDetails")){
-				String m = request.getParameter("mid");
-				int mid;
-				if(m==null) return Error(1001);
-				else mid=Integer.parseInt(m);
-				return getMarkDetails(mid);
+			else if(action.equals("getBookMarkDetails")){
+				String midStr = request.getParameter("mid");
+				if(midStr==null) return Error(1001);
+				int mid=Integer.parseInt(midStr);
+				return getBookMarkDetails(mid);
 			}
 			else if(action.equals("searchUser")){
 				String keyword = request.getParameter("keyword");
@@ -120,7 +118,7 @@ public class SocialModule extends Module {
 		String whereuid = (uid==0)?" AND 1 ":" AND `bookmarks`.`uid`= " + uid;
 		String sql = "SELECT `mid`,`bookmarks`.`title`, `bookmarks`.`summary`,`time`,"
 					+ "`books`.`bid`,`isbn13`,`books`.`title` AS `book_title`,`cover`, "
-					+ "`userinfo`.`uid`,`userinfo`.`nickname` FROM `bookmarks` "
+					+ "`userinfo`.`uid`,`nickname`,`signature` FROM `bookmarks` "
 					+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
 					+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `bookmarks`.`uid` "
 					+ " WHERE "+wherebid+whereuid
@@ -128,9 +126,9 @@ public class SocialModule extends Module {
 		ResultSet rs = DB.executeQuery(sql, (page-1)*10);
 		List<BookMark> bookmarks = new ArrayList<BookMark>();
 		while(rs.next()){
-			BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), null, rs.getString("time"),
+			BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), null, rs.getString("time").substring(0,19),
 											rs.getInt("bid"), rs.getString("isbn13"), rs.getString("book_title"), rs.getString("cover"),
-											rs.getInt("uid"), rs.getString("nickname"));
+											rs.getInt("uid"), rs.getString("nickname"), rs.getString("signature"));
 			bookmarks.add(bookmark);
 		}
 		return Data(bookmarks);
@@ -139,7 +137,7 @@ public class SocialModule extends Module {
 	private JsonObject getRecentBookMarks(int uid, int page) throws SQLException {
 		String sql = "SELECT `mid`,`bookmarks`.`title`, `bookmarks`.`summary`,`time`,"
 					+ "`books`.`bid`,`isbn13`,`books`.`title` AS `book_title`,`cover`, "
-					+ "`userinfo`.`uid`,`userinfo`.`nickname` FROM `bookmarks` "
+					+ "`userinfo`.`uid`,`nickname`,`signature` FROM `bookmarks` "
 					+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
 					+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `bookmarks`.`uid` "
 					+ " WHERE `bookmarks`.`uid` = ? OR "
@@ -148,29 +146,29 @@ public class SocialModule extends Module {
 		ResultSet rs = DB.executeQuery(sql, uid, uid, (page-1)*10);
 		List<BookMark> bookmarks = new ArrayList<BookMark>();
 		while(rs.next()){
-			BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), null, rs.getString("time"),
+			BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), null, rs.getString("time").substring(0,19),
 											rs.getInt("bid"), rs.getString("isbn13"), rs.getString("book_title"), rs.getString("cover"),
-											rs.getInt("uid"), rs.getString("nickname"));
+											rs.getInt("uid"), rs.getString("nickname"), rs.getString("signature"));
 			bookmarks.add(bookmark);
 		}
 		return Data(bookmarks);
 	}
 
-	private JsonObject getMarkDetails(int mid) throws SQLException {
-		ResultSet rs = DB.executeQuery("SELECT `bookmarks`.*,`books`.`title` AS `book_title`,`cover`,"
-										+ " `userinfo`.`uid`,`userinfo`.`nickname` FROM `bookmarks` "
+	private JsonObject getBookMarkDetails(int mid) throws SQLException {
+		ResultSet rs = DB.executeQuery("SELECT `bookmarks`.*,`isbn13`,`books`.`title` AS `book_title`,`cover`,"
+										+ " `userinfo`.`uid`,`nickname`,`signature` FROM `bookmarks` "
 										+ " INNER JOIN `books` ON `books`.`bid` = `bookmarks`.`bid` "
 										+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `bookmarks`.`uid` "
 										+ " WHERE `mid` = ?",mid);
 		if(!rs.next())return Error(1024);
-		BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), rs.getString("content"), rs.getString("time"),
+		BookMark bookmark = new BookMark(rs.getInt("mid"), rs.getString("title"), rs.getString("summary"), rs.getString("content"), rs.getString("time").substring(0,19),
 										rs.getInt("bid"), rs.getString("isbn13"), rs.getString("book_title"), rs.getString("cover"),
-										rs.getInt("uid"), rs.getString("nickname"));
+										rs.getInt("uid"), rs.getString("nickname"), rs.getString("signature"));
 		return Data(bookmark);
 	}
 
 
-	private JsonObject deleteMark(int uid, int mid) throws SQLException {
+	private JsonObject deleteBookMark(int uid, int mid) throws SQLException {
 		ResultSet rs = DB.executeQuery("SELECT 1 FROM `bookmarks` WHERE `mid`=? AND `uid` = ?", mid, uid);
 		if(!rs.next()) return Error(1051);
 		DB.executeNonQuery("DELETE FROM `bookmarks` WHERE mid=?", mid);
@@ -191,9 +189,10 @@ public class SocialModule extends Module {
 
 	private JsonObject getFriendList(int uid, int page) throws SQLException {
 		ResultSet rs = DB.executeQuery("SELECT *,"
-									+ "(SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`) AS `isFriend` "
-									+ "FROM `userinfo` "
-									+ "WHERE (SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`)=1 "
+									+ " (SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`) AS `isFriend` "
+									+ " FROM `userinfo` "
+									+ " WHERE (SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`)=1 "
+									+ " ORDER BY `letter` ASC "
 									+ " LIMIT ?,100", uid, uid, (page-1)*100);
 		List<Friend> friends = new ArrayList<Friend>();
 		while(rs.next())
@@ -244,8 +243,10 @@ public class SocialModule extends Module {
 	private JsonObject searchUser(int uid, String keyword, int page) throws SQLException {
 		keyword = "%"+keyword+"%";
 		ResultSet rs = DB.executeQuery("SELECT *,"
-									+ "(SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`) AS `isFriend` "
-									+ "FROM `userinfo` WHERE `nickname` LIKE ? LIMIT ?,10", uid, keyword, (page-1)*10);
+									+ " (SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`) AS `isFriend` "
+									+ " FROM `userinfo` WHERE `nickname` LIKE ? "
+									+ " ORDER BY `letter` ASC "
+									+ " LIMIT ?,10", uid, keyword, (page-1)*10);
 		List<Friend> friends = new ArrayList<Friend>();
 		while(rs.next())
 			friends.add(new Friend(rs.getInt("uid"), rs.getInt("sex"),rs.getString("nickname"), rs.getString("signature"), rs.getString("birthday"), rs.getInt("isFriend")==1));		
@@ -281,8 +282,8 @@ public class SocialModule extends Module {
 	
 	private static class BookMark{
 	    int mid, bid, uid;
-	    String title, summary, content, time, isbn13, book_title, book_cover, nickname;
-	    public BookMark(int mid, String title, String summary, String content, String time, int bid, String isbn13, String book_title, String book_cover, int uid, String nickname) {
+	    String title, summary, content, time, isbn13, book_title, book_cover, nickname, signature;
+	    public BookMark(int mid, String title, String summary, String content, String time, int bid, String isbn13, String book_title, String book_cover, int uid, String nickname, String signature) {
 	        this.mid = mid;
 	        this.title = title;
 	        this.summary = summary;
@@ -294,6 +295,7 @@ public class SocialModule extends Module {
 	        this.book_cover = book_cover;
 	        this.uid = uid;
 	        this.nickname = nickname;
+	        this.signature = signature;
 	    }	
 	}
 	

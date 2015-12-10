@@ -9,6 +9,9 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+
 import com.google.gson.JsonObject;
 import com.hlwzd.personallibrary.DBHelper;
 import com.hlwzd.personallibrary.Manager.Module;
@@ -159,7 +162,7 @@ public class UserModule extends Module {
 		if(rs.next())return Error(1032);
 		DB.executeNonQuery("INSERT INTO `users`(`cellphone`,`password`,`regdate`,`lastlogin`) VALUES(?,?,NOW(),NOW())", 
 												cellphone, password);
-		DB.executeNonQuery("INSERT INTO `userinfo`(`uid`,`nickname`,`signature`) VALUES(?,?,?)", DB.getLastInsertId(),"点击设置昵称","点击设置个性签名");
+		DB.executeNonQuery("INSERT INTO `userinfo`(`uid`,`nickname`,`letter`,`signature`) VALUES(?,?,?)", DB.getLastInsertId(),"","","");
 		
 		return Success();
 	}
@@ -181,7 +184,10 @@ public class UserModule extends Module {
 	
 	private JsonObject modifyUserInfo(int uid, int sex, String nickname, String signature, String birthday) throws IOException, SQLException{
 		if(sex!=0)DB.executeNonQuery("UPDATE `userinfo` SET `sex`=? WHERE `uid`=?", sex, uid);
-		if(nickname!=null)DB.executeNonQuery("UPDATE `userinfo` SET `nickname`=? WHERE `uid`=?", nickname, uid);
+		if(nickname!=null){
+			String letter = getCharacterPinYin(nickname);
+			DB.executeNonQuery("UPDATE `userinfo` SET `nickname`=?,`letter`=? WHERE `uid`=?", nickname, letter, uid);
+		}
 		if(signature!=null)DB.executeNonQuery("UPDATE `userinfo` SET `signature`=? WHERE `uid`=?", signature, uid);
 		if(birthday!=null)DB.executeNonQuery("UPDATE `userinfo` SET `birthday`=? WHERE `uid`=?", birthday, uid);
 		return Success();
@@ -214,7 +220,16 @@ public class UserModule extends Module {
 		else return Error(1001);
 		return Success();
 	}
-
+	
+	
+	//转换单个字符 
+	public String getCharacterPinYin(String string) { 
+		String[] pinyin =PinyinHelper.toHanyuPinyinStringArray(string.charAt(0));
+		
+		if(pinyin!=null)
+			return pinyin[0].substring(0,1);
+		return string.substring(0,1);
+	}
 	
 	
 	public class UserInfo{

@@ -22,43 +22,42 @@ public class BorrowModule extends Module {
 
 	@Override
 	public JsonObject action(HttpServletRequest request) {
+		if(!User.isLogedIn())
+			return Error(1002);
 		String action = request.getParameter("action");
 		if(action==null)return Error(1001);
 		try {
-			if(action.equals("borrowBook")){
-				String book_idStr = request.getParameter("book_id");
-				String loan_uidStr = request.getParameter("loan_uid");
-				if(book_idStr==null||loan_uidStr==null)return Error(1001);
-				int book_id = Integer.parseInt(book_idStr);
-				int loan_uid = Integer.parseInt(loan_uidStr);
-				return borrowBook(book_id,loan_uid);
-			}
-			else if(action.equals("getBookRequestList")){
-				return getBookRequestList();
-			}
-			else if(action.equals("acceptBorrowRequest")){
+			if(action.equals("addBorrowRecord")){
 				String bidStr = request.getParameter("bid");
-				String acceptStr = request.getParameter("accept");
-				if(bidStr==null||acceptStr==null)return Error(1001);
-				int bid = Integer.parseInt(bidStr);
-				boolean accept = (Integer.parseInt(acceptStr)==1);
-				return acceptBorrowRequest(bid,accept);
-			}
-			else if(action.equals("setBookReturned")){
-				String bidStr = request.getParameter("bid");
+				String loanUidStr = request.getParameter("loan_uid");
 				if(bidStr==null)return Error(1001);
 				int bid = Integer.parseInt(bidStr);
-				return setBookReturned(bid);
+				int loanUid = Integer.parseInt(loanUidStr);
+				return addBorrowRecord(bid, loanUid, User.getUid());
 			}
-			else if(action.equals("getBookLoanedList")){
-				String typeStr = request.getParameter("type");
-				int type = (typeStr==null)?0:Integer.parseInt(typeStr);
-				return getBookLoanedList(type);
+			else if(action.equals("acceptBorrowRecord")){
+				String bridStr = request.getParameter("brid");
+				String acceptStr = request.getParameter("accept");
+				if(bridStr==null||acceptStr==null)return Error(1001);
+				int brid = Integer.parseInt(bridStr);
+				boolean accept = (Integer.parseInt(acceptStr)==1);
+				return acceptBorrowRecord(User.getUid(), brid, accept);
 			}
-			else if(action.equals("getBookBorrowedList")){
-				String typeStr = request.getParameter("type");
-				int type = (typeStr==null)?0:Integer.parseInt(typeStr);
-				return getBookBorrowedList(type);
+			else if(action.equals("setBookReturned")){
+				String bridStr = request.getParameter("brid");
+				if(bridStr==null)return Error(1001);
+				int brid = Integer.parseInt(bridStr);
+				return setBookReturned(User.getUid(), brid);
+			}
+			else if(action.equals("getBorrowedBookRecordList")){
+				String statusStr = request.getParameter("status");
+				int status = (statusStr==null)?0:Integer.parseInt(statusStr);
+				return getBorrowedBookRecordList(User.getUid(), status);
+			}
+			else if(action.equals("getLoanedBookRecordList")){
+				String statusStr = request.getParameter("status");
+				int status = (statusStr==null)?0:Integer.parseInt(statusStr);
+				return getLoanedBookRecordList(User.getUid(), status);
 			}
 			else
 				return Error(1006);
@@ -73,103 +72,77 @@ public class BorrowModule extends Module {
 	}
 
 
-	private JsonObject borrowBook(int book_id,int loan_uid) throws SQLException{
-		ResultSet rs = DB.executeQuery("SELECT 1 FROM `userbook` WHERE `uid` = ? AND `bid` = ?",loan_uid, book_id);
-		if(!rs.next()) return Error(1311);
-		rs = DB.executeQuery("SELECT 1 FROM `borrows` WHERE `loan_uid` = ? AND `book_id` = ? AND `status` = 2",loan_uid, book_id);
-		if(rs.next()) return Error(1312);
-		rs = DB.executeQuery("SELECT 1 FROM `borrows` WHERE `borrow_uid` = ?  AND `loan_uid` = ? AND `book_id` = ? AND `status` = 1",User.getUid(),loan_uid, book_id);
-		if(rs.next()) return Error(1313);
-		DB.executeNonQuery("INSERT INTO `borrows` VALUES (null,?,?,?,NOW(),null,1)", User.getUid(),loan_uid,book_id);
+	private JsonObject addBorrowRecord(int bid, int loan_uid, int borrow_uid) throws SQLException{
+		ResultSet rs = DB.executeQuery("SELECT 1 FROM `userbook` WHERE `uid` = ? AND `bid` = ?",loan_uid, bid);
+		if(!rs.next()) return Error(1061);
+		rs = DB.executeQuery("SELECT 1 FROM `borrows` WHERE `loan_uid` = ? AND `book_id` = ? AND `status` = 2",loan_uid, bid);
+		if(rs.next()) return Error(1062);
+		rs = DB.executeQuery("SELECT 1 FROM `borrows` WHERE `borrow_uid` = ? AND `loan_uid` = ? AND `book_id` = ? AND `status` = 1",User.getUid(),loan_uid, bid);
+		if(rs.next()) return Error(1063);
+		DB.executeNonQuery("INSERT INTO `borrows` VALUES (null,?,?,?,NOW(),null,1)", borrow_uid,loan_uid,bid);
 		return Success();
 	}
-
-	private JsonObject getBookRequestList() throws SQLException{
-		ResultSet rs = DB.executeQuery("SELECT `borrows`.*,`nickname`,`books`.`name` FROM `borrows` "
-				+ "INNER JOIN `userinfo` ON `userinfo`.`uid` = `borrows`.`borrow_uid` "
-				+ "INNER JOIN `books` ON `books`.`bid` = `borrows`.`book_id` "
-				+ "WHERE `status` = 1");
-		List<Task> tasks = new ArrayList<Task>();
-		while(rs.next()){
-			Task request = new Task(rs.getInt("bid"),rs.getInt("loan_uid"), rs.getInt("borrow_uid"),  rs.getString("nickname"), rs.getInt("book_id"), rs.getString("name"), rs.getString("borrow_time"),rs.getString("return_time"),rs.getInt("status"));
-			tasks.add(request);
-		}
-		return Data(tasks);
-	}
 	
-	private JsonObject acceptBorrowRequest(int bid, boolean accept) throws SQLException{
-		ResultSet rs = DB.executeQuery("SELECT `book_id` FROM `borrows` WHERE `loan_uid` = ? AND `bid` = ? AND `status` = 1",User.getUid(), bid);
-		if(!rs.next()) return Error(1331);
-		int book_id = rs.getInt("book_id");
+	private JsonObject acceptBorrowRecord(int uid, int brid, boolean accept) throws SQLException{
+		ResultSet rs = DB.executeQuery("SELECT `book_id` FROM `borrows` WHERE `brid` = ? AND `loan_uid` = ? AND `status` = 1", brid, uid);
+		if(!rs.next()) return Error(1064);
+		int bid = rs.getInt("book_id");
 		if(accept){
+			// 拒绝所有相关请求
 			DB.executeNonQuery("UPDATE `borrows` SET `status` = 3 "
-					+ "WHERE `loan_uid` = ? AND `book_id` = ? AND `status` = 1", User.getUid(), book_id);
+								+ "WHERE `loan_uid` = ? AND `book_id` = ? AND `status` = 1", uid, bid);
+			// 接受指定请求
+			DB.executeNonQuery("UPDATE `borrows` SET `borrow_time`=NOW() ,`status` = 2 WHERE `brid` = ? ", brid);
+		}
+		else 
+			DB.executeNonQuery("UPDATE `borrows` SET `status` = 3 WHERE `brid` = ? ", brid);
+		return Success();
+	}
+	
+	private JsonObject setBookReturned(int loan_uid, int brid) throws SQLException{
+		ResultSet rs = DB.executeQuery("SELECT 1 FROM `borrows` WHERE `brid` = ? AND `loan_uid` = ? AND `status` = 2", brid, loan_uid);
+		if(!rs.next()) return Error(1064);
+		DB.executeNonQuery("UPDATE `borrows` SET `status` = 4 , `return_time` = now() WHERE `brid` = ? ", brid);
+		return Success();
+	}
 
-			DB.executeNonQuery("UPDATE `borrows` SET `borrow_time`=NOW() ,`status` = 2 WHERE `bid` = ? ", bid);
-		}
-		else 
-			DB.executeNonQuery("UPDATE `borrows` SET `status` = 3 WHERE `bid` = ? ", bid);
-		return Success();
-	}
-	
-	private JsonObject setBookReturned(int bid) throws SQLException{
-		ResultSet rs = DB.executeQuery("SELECT 1 FROM `borrows` WHERE `loan_uid` = ? AND `bid` = ?",User.getUid(), bid);
-		if(!rs.next()) return Error(1341);
-		rs = DB.executeQuery("SELECT 1 FROM `borrows` WHERE `bid` = ? AND `status` = 2",bid);
-		if(!rs.next()) return Error(1342);
-		DB.executeNonQuery("UPDATE `borrows` SET `status` = 4 , `return_time` = now() WHERE `bid` = ? ", bid);
-		return Success();
-	}
-	
-	private JsonObject getBookLoanedList(int type) throws SQLException{
-		String status = "";
-		if(type==0)
-			status = " 2 OR `status` = 4";
-		else if(type==1)
-			status = "2";
-		else if(type==2)
-			status = "4";
-		else 
-			return Error(1001);
-		ResultSet rs = DB.executeQuery("SELECT `borrows`.*,`nickname`,`books`.`name` FROM `borrows` "
-				+ "INNER JOIN `userinfo` ON `userinfo`.`uid` = `borrows`.`borrow_uid` "
-				+ "INNER JOIN `books` ON `books`.`bid` = `borrows`.`book_id` "
-				+ "WHERE `loan_uid` = ? AND (`status` = "+status+")",User.getUid());
-		List<Task> tasks = new ArrayList<Task>();
+	private JsonObject getLoanedBookRecordList(int loan_uid, int status) throws SQLException{
+		String where = (status==0)?" AND 1 ":" AND `status` = "+status;
+		ResultSet rs = DB.executeQuery("SELECT `borrows`.*,`nickname`,`books`.`title` AS `book_name` FROM `borrows` "
+										+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `borrows`.`borrow_uid` "
+										+ " INNER JOIN `books` ON `books`.`bid` = `borrows`.`book_id` "
+										+ " WHERE `loan_uid` = ? "+where, loan_uid);
+		List<BorrowRecord> requests = new ArrayList<BorrowRecord>();
 		while(rs.next()){
-			Task loan = new Task(rs.getInt("bid"),rs.getInt("loan_uid"), rs.getInt("borrow_uid"),  rs.getString("nickname"), rs.getInt("book_id"), rs.getString("name"), rs.getString("borrow_time"),rs.getString("return_time"),rs.getInt("status"));
-			tasks.add(loan);
+			BorrowRecord request = new BorrowRecord(rs.getInt("brid"),rs.getInt("loan_uid"), rs.getInt("borrow_uid"), rs.getString("nickname"), 
+													rs.getInt("book_id"), rs.getString("book_name"), rs.getString("borrow_time"),
+													rs.getString("return_time"),rs.getInt("status"));
+			requests.add(request);
 		}
-		return Data(tasks);
+		return Data(requests);
 	}
-	
-	private JsonObject getBookBorrowedList(int type) throws SQLException{
-		String status = "";
-		if(type==0)
-			status = " 2 OR `status` = 4";
-		else if(type==1)
-			status = "2";
-		else if(type==2)
-			status = "4";
-		else 
-			return Error(1001);
-		ResultSet rs = DB.executeQuery("SELECT `borrows`.*,`nickname`,`books`.`name` FROM `borrows` "
-				+ "INNER JOIN `userinfo` ON `userinfo`.`uid` = `borrows`.`borrow_uid` "
-				+ "INNER JOIN `books` ON `books`.`bid` = `borrows`.`book_id` "
-				+ "WHERE `borrow_uid` = ? AND (`status` = "+status+")",User.getUid());
-		List<Task> tasks = new ArrayList<Task>();
+
+	private JsonObject getBorrowedBookRecordList(int borrow_uid, int status) throws SQLException{
+		String where = (status==0)?" AND 1 ":" AND `status` = "+status;
+		ResultSet rs = DB.executeQuery("SELECT `borrows`.*,`nickname`,`books`.`title` AS `book_name` FROM `borrows` "
+										+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `borrows`.`loan_uid` "
+										+ " INNER JOIN `books` ON `books`.`bid` = `borrows`.`book_id` "
+										+ " WHERE `borrow_uid` = ? "+where, borrow_uid);
+		List<BorrowRecord> requests = new ArrayList<BorrowRecord>();
 		while(rs.next()){
-			Task borrow = new Task(rs.getInt("bid"),rs.getInt("loan_uid"), rs.getInt("borrow_uid"),  rs.getString("nickname"), rs.getInt("book_id"), rs.getString("name"), rs.getString("borrow_time"),rs.getString("return_time"),rs.getInt("status"));
-			tasks.add(borrow);
+			BorrowRecord request = new BorrowRecord(rs.getInt("brid"),rs.getInt("loan_uid"), rs.getInt("borrow_uid"), rs.getString("nickname"), 
+													rs.getInt("book_id"), rs.getString("book_name"), rs.getString("borrow_time"),
+													rs.getString("return_time"),rs.getInt("status"));
+			requests.add(request);
 		}
-		return Data(tasks);
+		return Data(requests);
 	}
-	
-	public static class Task{
-		public int bid,loan_uid,borrow_uid,book_id,status; 
+
+	public static class BorrowRecord{
+		public int brid,loan_uid,borrow_uid,book_id,status; 
 		public String nickname,book_name,borrow_time,return_time;
-		public Task(int bid,int loan_uid,int borrow_uid, String nickname, int book_id ,String book_name,String borrow_time,String return_time,int status){
-			this.bid = bid;
+		public BorrowRecord(int brid,int loan_uid,int borrow_uid, String nickname, int book_id ,String book_name,String borrow_time,String return_time,int status){
+			this.brid = brid;
 			this.loan_uid = loan_uid;
 			this.borrow_uid = borrow_uid;
 			this.nickname = nickname;

@@ -111,7 +111,8 @@ public class BorrowModule extends Module {
 		ResultSet rs = DB.executeQuery("SELECT `borrows`.*,`nickname`,`books`.`title` AS `book_name` FROM `borrows` "
 										+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `borrows`.`borrow_uid` "
 										+ " INNER JOIN `books` ON `books`.`bid` = `borrows`.`book_id` "
-										+ " WHERE `loan_uid` = ? "+where, loan_uid);
+										+ " WHERE `loan_uid` = ? "+where
+										+ " ORDER BY `borrow_time` DESC ", loan_uid);
 		List<BorrowRecord> requests = new ArrayList<BorrowRecord>();
 		while(rs.next()){
 			BorrowRecord request = new BorrowRecord(rs.getInt("brid"),rs.getInt("loan_uid"), rs.getInt("borrow_uid"), rs.getString("nickname"), 
@@ -127,7 +128,8 @@ public class BorrowModule extends Module {
 		ResultSet rs = DB.executeQuery("SELECT `borrows`.*,`nickname`,`books`.`title` AS `book_name` FROM `borrows` "
 										+ " INNER JOIN `userinfo` ON `userinfo`.`uid` = `borrows`.`loan_uid` "
 										+ " INNER JOIN `books` ON `books`.`bid` = `borrows`.`book_id` "
-										+ " WHERE `borrow_uid` = ? "+where, borrow_uid);
+										+ " WHERE `borrow_uid` = ? "+where
+										+ " ORDER BY `borrow_time` DESC ", borrow_uid);
 		List<BorrowRecord> requests = new ArrayList<BorrowRecord>();
 		while(rs.next()){
 			BorrowRecord request = new BorrowRecord(rs.getInt("brid"),rs.getInt("loan_uid"), rs.getInt("borrow_uid"), rs.getString("nickname"), 
@@ -148,9 +150,11 @@ public class BorrowModule extends Module {
 			this.nickname = nickname;
 			this.book_id = book_id;
 			this.book_name = book_name;
+			borrow_time = (borrow_time!=null)?borrow_time.substring(0,19):null;
 			this.borrow_time = borrow_time;
-			this.status = status;
+			return_time = (return_time!=null)?return_time.substring(0,19):null;
 			this.return_time = return_time;
+			this.status = status;
 		}
 	}
 }

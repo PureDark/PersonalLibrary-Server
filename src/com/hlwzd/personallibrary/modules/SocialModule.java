@@ -231,9 +231,10 @@ public class SocialModule extends Module {
 		if(!rs.next()) return Error(1012);
 		if(accept==true){
 			int fid = rs.getInt("uid");
-			DB.executeNonQuery("UPDATE `requests` SET `status`=1 WHERE `rid`=?",rid);
+			DB.executeNonQuery("UPDATE `requests` SET `status`=1 WHERE `rid`= ?", rid);
+			DB.executeNonQuery("UPDATE `requests` SET `status`=1 WHERE `uid`=? AND `fid` = ? AND `status` = 0", fid, uid);
 			DB.executeNonQuery("INSERT INTO `friends` (`uid`,`fid`) VALUES (?,?)", uid, fid);	
-			DB.executeNonQuery("INSERT INTO `friends` (`uid`,`fid`) VALUES (?,?)", fid, uid);			
+			DB.executeNonQuery("INSERT INTO `friends` (`uid`,`fid`) VALUES (?,?)", fid, uid);
 		}
 		else
 			DB.executeNonQuery("UPDATE `requests` SET `status` = 2 WHERE `rid`=?", rid);
@@ -244,9 +245,9 @@ public class SocialModule extends Module {
 		keyword = "%"+keyword+"%";
 		ResultSet rs = DB.executeQuery("SELECT *,"
 									+ " (SELECT COUNT(1) FROM `friends` WHERE `friends`.`uid` = ? AND `friends`.`fid` = `userinfo`.`uid`) AS `isFriend` "
-									+ " FROM `userinfo` WHERE `nickname` LIKE ? "
+									+ " FROM `userinfo` WHERE `nickname` LIKE ? AND `userinfo`.`uid` != ?"
 									+ " ORDER BY `letter` ASC "
-									+ " LIMIT ?,10", uid, keyword, (page-1)*10);
+									+ " LIMIT ?,10", uid, keyword, uid, (page-1)*10);
 		List<Friend> friends = new ArrayList<Friend>();
 		while(rs.next())
 			friends.add(new Friend(rs.getInt("uid"), rs.getInt("sex"),rs.getString("nickname"), rs.getString("signature"), rs.getString("birthday"), rs.getInt("isFriend")==1));		

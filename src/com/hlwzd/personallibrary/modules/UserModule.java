@@ -162,7 +162,7 @@ public class UserModule extends Module {
 		if(rs.next())return Error(1032);
 		DB.executeNonQuery("INSERT INTO `users`(`cellphone`,`password`,`regdate`,`lastlogin`) VALUES(?,?,NOW(),NOW())", 
 												cellphone, password);
-		DB.executeNonQuery("INSERT INTO `userinfo`(`uid`,`nickname`,`letter`,`signature`) VALUES(?,?,?)", DB.getLastInsertId(),"","","");
+		DB.executeNonQuery("INSERT INTO `userinfo`(`uid`,`nickname`,`letter`,`signature`) VALUES(?,?,?,?)", DB.getLastInsertId(),"","","");
 		
 		return Success();
 	}
@@ -186,7 +186,7 @@ public class UserModule extends Module {
 		if(sex!=0)DB.executeNonQuery("UPDATE `userinfo` SET `sex`=? WHERE `uid`=?", sex, uid);
 		if(nickname!=null){
 			String letter = getCharacterPinYin(nickname);
-			DB.executeNonQuery("UPDATE `userinfo` SET `nickname`=?,`letter`=? WHERE `uid`=?", nickname, letter, uid);
+			DB.executeNonQuery("UPDATE `userinfo` SET `nickname`=?,`letter`=? WHERE `uid`=?", nickname, letter.toUpperCase(), uid);
 		}
 		if(signature!=null)DB.executeNonQuery("UPDATE `userinfo` SET `signature`=? WHERE `uid`=?", signature, uid);
 		if(birthday!=null)DB.executeNonQuery("UPDATE `userinfo` SET `birthday`=? WHERE `uid`=?", birthday, uid);

@@ -11,8 +11,8 @@ import com.mysql.jdbc.Driver;
 /**
  * 类说明：mysql数据库帮助类
  * 
- * @author 梁雨聪 (PureDark)
- * @version 创建时间：2015-03-05
+ * @Author 梁雨聪 (PureDark)
+ * @CreateDate 创建时间：2015-03-05
  */
 
 public class DBHelper {

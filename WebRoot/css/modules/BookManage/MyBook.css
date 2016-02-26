@@ -1,11 +1,11 @@
 .BookCover{
 	width: 150px; 
-	height: 222px;
+	height: 222.5px;
 	float: left;
 }
 
 .BookDetail{
-	height: 222px;
+	height: 222.5px;
 	overflow: hidden;
 }
 

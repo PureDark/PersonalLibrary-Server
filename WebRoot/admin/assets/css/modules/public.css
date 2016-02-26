@@ -1,0 +1,12 @@
+.container-fluid{
+	margin: 0;
+	margin-top: 20px;
+	min-width: 845px;
+}
+.text-center td,.text-center th{
+	text-align: center;
+	height: 39px;
+}
+.modal .control-label{
+	width: 120px;
+}

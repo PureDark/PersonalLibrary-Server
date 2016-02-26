@@ -17,6 +17,9 @@ body{
 	font-size: inherit;
 }
 
-.colorPrimary{
+.colorIndex{
 	background-color: #26A69A !important;
+}
+.colorMyBooks{
+	background-color: #000 !important;
 }

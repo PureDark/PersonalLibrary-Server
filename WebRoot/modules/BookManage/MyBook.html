@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Personal Library MyBook</title>
+  <title>个人图书馆-我的藏书</title>
   
   <link href="../../css/material_icons.css" rel="stylesheet">
   <link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -13,28 +13,25 @@
   <link href="../../css/modules/BookManage/MyBook.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
   
+  <!--  Scripts-->
   <script src="../../js/jquery-1.9.1.min.js"></script>
   <script src="../../js/materialize.js"></script>
+  <script src="../../js/init.js"></script>
   
   
   <script src='../../js/jquery-ui.min.js' type='text/javascript'></script>
   
   <script src="../../js/modules/BookManage/MyBooks.js"></script>
-  
-  <script>
-  </script>
-  
+
 </head>
 
 
 
 <body 
     onselectstart ='return false' 
-    onselect='document.selection.empty()' 
-    oncopy='document.selection.empty()' 
-    onbeforecopy='return false' >
-  <nav role="navigation" class="colorPrimary">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Personal Library</a>
+    onselect='document.selection.empty()' >
+  <nav role="navigation" class="colorMyBooks">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
       <ul class="right hide-on-med-and-down">
 	      
 	    <li  class="active"><a href="MyBook.html">我的藏书</a></li>  
@@ -46,7 +43,10 @@
       
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">lbc0131</a></li>
+	    <li  class="active"><a href="MyBook.html">我的藏书</a></li>  
+	    <li><a href="#">借书记录</a></li>
+	    <li><a href="#">我的书友</a></li>  
+	    <li><a href="#">书友动态</a></li> 
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -56,7 +56,6 @@
       <div class="parallax" ><img src="../../images/background2.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
     </div>
 
-   <br />
    <ul class="row" id="sortable">
    			
             <li id="book1" class="col s12 m6 l4 BookCard">

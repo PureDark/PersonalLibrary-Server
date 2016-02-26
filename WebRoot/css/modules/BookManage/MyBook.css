@@ -6,3 +6,21 @@ body{
 .BookCard{
 	height: 222px;
 }
+
+.BookCover{
+	width: 150px; 
+	height: 222px;
+	float: left;
+}
+
+.BookDetail{
+	height: 222px;
+	overflow: hidden;
+}
+
+.BookDetail .BookDesc{
+	height: 134px;
+    overflow: hidden;
+	text-overflow:ellipsis;
+	line-height:1.4;
+}

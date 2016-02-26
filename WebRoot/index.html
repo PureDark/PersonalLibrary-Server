@@ -1,18 +1,18 @@
 <html lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-  <title>PL</title>
+  <title>个人图书馆</title>
 
   <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/material_icons.css" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="css/modules/my.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/modules/index.css" type="text/css" rel="stylesheet" media="screen,projection">
   
 </head>
 <body>
-  <nav role="navigation" style="background-color: rgba(41, 182, 246, 0.2);">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">PersonalLibrary</a>
+  <nav role="navigation" class="colorPrimary">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
       <ul class="right hide-on-med-and-down">
         <li class="active"><a href="#">登录</a></li>
         <li><a href="#">注册</a></li>
@@ -26,68 +26,49 @@
     </div>
   </nav>
   <div>&nbsp;</div><div>&nbsp;</div>
-  <div class="section no-pad-bot  " id="index-banner">
-  	<div class="card-container " style="
-    margin-top: 58px;
-">
-            <div class="container">
-              <div class="card center cardcolor" style="
-    width: 347px;
-    margin: auto;
-">
+	<div id="index-container">
+              <div id="LoginCard" class="card center cardcolor z-depth-2">
                     <div class="card-content">
-                            <img src="images/avater/a2.png" alt="" class="circle responsive-img">
+                            <img src="images/avater/a2.png" alt="" class="circle responsive-img z-depth-1">
                          
-                                    <div class="row "style=" margin-bottom: 0";>
-                                        <form class="col l12">
-                                          
-                                            <div class="input-field col l12">
-                                              <i class="material-icons prefix">phone</i>
-                                              <input id="icon_telephone" type="tel" class="validate tel-color">
-                                              <label for="icon_telephone" class="">手机号</label>
-                                            </div>
-                                            <div class="input-field col l12">
-                                              <i class="material-icons prefix">lock</i>
-                                              <input id="icon_prefix" type="text" class="validate">
-                                              <label for="icon_prefix" class="">密码</label>
-                                            </div>
-                                            <div>&nbsp;</div>
-                                            <div class="col l12">
-                                              <a class="waves-effect waves-light btn-large"style="
-    width: inherit;">登录</a>
-                                            </div>
-                                            <div>&nbsp;</div>
-                                            
-                                            <div class="col l4">
-                                                <a href="#" class="#" style="color:#26a69a ">注册账户</a>
-                                            </div>
-                                            <div class="col l4" style="color:#26a69a ">&nbsp;
-                                            </div>
-                                            <div class="col l4">
-                                                <a href="#" class="#" style="color:#26a69a ">忘记密码</a>
-                                            </div>
+                            <div>
+                                <div class="input-field">
+                                  <input id="icon_telephone" type="tel" class="validate tel-color">
+                                  <label for="icon_telephone" class="">手机号</label>
+                                </div>
+                                <div class="input-field">
+                                  <input id="icon_prefix" type="text" class="validate">
+                                  <label for="icon_prefix" class="">密码</label>
+                                </div>
+                                <div>
+                                  <a class="waves-effect waves-light btn-large"style="width: 100%;">登录</a>
+                                </div>
+                                
+                                <div style="overflow: auto; margin-top: 20px;">
+                                    <div class="left">
+                                        <a href="#" class="#" style="color:#26a69a ">注册账户</a>
+                                    </div>
+                                    <div class="right">
+                                        <a href="#" class="#" style="color:#26a69a ">忘记密码</a>
+                                    </div>
+                                </div>
+                            </div>
+                     </div>
                                         
-                                          </form></div>
-                                        
-                                     </div>
-                                </div><br><br>
-              
-                </div>
-           </div>
-      </div>
-      
-      
-      <br><br>
-
-  
-   
+              </div>
+	</div>
+      <br>
+      <br>
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
-  
 
-<div class="hiddendiv common"></div><div class="drag-target" style="left: 0px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div></body></html>
+    <div class="hiddendiv common"></div>
+    <div class="drag-target" style="left: 0px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+    </div>
+</body>
+</html>

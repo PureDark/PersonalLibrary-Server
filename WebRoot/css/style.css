@@ -5,10 +5,18 @@
  *
  * Made By MaterializeCSS.com
  */
+body{
+	background-color: #efefef;
+	font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
+}
 
 .icon-block {
-  padding: 0 15px;
+	padding: 0 15px;
 }
 .icon-block .material-icons {
 	font-size: inherit;
+}
+
+.colorPrimary{
+	background-color: #009688 !important;
 }

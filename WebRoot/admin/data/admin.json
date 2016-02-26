@@ -7,11 +7,6 @@
 		{"id":"index","text":"首页","href":"modules/index.jsp","closeable": false}
 	  ]
 	},{
-	  "text":"管理模块",
-	  "items":[
-		{"id":"lessons","text":"课程管理","href":"modules/manage/lessonsManagement.html"}
-	  ]
-	},{
 	  "text":"系统功能",
 	  "items":[
 		{"id":"changepassword","text":"修改密码","href":"modules/system/changepassword.html"},

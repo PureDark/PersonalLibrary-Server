@@ -1,8 +1,3 @@
-body{
-	background-color: #efefef;
-	font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
-}
-
 .BookCover{
 	width: 150px; 
 	height: 222px;
@@ -18,5 +13,5 @@ body{
 	height: 134px;
     overflow: hidden;
 	text-overflow:ellipsis;
-	line-height:1.4;
+	line-height: 19px;
 }

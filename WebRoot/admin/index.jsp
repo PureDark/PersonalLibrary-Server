@@ -9,7 +9,7 @@ if(!user.isAdmin())response.sendRedirect("login.html");
 <!DOCTYPE HTML>
 <html>
  <head>
-  <title>延安干部培训学院课程管理</title>
+  <title>个人图书馆后台管理</title>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <meta name="renderer" content="webkit">
    <link href="assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
@@ -26,7 +26,7 @@ if(!user.isAdmin())response.sendRedirect("login.html");
   <div class="header">
     
       <div class="dl-title">
-          <span class="dl-title-text">延安干部培训学院课程管理</span>
+          <span class="dl-title-text">个人图书馆后台管理</span>
       </div>
 
     <div class="dl-log">欢迎您，<span class="dl-log-user"><%=user.getUsername()%></span><a href="###" title="退出系统" class="dl-log-quit" onClick="logout()">[退出]</a>
@@ -35,6 +35,9 @@ if(!user.isAdmin())response.sendRedirect("login.html");
    <div class="content">
     <div class="dl-main-nav">
       <ul id="J_Nav"  class="nav-list ks-clear">
+        <li class="nav-item dl-selected"><div class="nav-item-inner nav-home">首页</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-supplier">用户管理</div></li>
+        <li class="nav-item"><div class="nav-item-inner nav-register">书评管理</div></li>
       </ul>
     </div>
     <ul id="J_NavContent" class="dl-tab-conten">

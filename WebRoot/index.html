@@ -1,129 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Personal Library</title>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+  <title>PL</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/modules/my.css" type="text/css" rel="stylesheet" media="screen,projection">
+  
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Personal Library</a>
+  <nav role="navigation" style="background-color: rgba(41, 182, 246, 0.2);">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">PersonalLibrary</a>
       <ul class="right hide-on-med-and-down">
-	      
-	    <li><a href="modules/BookManage/MyBook.html">我的藏书</a></li>  
-	    <li><a href="#">借书记录</a></li>
-	    <li><a href="#">我的书友</a></li>  
-	    <li><a href="#">书友动态</a></li> 
-                
+        <li class="active"><a href="#">登录</a></li>
+        <li><a href="#">注册</a></li>
       </ul>
-      
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">lbc0131</a></li>
+      <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+        <li class="active"><a href="#">登录</a></li>
+        <li><a href="#">注册</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  
-  
-  
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
+  <div>&nbsp;</div><div>&nbsp;</div>
+  <div class="section no-pad-bot  " id="index-banner">
+  	<div class="card-container " style="
+    margin-top: 58px;
+">
+            <div class="container">
+              <div class="card center cardcolor" style="
+    width: 347px;
+    margin: auto;
+">
+                    <div class="card-content">
+                            <img src="images/avater/a2.png" alt="" class="circle responsive-img">
+                         
+                                    <div class="row "style=" margin-bottom: 0";>
+                                        <form class="col l12">
+                                          
+                                            <div class="input-field col l12">
+                                              <i class="material-icons prefix">phone</i>
+                                              <input id="icon_telephone" type="tel" class="validate tel-color">
+                                              <label for="icon_telephone" class="">手机号</label>
+                                            </div>
+                                            <div class="input-field col l12">
+                                              <i class="material-icons prefix">lock</i>
+                                              <input id="icon_prefix" type="text" class="validate">
+                                              <label for="icon_prefix" class="">密码</label>
+                                            </div>
+                                            <div>&nbsp;</div>
+                                            <div class="col l12">
+                                              <a class="waves-effect waves-light btn-large"style="
+    width: inherit;">登录</a>
+                                            </div>
+                                            <div>&nbsp;</div>
+                                            
+                                            <div class="col l4">
+                                                <a href="#" class="#" style="color:#26a69a ">注册账户</a>
+                                            </div>
+                                            <div class="col l4" style="color:#26a69a ">&nbsp;
+                                            </div>
+                                            <div class="col l4">
+                                                <a href="#" class="#" style="color:#26a69a ">忘记密码</a>
+                                            </div>
+                                        
+                                          </form></div>
+                                        
+                                     </div>
+                                </div><br><br>
+              
+                </div>
+           </div>
+      </div>
+      
+      
       <br><br>
-      <h1 class="header center orange-text">God's Mother Books</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">PureDark Product</h5>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-      <br><br>
 
-    </div>
-  </div>
-
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Enjoy Reading</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Make More Friends</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to Use</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br><br>
-
-    <div class="section">
-
-    </div>
-  </div>
-
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company xxx</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div>
-  </footer>
+  
+   
 
 
   <!--  Scripts-->
@@ -131,5 +88,6 @@
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
-  </body>
-</html>
+  
+
+<div class="hiddendiv common"></div><div class="drag-target" style="left: 0px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div></body></html>

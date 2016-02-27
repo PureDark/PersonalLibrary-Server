@@ -5,13 +5,6 @@ body{
 	background-image: url(../../images/bg/bg2.jpg);
 }
 
-#LoginCard{
-	border-radius: 10px;
-	width: 347px;
-	margin: auto;
-	margin-top: 100px;
-}
-
 .card .card-content {
 	padding: 40px;
 }
@@ -33,4 +26,11 @@ img.responsive-img {
 .btn-large{
 	height: 32px;
 	line-height: 29px;	
+}
+
+.myCard{
+	border-radius: 10px;
+	width: 347px;
+	margin: auto;
+	margin-top: 100px;
 }

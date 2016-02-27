@@ -12,25 +12,26 @@
 </head>
 <body>
   <nav role="navigation" class="colorIndex">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">个人图书馆</a>
       <ul class="right hide-on-med-and-down">
-        <li class="active"><a href="#">登录</a></li>
-        <li><a href="#">注册</a></li>
+        <li class="active" id="Wrapper_Login"><a href="#">登录</a></li>
+        <li id="Wrapper_Register"><a href="#">注册</a></li>
+        <li id="Wrapper_NewPassword"><a href="#">忘记密码</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav" style="left: -250px;">
         <li class="active"><a href="#">登录</a></li>
         <li><a href="#">注册</a></li>
+        <li><a href="#">找回密码</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
   <div>&nbsp;</div><div>&nbsp;</div>
 	<div id="index-container">
-              <div id="LoginCard" class="card center cardcolor z-depth-2">
+              <div id="LoginCard" class="card center cardcolor z-depth-2 myCard">
                     <div class="card-content">
-                            <img src="images/avater/a2.png" alt="" class="circle responsive-img z-depth-1">
-                         
+                         <img class=" circle responsive-img"src="images/avater/a2.png">
                             <div>
                                 <div class="input-field">
                                   <input id="icon_telephone" type="tel" class="validate tel-color">
@@ -45,10 +46,10 @@
                                 </div>
                                 
                                 <div style="overflow: auto; margin-top: 20px;">
-                                    <div class="left">
+                                    <div class="left" id="Register">
                                         <a href="#" class="#" style="color:#26a69a ">注册账户</a>
                                     </div>
-                                    <div class="right">
+                                    <div class="right" id="NewPassword">
                                         <a href="#" class="#" style="color:#26a69a ">忘记密码</a>
                                     </div>
                                 </div>
@@ -56,6 +57,64 @@
                      </div>
                                         
               </div>
+              
+              <div id="RegisterCard" class="card center cardcolor z-depth-2 myCard">
+                    <div class="card-content">
+                            <div style=" margin-top: -15px;"><h5>注 册</h5></div>
+                         
+                            <div>
+                                <div class="input-field">
+                                  <input id="icon_telephone" type="tel" class="validate tel-color">
+                                  <label for="icon_telephone" class="">手机号</label>
+                                </div>
+                                <div class="input-field">
+                                  <input id="icon_prefix" type="text" class="validate">
+                                  <label for="icon_prefix" class="">密码</label>
+                                </div><div>&nbsp;</div>
+                                <div>
+                                  <a class="waves-effect waves-light btn-large"style="width: 100%;">注册</a>
+                                </div>
+                                
+                                
+                            </div>
+                     </div>
+                                        
+              </div>
+              
+              <div id="NewPasswordCard" class="card center cardcolor z-depth-2 myCard">
+                    <div class="card-content">
+                            <div style=" margin-top: -15px;"><h5>忘记密码</h5></div>
+                         
+                            <div>
+                                <div class="input-field">
+                                  <input id="icon_telephone" type="tel" class="validate tel-color">
+                                  <label for="icon_telephone" class="">手机号</label>
+                                </div>
+                                <div class="input-field">
+                                  <input id="icon_prefix" type="text" class="validate">
+                                  <label for="icon_prefix" class="">新密码</label>
+                                </div>
+                                <div style="overflow: auto; margin-top: 20px;">
+                                    <div class="input-field left" style="width:145px">
+                                      <input id="code" type="text" class="validate tel-color">
+                                      <label for="code" class="">验证码</label>
+                                    </div>
+                                    <div class="right" style="margin-top:40px">
+                                        <a href="#" class="#" style="color:#26a69a ">发送验证码</a>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div>
+                                  <a class="waves-effect waves-light btn-large"style="width: 100%;">提交</a>
+                                </div>
+                                
+                                
+                            </div>
+                     </div>
+                                        
+              </div>
+              
 	</div>
       <br>
       <br>
@@ -65,6 +124,7 @@
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+   <script src="js/index.js"></script>
 
 
     <div class="hiddendiv common"></div>

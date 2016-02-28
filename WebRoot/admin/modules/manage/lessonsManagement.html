@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>延安干部培训学院课程管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link class="bootstrap library" rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css">
+	<script class="bootstrap library" src="../../assets/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script class="bootstrap library" src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../assets/js/modules/lessonmanage.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/css/modules/public.css">
+  </head>
+  <body>
+  
+  
+  
+  
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <h5><b>视频列表</b></h5>
+                  </div><!-- /.col-md-8 --> 
+                  <div class="col-sm-4 text-center">
+                    <div class="btn-group">
+                      <button id="curr_pos" currpos="0" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        显示全部 <span class="caret"></span>
+                      </button>
+                      <ul id="categories" class="dropdown-menu">
+                        <li onClick="selectCategory('类型1',1)"><a href="#">类型1</a></li>
+                        <li onClick="selectCategory('类型2',2)"><a href="#">类型2</a></li>
+                        <li onClick="selectCategory('类型3',3)"><a href="#">类型3</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div><!-- /.row -->
+         </div>
+        <table id="LessonList" class="table table-hover table-bordered text-center">
+            <tr class="active">
+                <th>编号</th>
+                <th width="200px">封面</th>
+                <th width="200px">标题</th>
+                <th>简介</th>
+                <th width="100px">操作</th>
+            </tr>
+            <tr>
+            	<td>1</td>
+                <td><img width="200px" height="112px" src="http://r1.ykimg.com/050E0000559F7A2A67BC3C5D4A0B86F2" /></td>
+                <td>暴走大事件 第四季</td>
+                <td>神经病的发源地，逗比们的游乐场，《暴走大事件》第四季7月10日全网吊炸首发，前方核能预警！</td>
+                <td><button type="button" class="btn btn-info btn-xs" onclick="editLesson(1)"> 编 辑 </button> <button type="button" class="btn btn-danger btn-xs" onclick="deleteLesson(1)"> 删 除 </button> </td>
+             </tr>
+        </table>
+        <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3 text-center" style="padding-top:30px;">
+                    <p><i class="glyphicon glyphicon-th-list"></i> 一页共10条</p>
+              </div>
+              <div class="col-sm-6 text-center">
+                <nav>
+                  <ul id="pagination" class="pagination">
+                    <li>
+                      <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                      <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div class="col-sm-3 text-center">
+                    <button id="btn_addstuff" type="button" class="btn btn-primary" style="margin-top:22px;">添加新课程</button>
+              </div>
+            </div>
+        </div>
+  	</div>
+
+</div>
+
+        <!-- 添加新课程/编辑信息 -->
+        <div class="modal fade" id="LessonFromModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <input id="InputId" type="hidden" value="0"/>
+                <input id="InputTitle" type="text" class="form-control" placeholder="课程标题"/>
+              </div>
+              <div class="modal-body">
+              
+                <div class="form-horizontal">
+                	<input id="InputShortDesc" type="text" class="form-control" placeholder="一句话简介" style="margin-bottom: 10px;"/>
+                    <textarea id="InputDescription" class="form-control" rows="15" placeholder="课程简介" style="margin-bottom: 10px;"></textarea>
+                    <div class="form-group">
+                        <label for="InputCategory" class="col-sm-3 control-label">类 别：</label>
+                        <div class="col-sm-9">
+                            <select id="InputCategory" class="form-control" style="width: 200px;">
+                              <option value="1" selected="selected">红色宝典</option>
+                              <option value="2">治党治国</option>
+                              <option value="3">学习资料</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <table id="VideoList" class="table table-hover table-bordered text-center">
+                    <tr class="active">
+                        <th width="200px">视频标题</th>
+                        <th width="200px">视频代码</th>
+                        <th width="200px">密码</th>
+                        <th width="100px"><button id="btn_addvideo" type="button" class="btn btn-success btn-xs"> 添 加 </button></th>
+                    </tr>
+                    <tr>
+                        <td><input id="InputVideoTitle" type="text" class="form-control" placeholder="视频标题"/></td>
+                        <td><input id="InputVideoLink" type="text" class="form-control" placeholder="视频代码"/></td>
+                        <td><input id="InputVideoPassword" type="text" class="form-control" placeholder="密 码"/></td>
+                        <td><button type="button" class="btn btn-info btn-xs" onclick="addVideo(1)"> 确 定 </button></td>
+                    </tr>
+                </table>
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" sid="0" id="btn_submitstuff">提交</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
+    
+    
+  <script type="text/javascript" src="../../assets/js/bui-min.js"></script>
+  <script type="text/javascript" src="../../assets/js/config-min.js"></script>
+  <script type="text/javascript">
+    BUI.use('common/page');
+  </script>
+  </body>
+</html>

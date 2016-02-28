@@ -1,7 +1,23 @@
 body{
-	background-color: #efefef;
+	cursor: default;
+}
+.BookCover{
+	width: 150px; 
+	height: 222.5px;
+	float: left;
 }
 
-.BookCard{
-	height: 222px;
+.BookDetail{
+	height: 222.5px;
+	overflow: hidden;
+}
+
+.BookDetail .BookDesc{
+	height: 134px;
+    overflow: hidden;
+	text-overflow:ellipsis;
+	line-height: 19px;
+}
+nav ul li.active {
+    background-color: rgba(255, 255, 255, 0.2);
 }

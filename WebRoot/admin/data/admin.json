@@ -1,0 +1,16 @@
+[{
+  "id":"index", 
+  "homePage" : "index",
+  "menu":[{
+	  "text":"首页模块",
+	  "items":[
+		{"id":"index","text":"首页","href":"modules/index.jsp","closeable": false}
+	  ]
+	},{
+	  "text":"系统功能",
+	  "items":[
+		{"id":"changepassword","text":"修改密码","href":"modules/system/changepassword.html"},
+		{"id":"exit","text":"退出系统","href":"about:blank"}
+	  ]
+	}]
+  }]

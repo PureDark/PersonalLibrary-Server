@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+.BorrowAvater{
+	margin-left:20px;
+	margin-top:6px;
+	width:100px;
+	float:left;
+	
+}
+.BorrowDetail{
+	margin-left:150px;
+	overflow: hidden;
+	
+}
+.status{
+	float:right;
+	margin-top:-47px;
+	margin-right:40px
+}

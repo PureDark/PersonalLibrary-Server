@@ -1,10 +1,12 @@
 $(document).ready(function(e) {
-    $("#BorrowIn").click(function(){
-		$("#TabBorrowIn").addClass("active");
-		$("#TabBorrowOut").removeClass("active");
+		
+	$("#BorrowIn .collapsible-header").click(function(){
+		$("#TabBorrowIn").children("a").click();
 	});
-	$("#BorrowOut").click(function(){
-		$("#TabBorrowOut").addClass("active");
-		$("#TabBorrowIn").removeClass("active");
+	
+	$("#BorrowOut .collapsible-header").click(function(){
+		$("#TabBorrowOut").children("a").click();
 	});
+	
+	
 });

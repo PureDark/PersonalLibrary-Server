@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.util.*,com.puredark.lessonlearning.Manager.User" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.hlwzd.personallibrary.Manager.User" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 User user = new User(request.getSession());
-String username = user.getUsername();
+String username = user.getNickname();
 String lastlogin = user.getLastLogin();
 %>
 <!DOCTYPE html>

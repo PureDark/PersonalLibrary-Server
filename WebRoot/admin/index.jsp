@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.util.*,com.puredark.lessonlearning.Manager.User" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,com.hlwzd.personallibrary.Manager.User" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 User user = new User(request.getSession());
-if(!user.isAdmin())response.sendRedirect("login.html");
+//if(!user.isAdmin())response.sendRedirect("login.html");
 %>
 
 <!DOCTYPE HTML>
@@ -29,7 +29,7 @@ if(!user.isAdmin())response.sendRedirect("login.html");
           <span class="dl-title-text">个人图书馆后台管理</span>
       </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user"><%=user.getUsername()%></span><a href="###" title="退出系统" class="dl-log-quit" onClick="logout()">[退出]</a>
+    <div class="dl-log">欢迎您，<span class="dl-log-user"><%=user.getNickname()%></span><a href="###" title="退出系统" class="dl-log-quit" onClick="logout()">[退出]</a>
     </div>
   </div>
    <div class="content">

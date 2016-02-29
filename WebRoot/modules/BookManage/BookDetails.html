@@ -25,8 +25,6 @@
 			var $window       = $(window);
 			var $imgWrapper   = $('.image-wrapper');
 			var $imgs         = $imgWrapper.find("img");
-			var $logoBoxes    = $('.logo .box');
-			var $title        = $('h1');
 		
 			$imgs.on('ab-color-found', function(e, data){
 			  $(this).parents('.image-wrapper')
@@ -41,7 +39,7 @@
 			});
 		
 			// Run the A.B. plugin.
-			$.adaptiveBackground.run({ parent: '1' });
+			$.adaptiveBackground.run({ parent: "bookcover" });
 		  })
 		
 		})(window, document, jQuery)
@@ -50,7 +48,11 @@
 	</head>
 	
 	<body>
-    <div style="display: flex; height: 100%;">
+    <div style="display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex; height: 100%;">
 		<div class="image-wrapper"  style="background-color: #87C3EC;">
 			<div style="width: 600px ; height: 320px;">
             	  <div class="blackMask left" style="width: 600px ; height: 320px"></div>
@@ -59,7 +61,7 @@
 							<div>
 								<div class="z-depth-1">
 									<img src="../../images/book1.jpg" 
-				                    	style="width: 150px; height: 222px" data-adaptive-background='1'>
+				                    	style="width: 150px; height: 222px" data-adaptive-background="bookcover">
 								</div>
 								<div class="flow-text" style="width: 150px">
 									<h5 class="truncate center-align">思念人之屋</h5>

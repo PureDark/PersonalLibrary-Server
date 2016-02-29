@@ -1,0 +1,52 @@
+body{
+	cursor: default;
+}
+.BookCover{
+	width: 150px; 
+	height: 222.5px;
+}
+.BookTitle{
+	margin-top: 18px;
+}
+.BookDetail{
+	height: 222.5px;
+	overflow: hidden;
+}
+
+.BookDetail .BookDesc{
+	height: 134px;
+    overflow: hidden;
+	text-overflow:ellipsis;
+	line-height: 19px;
+}
+.chips{
+  display: inline-block;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 40px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4;
+}
+
+.chips img {
+  float: left;
+  margin: 0 8px 0 -12px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.chips i.material-icons {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px;
+}
+
+nav ul li.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}

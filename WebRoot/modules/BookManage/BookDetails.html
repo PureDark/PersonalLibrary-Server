@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+		<title>藏书详情</title>
+		
+		<link href="../../css/materialize.css" rel="stylesheet">
+		<link href="../../css/material_icons.css" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet">
+		<link href="../../css/modules/BookManage/BookDetails.css" rel="stylesheet">
+		
+		
+		<script src="../../js/jquery-1.9.1.min.js"> </script>
+		<script src="../../js/jquery-ui.min.js"></script>
+		
+		<script src="../../js/materialize.js"></script>
+		<script src='../../js/jquery.adaptive-backgrounds.js'></script>
+        
+        <script> 
+		;(function(window, document, $){
+		
+		  $(document).ready(function(){
+		
+			// Make some selections.
+			var $window       = $(window);
+			var $imgWrapper   = $('.image-wrapper');
+			var $imgs         = $imgWrapper.find("img");
+			var $logoBoxes    = $('.logo .box');
+			var $title        = $('h1');
+		
+			$imgs.on('ab-color-found', function(e, data){
+			  $(this).parents('.image-wrapper')
+					 .attr('data-color', data.color);
+		
+			  $(this).css({ 
+				border: "1px solid " + data.palette[0].replace(')', ",0.25)").replace('rgb', "rgba") 
+			  });
+		
+			  $(this).parents('.image-wrapper')
+					 .css({ background: data.color })
+			});
+		
+			// Run the A.B. plugin.
+			$.adaptiveBackground.run({ parent: '1' });
+		  })
+		
+		})(window, document, jQuery)
+		</script>
+		
+	</head>
+	
+	<body>
+<div class="image-wrapper">
+  <div class="inner">
+		<div style="overflow:auto; margin: 50px; display: inline-block;">
+			<div class="left">
+				<div class="z-depth-1">
+					<img src="../../images/book1.jpg" 
+                    	style="width: 150px; height: 222px" data-adaptive-background='1'>
+				</div>
+				<div class="flow-text" style="width: 150px">
+					<h5 class="truncate">思念人之屋</h5>
+				</div>
+			</div>
+			<ul class="left" style="margin-left: 40px">
+				<li class="chip booktab">作者：[中]明前雨后 </li>
+				<li class="chip booktab" style="margin-top: 20px">出版年: 2016-1</li>
+				<li class="chip booktab" style="margin-top: 20px">出版社: 北京联合出版公司·未读  </li>
+				<li class="chip booktab" style="margin-top: 20px">页数: 448 </li>
+				<li class="chip booktab" style="margin-top: 20px">定价: 65.00元</li>
+                
+			</ul>
+			
+		</div>
+  </div>
+</div>
+		
+		<div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+			<a class="btn-floating btn-large red">
+				<i class="large material-icons">mode_edit</i>
+    		</a>
+			<ul>
+				<li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+				<li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+				<li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+				<li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    		</ul>
+  		</div>		
+	</body>
+</html>

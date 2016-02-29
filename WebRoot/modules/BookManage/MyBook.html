@@ -58,8 +58,8 @@
 		<div id="TempPage">
             <ul class="row" id="sortable">
                 
-                <li id="book1" class="col s12 m6 l4 BookCard">
-                  <div class="card white darken-1 hoverable" >
+                <li id="book1" class="col s12 m6 l4">
+                  <div class="card white darken-1 BookCard hoverable" >
                     <div class="BookCover">
                       <img src="../../images/book1.jpg" style="width: 150px; height: 222px">
                     </div>
@@ -170,14 +170,8 @@
   		</div>
         
       <!-- Modal Structure -->
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+      <div id="bookDetailModal" class="modal" style="display:flex;overflow:hidden;">
+          <iframe src="BookDetails.html" style="flex:1;width: 100%; min-height:100%;"/>
       </div>
 </body>
 </html>

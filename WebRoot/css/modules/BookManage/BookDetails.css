@@ -53,6 +53,7 @@
 	padding:20px; 
 	overflow: scroll;
 	overflow-x: hidden;
+	flex:1;
 }
 
 .booktab{

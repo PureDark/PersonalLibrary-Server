@@ -6,5 +6,7 @@ $(document).ready(function(){
 	
 	$(document).delegate(".BookCard", "click", function(e){
 		$("#bookDetailModal").openModal();
+		var id = $(this).parent("li").attr("id");
+		 window.BookDetailPage.getBook(id);
 	});
 });

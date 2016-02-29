@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>个人图书馆-我的书友</title>
+  
+  <link href="../../css/material_icons.css" rel="stylesheet">
+  <link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href='../../css/jquery-ui.min.css' rel='stylesheet' type='text/css'>
+  
+  
+  
+  <!--  Scripts-->
+  <script src="../../js/jquery-1.9.1.min.js"></script>
+  <script src="../../js/materialize.js"></script>
+  <script src="../../js/init.js"></script>
+  
+  
+  <script src='../../js/jquery-ui.min.js' type='text/javascript'></script>
+  <script src="../../js/modules/FriendsManage/FriendsManage.js"></script>
+
+</head>
+
+
+
+<body> 
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">我的藏书</a></li>
+        <li><a href="#">借书记录</a></li>
+        <li class="active"><a href="FriendsModule.html">我的书友<span class="new badge">4</span></a></li>
+        <li><a href="#">书友动态</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">我的藏书</a></li>
+        <li><a href="#">借书记录</a></li>
+        <li class="active"><a href="#">我的书友<span class="new badge">4</span></a></li>
+        <li><a href="#">书友动态</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="container">
+          
+      
+      <div class="row" style="margin-bottom:0px">
+          <form class="col s12">
+            <div class="input-field col s4">
+              <i class="material-icons prefix" style="margin-top:21px">search</i>
+              <input id="icon_prefix" type="text" class="validate">
+              <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
+            </div>
+            <div class="col s8">
+                <a class="waves-effect waves-light btn modal-trigger" style="margin-top:25px;margin-left: 470px" href="#modal1">书友请求</a>
+            </div>
+          </form>
+      </div>
+      <div id="modal1" class="modal bottom-sheet">
+          <div class="modal-content">
+              <h4>书友请求</h4>
+              <ul class="collection">
+                
+                
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">同意</a>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-right:110px;background-color:#f44336">拒绝</a>
+                    </li>
+               </ul>
+           </div>
+      </div>  
+    
+      <ul class="collection">
+        <li class="collection-item avatar">
+           <img src="../../images/avater/a1.png" alt="" class="circle">
+           <span class="title">昵称</span>
+           <p>签名</p>
+           <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+        </li>
+        
+        <li class="collection-item avatar">
+          <img src="../../images/avater/a2.png" alt="" class="circle">
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle green">insert_chart</i>
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle red">play_arrow</i>
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+        </li>
+      </ul>
+      <div class="row center">       
+        <div class="col l12"> 
+          <ul class="pagination">
+            
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!">2</a></li>
+            <li class="waves-effect"><a href="#!">3</a></li>
+            <li class="waves-effect"><a href="#!">4</a></li>
+            <li class="waves-effect"><a href="#!">5</a></li>
+            
+          </ul>
+        </div>
+        
+      </div>
+  </div>
+    
+</body>
+</html>

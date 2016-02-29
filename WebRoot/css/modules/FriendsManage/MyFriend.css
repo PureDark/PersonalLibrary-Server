@@ -1,16 +1,12 @@
 body{
 	cursor: default;
 }
-.BookCover1{
+.BookCover{
 	width: 150px; 
 	height: 222.5px;
-	float: right;
 }
-
-.BookCover2{
-	width: 150px; 
-	height: 222.5px;
-	float: left;
+.BookTitle{
+	margin-top: 18px;
 }
 .BookDetail{
 	height: 222.5px;

@@ -37,6 +37,24 @@
   transform: rotate(135deg);
 }
 
+.bookDescContainer{
+	width :600px; 
+	position: absolute; 
+	top: 320px; 
+	bottom: 0px; 
+	left: 0px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.bookMarkContainer{
+	width: auto; 
+	height: 100%; 
+	padding:20px; 
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
 .booktab{
   display: table;
 }

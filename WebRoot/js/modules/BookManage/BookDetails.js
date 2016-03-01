@@ -20,7 +20,7 @@
 	});
 
 	// Run the A.B. plugin.
-	$.adaptiveBackground.run({ parent: "bookcover" });
+	$.adaptiveBackground.run({ parent: "1" });
   })
 
 })(window, document, jQuery)

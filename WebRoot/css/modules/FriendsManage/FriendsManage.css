@@ -9,3 +9,15 @@ nav ul li.active {
 .btn {
     
 }
+
+ul.collection li a.btn,a.btn-flat{
+    margin-top:8px;
+}
+
+#reject{
+    color:#FF0000;
+}
+
+#agree{
+    color:#44D644;
+}

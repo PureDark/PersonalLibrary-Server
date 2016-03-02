@@ -7,13 +7,15 @@ nav ul li.active {
 }
 
 #Pinnedagree{
-	margin-top:-10px;
+	padding:0;
 	color:#44D644;
+	margin-right:55px;
 }
 
 #Pinnedreject{
 	color:#FF0000;
-	margin-top:28px;
+	padding:0;
+	margin-right:10px;
 }
 
 ul.collection li a.secondary-content{

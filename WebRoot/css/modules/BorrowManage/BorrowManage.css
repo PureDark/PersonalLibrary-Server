@@ -3,7 +3,7 @@
 .BorrowAvater{
 	margin-left:20px;
 	margin-top:6px;
-	width:100px;
+	width:69px;
 	float:left;
 	
 }
@@ -15,8 +15,14 @@
 .status{
 	float:right;
 	margin-top:-47px;
-	margin-right:40px
+	
 }
 .tabs{
   overflow-x:hidden;	
+}
+.agree{
+	color:#23C410;
+}
+.refuse{
+	color:#CD070A;
 }

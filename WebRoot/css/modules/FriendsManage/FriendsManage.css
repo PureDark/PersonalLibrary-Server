@@ -6,13 +6,26 @@ nav ul li.active {
     width:100%;
 }
 
-.btn {
-    
+#Pinnedagree{
+	margin-top:-10px;
+	color:#44D644;
 }
 
-ul.collection li a.btn,a.btn-flat{
+#Pinnedreject{
+	color:#FF0000;
+	margin-top:28px;
+}
+
+ul.collection li a.secondary-content{
     margin-top:8px;
 }
+
+ul.collection li #result{
+	margin-top:16px;
+	margin-right:56px;
+	color:#8C9EB1;
+}
+	
 
 #reject{
     color:#FF0000;

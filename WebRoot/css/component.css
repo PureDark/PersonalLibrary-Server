@@ -24,7 +24,7 @@
 	bottom: 0;
 	width: 10px;
 	background: #afdcf8;
-	left: 15%;
+	left: 20%;
 	margin-left: -10px;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .cbp_tmtimeline > li .cbp_tmtime span:first-child {
-	font-size: 0.9em;
+	font-size: 1.3em;
 	color: #bdd0db;
 }
 
@@ -148,7 +148,7 @@
 	}
 }
 
-@media screen and (max-width: 47.2em) {
+@media screen and (max-width: 62em) {
 	.cbp_tmtimeline:before {
 		display: none;
 	}
@@ -184,10 +184,7 @@
 	}
 
 	.cbp_tmtimeline > li .cbp_tmicon {
-		position: relative;
-		float: right;
-		left: auto;
-		margin: -55px 5px 0 0px;
+		display: none;
 	}	
 }
 

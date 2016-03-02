@@ -9,7 +9,7 @@
   <link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href='../../css/jquery-ui.min.css' rel='stylesheet' type='text/css'>
-  
+  <link href="../../css/modules/FriendsManage/FriendsManage.css" rel="stylesheet" type="text/css">
   
   
   <!--  Scripts-->
@@ -25,37 +25,162 @@
 
 
 
-<body> 
-  <nav class="light-blue lighten-1" role="navigation">
+<body 
+    onselectstart ='return false' 
+    onselect='document.selection.empty()' >
+  <nav role="navigation" class="grey darken-4">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">我的藏书</a></li>
-        <li><a href="#">借书记录</a></li>
-        <li class="active"><a href="FriendsModule.html">我的书友<span class="new badge">4</span></a></li>
-        <li><a href="#">书友动态</a></li>
+	      
+	    <li><a href="MyBook.html">我的藏书</a></li>  
+	    <li><a href="#">借书记录</a></li>
+	    <li class="active"><a href="#">我的书友</a></li>  
+	    <li><a href="#">书友动态</a></li> 
+                
       </ul>
+      
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">我的藏书</a></li>
-        <li><a href="#">借书记录</a></li>
-        <li class="active"><a href="#">我的书友<span class="new badge">4</span></a></li>
-        <li><a href="#">书友动态</a></li>
+	    <li><a href="MyBook.html">我的藏书</a></li>  
+	    <li><a href="#">借书记录</a></li>
+	    <li class="active"><a href="FriendsModule">我的书友</a></li>  
+	    <li><a href="MyFriend.html">书友动态</a></li> 
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <div class="container">
-          
-      
-      <div class="row" style="margin-bottom:0px">
+  <div class="parallax-container">
+      <div class="parallax" ><img src="../../images/background8.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
+  </div>
+  <div class="container" id="full">  
+  	<div class="hide-on-med-and-down">
+            <div class="input-field" style="width:25%">
+                  <i class="material-icons prefix" style="margin-top:21px">search</i>
+                  <input id="icon_prefix" type="text" class="validate">
+                  <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
+            </div>
+        <div class="row">
+        	<div class="col l8">
+            	<ul class="collection">
+                    <li class="collection-item avatar">
+                       <img src="../../images/avater/a1.png" alt="" class="circle">
+                       <span class="title">昵称</span>
+                       <p>签名</p>
+                       <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    <li class="collection-item avatar">
+                      <i class="material-icons circle green">insert_chart</i>
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    <li class="collection-item avatar">
+                      <i class="material-icons circle red">play_arrow</i>
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    <li class="collection-item avatar">
+                       <img src="../../images/avater/a1.png" alt="" class="circle">
+                       <span class="title">昵称</span>
+                       <p>签名</p>
+                       <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    <li class="collection-item avatar">
+                      <i class="material-icons circle green">insert_chart</i>
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    <li class="collection-item avatar">
+                      <i class="material-icons circle red">play_arrow</i>
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    <li class="collection-item avatar">
+                       <img src="../../images/avater/a1.png" alt="" class="circle">
+                       <span class="title">昵称</span>
+                       <p>签名</p>
+                       <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                    
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                    </li>
+                  </ul>
+                  <div class="row center">     
+                      <ul class="pagination">
+                        
+                        <li class="active"><a href="#!">1</a></li>
+                        <li class="waves-effect"><a href="#!">2</a></li>
+                        <li class="waves-effect"><a href="#!">3</a></li>
+                        <li class="waves-effect"><a href="#!">4</a></li>
+                        <li class="waves-effect"><a href="#!">5</a></li>
+                        
+                      </ul>
+                
+                </div>
+            </div>
+            <div class="col l4">
+            	<ul class="collection">
+                
+                
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="agree">同意</a>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="reject" style="margin-right:110px;">拒绝</a>
+                    </li>
+                </ul>
+            </div>
+    	</div>
+    	
+    </div>     
+    <div class="hide-on-large-only">    
+      <div class="row center" style="margin-bottom:0px">
           <form class="col s12">
-            <div class="input-field col s4">
+            <div class="input-field col l4 m5 s6">
               <i class="material-icons prefix" style="margin-top:21px">search</i>
               <input id="icon_prefix" type="text" class="validate">
               <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
             </div>
-            <div class="col s8">
-                <a class="waves-effect waves-light btn modal-trigger" style="margin-top:25px;margin-left: 470px" href="#modal1">书友请求</a>
+            <div class="col l8 m7 s6">
+                <a class="waves-effect waves-light btn modal-trigger" style="margin-top:25px;float:right" href="#modal1">书友请求</a>
             </div>
           </form>
       </div>
@@ -71,8 +196,26 @@
                       <p>First Line <br>
                          Second Line
                       </p>
-                      <a href="#!" class="secondary-content waves-effect waves-light btn">同意</a>
-                      <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-right:110px;background-color:#f44336">拒绝</a>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="agree">同意</a>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="reject" style="margin-right:110px;">拒绝</a>
+                    </li>
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="agree">同意</a>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="reject" style="margin-right:110px;">拒绝</a>
+                    </li>
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p>First Line <br>
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="agree">同意</a>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="reject" style="margin-right:110px;">拒绝</a>
                     </li>
                </ul>
            </div>
@@ -83,7 +226,7 @@
            <img src="../../images/avater/a1.png" alt="" class="circle">
            <span class="title">昵称</span>
            <p>签名</p>
-           <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+           <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
         </li>
         
         <li class="collection-item avatar">
@@ -92,7 +235,7 @@
           <p>First Line <br>
              Second Line
           </p>
-          <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+          <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle green">insert_chart</i>
@@ -100,7 +243,7 @@
           <p>First Line <br>
              Second Line
           </p>
-          <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+          <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle red">play_arrow</i>
@@ -108,11 +251,56 @@
           <p>First Line <br>
              Second Line
           </p>
-          <a href="#!" class="secondary-content waves-effect waves-light btn" style="margin-top:8px">进入TA的主页</a>
+          <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+        </li>
+        <li class="collection-item avatar">
+           <img src="../../images/avater/a1.png" alt="" class="circle">
+           <span class="title">昵称</span>
+           <p>签名</p>
+           <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+        </li>
+        
+        <li class="collection-item avatar">
+          <img src="../../images/avater/a2.png" alt="" class="circle">
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle green">insert_chart</i>
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+        </li>
+        <li class="collection-item avatar">
+          <i class="material-icons circle red">play_arrow</i>
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+        </li>
+        <li class="collection-item avatar">
+           <img src="../../images/avater/a1.png" alt="" class="circle">
+           <span class="title">昵称</span>
+           <p>签名</p>
+           <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+        </li>
+        
+        <li class="collection-item avatar">
+          <img src="../../images/avater/a2.png" alt="" class="circle">
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
         </li>
       </ul>
-      <div class="row center">       
-        <div class="col l12"> 
+      <div class="row center">     
           <ul class="pagination">
             
             <li class="active"><a href="#!">1</a></li>
@@ -122,9 +310,9 @@
             <li class="waves-effect"><a href="#!">5</a></li>
             
           </ul>
-        </div>
         
       </div>
+    </div>
   </div>
     
 </body>

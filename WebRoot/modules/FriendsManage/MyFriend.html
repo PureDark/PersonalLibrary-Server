@@ -10,6 +10,8 @@
   <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href='../../css/jquery-ui.min.css' rel='stylesheet' type='text/css'>
   <link href="../../css/modules/FriendsManage/MyFriend.css" rel="stylesheet" type="text/css">
+  <link href="../../css/default.css" rel="stylesheet" type="text/css">
+  <link href="../../css/component.css" rel="stylesheet" type="text/css">
   
   
   
@@ -30,7 +32,7 @@
 <body 
     onselectstart ='return false' 
     onselect='document.selection.empty()' >
-  <nav role="navigation" class="grey darken-4">
+  <nav role="navigation" style="background-color: rgb(79, 61, 83)">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
       <ul class="right hide-on-med-and-down">
 	      
@@ -53,99 +55,111 @@
   </nav>
    
    <div class="parallax-container">
-      <div class="parallax" ><img src="../../images/background8.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
+      <div class="parallax" ><img src="../../images/background5.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
     </div>
+    <div class="containers">
+			<div class="mains">
+				   <ul class="cbp_tmtimeline" id="sortable">
+				   			
+				   			
 
-   <ul class="row" id="sortable">
-   			
-            <li id="book1" class="col s12 m12 l9 ">
-              <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookCover right">
-                  <img src="../../images/book1.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-	                    <div style="overflow: auto;">
-                          <div class="chips left">
-						  		<img src="../../images/touxiang1.jpg" alt="Contact Person">
-						  		太阳骑士BC君
-						  </div>
-                          <h6 class="right grey-text text-darken-1 BookTitle">思念人之屋</h6>
-	                    </div>
-	                    <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-              </div>
-            </li>     
-            
-            <li id="book2" class="col s12 m12 l9 offset-l3">
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover left">
-                  <img src="../../images/book7.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-	                    <div style="overflow: auto;">
-                          <div class="chips right">
-						  		<img src="../../images/touxiang1.jpg" alt="Contact Person">
-						  		太阳骑士BC君
-						  </div>
-                          <h6 class="left grey-text text-darken-1 BookTitle">钓愚</h6>
-	                    </div>
-	                    <hr size="1">
-                        <p class="BookDesc">“我们的理想是自由，但为了这个目标我们已经放弃了太多的自由。” 我们打败了对手，却只剩下人性的残缺。</p>
-                    </div>
-                </div>
-              </div>
-            </li>
-            
-            <li id="book3" class="col s12 m12 l9" >
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover right">
-                  <img src="../../images/book3.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-	                    <div style="overflow: auto;">
-                           <div class="chips left">
-						  		<img src="../../images/touxiang3.png" alt="Contact Person">
-						  		史雷思
-						  </div>
-                          <h6 class="right grey-text text-darken-1 BookTitle">危地马拉传说</h6>
-	                    </div>
-	                    <hr size="1">
-                        <p class="BookDesc">《危地马拉传说》是危地马拉作家米盖尔•安赫尔•阿斯图里亚斯早期的重要作品，是一本充满魔幻色彩的神话故事集，被称为拉丁美洲魔幻现实主义的开山之作。</p>
-                    </div>
-                </div>
-              </div>
-            </li>    
-            
-            <li id="book4" class="col s12 m12 l9 offset-l3">
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover left">
-                  <img src="../../images/book4.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 212px">
-	                    <div style="overflow: auto;">
-		                  <div class="chips right" style="overflow: auto">
-						  		<img src="../../images/touxiang4.png" alt="Contact Person">
-						  		徐一飞
-						  </div>
-                          <h6 class="left grey-text text-darken-1 BookTitle">关于山本耀司的一切</h6>
-	                    </div>  
-	                    <hr size="1">
-                        <p class="BookDesc">本书呈现了山本耀司四十年设计生涯的轨迹，精选了不同时期对山本耀司的深度访谈，其中不仅涉及其对服装和设计的激进思考也包括其对时尚和社会潮流的深刻洞见。</p>
-                    </div>
-                </div>
-              </div>
-            </li>    
-            
-            
-                      
-   </ul>
-  	
-    
+				   							   			
+				            <li id="book1" class="row">
+				            
+				                 
+						              <time class="cbp_tmtime col l2 hide-on-med-and-down"  datetime="2016-04-10 18:30"><span>
+								4/10/16</span> <span>18:30</span></time>
+						              
+				                <div class="col s12 m12 l9 offset-l3">  	              
+					              <div class="card white darken-1 hoverable BookCard " >
+					                <div class="BookCover right">
+					                  <img src="../../images/book1.jpg" style="width: 150px; height: 222px">
+					                </div>
+					                <div class="BookDetail">  
+					                    <div class="card-content black-text" style="height: 100%">
+						                    <div style="overflow: auto;">
+					                          <div class="chips left">
+											  		<img src="../../images/touxiang1.jpg" alt="Contact Person">
+											  		太阳骑士BC君
+											  </div>
+					                          <h6 class="right grey-text text-darken-1 BookTitle">思念人之屋</h6>
+						                    </div>
+						                    <hr size="1">  
+					                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
+					                    </div>
+					                </div>
+					              </div>
+				                </div>  
+				                  
+				            </li>     
+				            
+				            <li id="book2" class="col s12 m12 l9 offset-l3">
+				              <div class="card white darken-1 BookCard hoverable">
+				                <div class="BookCover left">
+				                  <img src="../../images/book7.jpg" style="width: 150px; height: 222px">
+				                </div>
+				                <div class="BookDetail">  
+				                    <div class="card-content black-text" style="height: 100%">
+					                    <div style="overflow: auto;">
+				                          <div class="chips right">
+										  		<img src="../../images/touxiang1.jpg" alt="Contact Person">
+										  		太阳骑士BC君
+										  </div>
+				                          <h6 class="left grey-text text-darken-1 BookTitle">钓愚</h6>
+					                    </div>
+					                    <hr size="1">
+				                        <p class="BookDesc">“我们的理想是自由，但为了这个目标我们已经放弃了太多的自由。” 我们打败了对手，却只剩下人性的残缺。</p>
+				                    </div>
+				                </div>
+				              </div>
+				            </li>
+				            
+				            <li id="book3" class="col s12 m12 l9 offset-l3" >
+				              <div class="card white darken-1 BookCard hoverable">
+				                <div class="BookCover right">
+				                  <img src="../../images/book3.jpg" style="width: 150px; height: 222px">
+				                </div>
+				                <div class="BookDetail">  
+				                    <div class="card-content black-text" style="height: 100%">
+					                    <div style="overflow: auto;">
+				                           <div class="chips left">
+										  		<img src="../../images/touxiang3.png" alt="Contact Person">
+										  		史雷思
+										  </div>
+				                          <h6 class="right grey-text text-darken-1 BookTitle">危地马拉传说</h6>
+					                    </div>
+					                    <hr size="1">
+				                        <p class="BookDesc">《危地马拉传说》是危地马拉作家米盖尔•安赫尔•阿斯图里亚斯早期的重要作品，是一本充满魔幻色彩的神话故事集，被称为拉丁美洲魔幻现实主义的开山之作。</p>
+				                    </div>
+				                </div>
+				              </div>
+				            </li>    
+				            
+				            <li id="book4" class="col s12 m12 l9 offset-l3">
+				              <div class="card white darken-1 BookCard hoverable">
+				                <div class="BookCover left">
+				                  <img src="../../images/book4.jpg" style="width: 150px; height: 222px">
+				                </div>
+				                <div class="BookDetail">  
+				                    <div class="card-content black-text" style="height: 212px">
+					                    <div style="overflow: auto;">
+						                  <div class="chips right" style="overflow: auto">
+										  		<img src="../../images/touxiang4.png" alt="Contact Person">
+										  		徐一飞
+										  </div>
+				                          <h6 class="left grey-text text-darken-1 BookTitle">关于山本耀司的一切</h6>
+					                    </div>  
+					                    <hr size="1">
+				                        <p class="BookDesc">本书呈现了山本耀司四十年设计生涯的轨迹，精选了不同时期对山本耀司的深度访谈，其中不仅涉及其对服装和设计的激进思考也包括其对时尚和社会潮流的深刻洞见<p>
+				                    </div>
+				                </div>
+				              </div>
+				            </li>    
+				            
+				            
+				                      
+				   </ul>
+  	        </div>
+     </div>
 </body>
 </html>

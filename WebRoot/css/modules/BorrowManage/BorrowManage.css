@@ -20,9 +20,20 @@
 .tabs{
   overflow-x:hidden;	
 }
+<<<<<<< HEAD
 .agree{
 	color:#23C410;
 }
 .refuse{
 	color:#CD070A;
 }
+=======
+body{
+	cursor: default;
+}
+
+
+nav ul li.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+>>>>>>> c09292ce23ab5f982fa6aca66d2de8853159ea40

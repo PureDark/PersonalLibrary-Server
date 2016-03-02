@@ -55,35 +55,54 @@
    <div class="parallax-container">
       <div class="parallax" ><img src="../../images/background2.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
    </div>
-		<div id="TempPage">
-  		 <div class="row" >
-    	<ul class="tabs">
-        <li class="tab col s6" id="TabBorrowOut"><a href="#test1">借出记录</a></li>
-        <li class="tab col s6" id="TabBorrowIn"><a class="" href="#test2">借入记录</a></li>
-        
-      </ul>
-            <div class="col s12 m6 l6">
+	<div id="TempPage">
+  	 <div class="row">
+     	<div class="col s12 m12 l6">
+            <ul class="tabs">
+            <li class="tab col s12" id="TabBorrowOut"><a href="#test1">借出记录</a></li>
+            </ul>
+            <div class="col s12" >
                 <ul id="BorrowOut" class="collapsible" data-collapsible="accordion">
                     <li>
                       <div class="collapsible-header"><i class="material-icons">filter_drama</i>2015年5月3日</div>
-                      <div class="collapsible-body" style="overflow:auto">
-                            
-                                <div class="BorrowAvater">
-                                    <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
-                                </div >
-                                <div class="BorrowDetail">
-                                      <h5>赵日天</h5>
-                                      <span style="font-size:larger ">请求借阅《盗墓笔记》</span>
-                                </div>
-                                <div class="status">
-                                	<a class="waves-effect waves-light btn-large">确认借出</a>
-                                </div>
-                      </div>
+                          	<div class="collapsible-body" style="overflow:auto">
+                            	<ul class="collection">
+                                    <li class="collection-item">
+                                        <div class="BorrowAvater">
+                                            <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
+                                        </div >
+                                        <div class="BorrowDetail">
+                                              <h5>赵日天</h5>
+                                              <span style="font-size:larger ">请求借阅《盗墓笔记》</span>
+                                        </div>
+                                        <div class="status">
+                                            <a class="waves-effect waves-dark btn-flat agree">借出</a>
+                                            <a class="waves-effect waves-dark btn-flat refuse">拒绝</a>
+                                        </div>
+                                	</li>
+                                      <li class="collection-item">
+                                                <div class="BorrowAvater">
+                                                    <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
+                                                </div >
+                                                <div class="BorrowDetail">
+                                                      <h5>赵日天</h5>
+                                                      <span style="font-size:larger ">请求借阅《盗墓笔记》</span>
+                                                </div>
+                                                <div class="status">
+                                                    <a class="waves-effect waves-dark btn-flat agree">借出</a>
+                                                    <a class="waves-effect waves-dark btn-flat refuse">拒绝</a>
+                                                </div>
+                                      </li>
+                            	</ul>
+                           </div>
+                      
                     </li>
                     <li>
                       <div class="collapsible-header"><i class="material-icons">filter_drama</i>2015年3月2日</div>
                       <div class="collapsible-body" style="overflow:auto">
-                      	<div class="BorrowAvater">
+                      	<ul class="collection">
+                        	<li class="collection-item">
+                      			<div class="BorrowAvater">
                                     <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
                                 </div >
                                 <div class="BorrowDetail">
@@ -93,32 +112,68 @@
                                 <div class="status">
                                 	<span style="color:#807e7e">已拒绝</span>
                                 </div>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="col s12 m6 l6">
-                <ul id="BorrowIn" class="collapsible" data-collapsible="accordion">
-                    <li>
-                      <div class="collapsible-header"><i class="material-icons">filter_drama</i>2015年5月3日</div>
-                      <div class="collapsible-body" style="overflow:auto">
-                      	<div class="BorrowAvater">
+                             </li>
+                             <li class="collection-item">
+                      			<div class="BorrowAvater">
                                     <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
                                 </div >
                                 <div class="BorrowDetail">
                                       <h5>赵日天</h5>
-                                      <span style="font-size:larger ">向TA借阅了《盗墓笔记》</span>
+                                      <span style="font-size:larger ">请求借阅《盗墓笔记》</span>
                                 </div>
                                 <div class="status">
-                                	<span  style="color:#807e7e">被拒绝</span>
+                                	<span style="color:#807e7e">已拒绝</span>
                                 </div>
-                      
+                             </li>
+                        </ul>
                       </div>
+                    </li>
+                </ul>
+            </div>
+          </div>
+          <div class="col s12 m12 l6">
+            <ul class="tabs">
+            <li class="tab col s12" id="TabBorrowIn" ><a class="" href="#test2">借入记录</a></li>
+            </ul>
+            <div class="col s12">
+                <ul id="BorrowIn" class="collapsible" data-collapsible="accordion">
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">filter_drama</i>2015年5月3日</div> 
+                          <div class="collapsible-body" style="overflow:auto">
+                          	<ul class="collection">
+                            	<li class="collection-item">
+                                    <div class="BorrowAvater">
+                                        <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
+                                    </div >
+                                    <div class="BorrowDetail">
+                                          <h5>赵日天</h5>
+                                          <span style="font-size:larger ">向TA借阅了《盗墓笔记》</span>
+                                    </div>
+                                    <div class="status">
+                                        <span  style="color:#807e7e">被拒绝</span>
+                                    </div>
+                                </li>
+                                <li class="collection-item">
+                                	<div class="BorrowAvater">
+                                        <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
+                                    </div >
+                                    <div class="BorrowDetail">
+                                          <h5>赵日天</h5>
+                                          <span style="font-size:larger ">向TA借阅了《盗墓笔记》</span>
+                                    </div>
+                                    <div class="status">
+                                        <span  style="color:#807e7e">被拒绝</span>
+                                    </div>
+                                </li>
+                            </ul>
+                          </div>
                     </li>
                     <li>
                       <div class="collapsible-header"><i class="material-icons">filter_drama</i>2015年3月2日</div>
                       <div class="collapsible-body" style="overflow:auto">
-                      	<div class="BorrowAvater">
+                      	<ul class="collection">
+                        	<li class="collection-item">
+                      	        <div class="BorrowAvater">
                                     <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
                                 </div >
                                 <div class="BorrowDetail">
@@ -128,13 +183,40 @@
                                 <div class="status">
                                 	<span>已借入</span>
                                 </div>
-                      
+                      		</li>
+                            <li class="collection-item">
+                      	        <div class="BorrowAvater">
+                                    <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
+                                </div >
+                                <div class="BorrowDetail">
+                                      <h5>赵日天</h5>
+                                      <span style="font-size:larger ">向TA借阅了《盗墓笔记》</span>
+                                </div>
+                                <div class="status">
+                                	<span>已借入</span>
+                                </div>
+                      		</li>
+                        </ul>
                       </div>
                     </li>
                      <li>
                       <div class="collapsible-header"><i class="material-icons">filter_drama</i>2015年3月2日</div>
                       <div class="collapsible-body" style="overflow:auto">
-                      	<div class="BorrowAvater">
+                      	<ul class="collection">
+                        	<li class="collection-item">
+                      	        <div class="BorrowAvater">
+                                    <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
+                                </div >
+                                <div class="BorrowDetail">
+                                      <h5>赵日天</h5>
+                                      <span style="font-size:larger">向TA借阅了《盗墓笔记》</span>
+                                </div>
+                                <div class="status">
+                                	<span  style="color:#807e7e">已归还</span>
+                                </div>
+                      		</li>
+                            <li class="collection-item">
+                      	        <div class="BorrowAvater">
                                     <img src="../../images/avater/a2.png" alt="" class="circle responsive-img">
                                 </div >
                                 <div class="BorrowDetail">
@@ -144,11 +226,13 @@
                                 <div class="status">
                                 	<span  style="color:#807e7e">已归还</span>
                                 </div>
-                      
+                      		</li>
+                        </ul>
                       </div>
                     </li>
                 </ul>
             </div>
+          </div>
     </div>
   		</div>
     

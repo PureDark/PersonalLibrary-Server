@@ -3,7 +3,7 @@
 .BorrowAvater{
 	margin-left:20px;
 	margin-top:6px;
-	width:100px;
+	width:69px;
 	float:left;
 	
 }
@@ -15,11 +15,19 @@
 .status{
 	float:right;
 	margin-top:-47px;
-	margin-right:40px
+	
 }
 .tabs{
   overflow-x:hidden;	
 }
+<<<<<<< HEAD
+.agree{
+	color:#23C410;
+}
+.refuse{
+	color:#CD070A;
+}
+=======
 body{
 	cursor: default;
 }
@@ -28,3 +36,4 @@ body{
 nav ul li.active {
     background-color: rgba(255, 255, 255, 0.2);
 }
+>>>>>>> c09292ce23ab5f982fa6aca66d2de8853159ea40

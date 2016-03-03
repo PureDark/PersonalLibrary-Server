@@ -10968,6 +10968,138 @@
 		quid       	"56CBBD5903B9"
 		exportControl 	"Public"
 		logical_models 	(list unit_reference_list
+		    (object Association "$UNNAMED$102"
+			quid       	"56D79889036B"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$103"
+				quid       	"56D7988B001F"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::BorrowModule"
+				quidu      	"56D67DD90177"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$104"
+				quid       	"56D7988B0021"
+				supplier   	"Logical View::设计模型::jsp::BorrowManage::BorrowManage.jsp"
+				quidu      	"56D68AF703D8")))
+		    (object Association "$UNNAMED$105"
+			quid       	"56D798B0006D"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$106"
+				quid       	"56D798B1033C"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::LibraryModule"
+				quidu      	"56D67E2500EA"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$107"
+				quid       	"56D798B1033E"
+				supplier   	"Logical View::设计模型::jsp::BookManage::BookDetails.jsp"
+				quidu      	"56D68ADA0203")))
+		    (object Association "$UNNAMED$108"
+			quid       	"56D798C30148"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$109"
+				quid       	"56D798C40109"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::LibraryModule"
+				quidu      	"56D67E2500EA"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$110"
+				quid       	"56D798C4010B"
+				supplier   	"Logical View::设计模型::jsp::BookManage::MyBook.jsp"
+				quidu      	"56D68AC60196")))
+		    (object Association "$UNNAMED$111"
+			quid       	"56D798CF01E4"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$112"
+				quid       	"56D798D00128"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::SocialModule"
+				quidu      	"56D67E560157"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$113"
+				quid       	"56D798D0012A"
+				supplier   	"Logical View::设计模型::jsp::FriendsManage::FriendsModule.jsp"
+				quidu      	"56D68B2C02AF")))
+		    (object Association "$UNNAMED$114"
+			quid       	"56D798D20203"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$115"
+				quid       	"56D798D30167"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::SocialModule"
+				quidu      	"56D67E560157"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$116"
+				quid       	"56D798D30169"
+				supplier   	"Logical View::设计模型::jsp::FriendsManage::MyFriend.jsp"
+				quidu      	"56D68B0D034B")))
+		    (object Association "$UNNAMED$117"
+			quid       	"56D799EE0213"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$118"
+				quid       	"56D799EF0196"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::UserModule"
+				quidu      	"56D67E3D03D8"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$119"
+				quid       	"56D799EF0198"
+				supplier   	"Logical View::设计模型::jsp::LoginRegister::Login"
+				quidu      	"56D7993A033C")))
+		    (object Association "$UNNAMED$120"
+			quid       	"56D799F2000F"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$121"
+				quid       	"56D799F2031C"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::UserModule"
+				quidu      	"56D67E3D03D8"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$122"
+				quid       	"56D799F2031E"
+				supplier   	"Logical View::设计模型::jsp::LoginRegister::Register"
+				quidu      	"56D799BE0271")))
+		    (object Association "$UNNAMED$123"
+			quid       	"56D79BB101E4"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$124"
+				quid       	"56D79BB3029F"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::util::DBHelper"
+				quidu      	"56D687210138"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$125"
+				quid       	"56D79BB302A1"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::UserModule"
+				quidu      	"56D67E3D03D8")))
+		    (object Association "$UNNAMED$126"
+			quid       	"56D79BB7002E"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$127"
+				quid       	"56D79BB801A5"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::util::DBHelper"
+				quidu      	"56D687210138"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$128"
+				quid       	"56D79BB801A7"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::LibraryModule"
+				quidu      	"56D67E2500EA")))
+		    (object Association "$UNNAMED$129"
+			quid       	"56D79BBB02FD"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$130"
+				quid       	"56D79BBC03C8"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::util::DBHelper"
+				quidu      	"56D687210138"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$131"
+				quid       	"56D79BBC03CA"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::BorrowModule"
+				quidu      	"56D67DD90177")))
+		    (object Association "$UNNAMED$132"
+			quid       	"56D79BC6000F"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$133"
+				quid       	"56D79BC700AB"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::util::DBHelper"
+				quidu      	"56D687210138"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$134"
+				quid       	"56D79BC700AD"
+				supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::action::SocialModule"
+				quidu      	"56D67E560157")))
 		    (object Class_Category "com"
 			quid       	"56D678570177"
 			exportControl 	"Public"
@@ -10987,6 +11119,23 @@
 						    (object Class "BorrowModule"
 							quid       	"56D67DD90177"
 							stereotype 	"control"
+							used_nodes 	(list uses_relationship_list
+							    (object Uses_Relationship
+								quid       	"56D79B08008C"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::Friend"
+								quidu      	"56D684B003C8")
+							    (object Uses_Relationship
+								quid       	"56D79B4701F4"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::Book"
+								quidu      	"56D68130033C")
+							    (object Uses_Relationship
+								quid       	"56D79B69003E"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::BookMark"
+								quidu      	"56D6854A008C")
+							    (object Uses_Relationship
+								quid       	"56D79B8A02AF"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::BorrowRecord"
+								quidu      	"56D67F9F033C"))
 							operations 	(list Operations
 							    (object Operation "addBorrowRecord"
 								quid       	"56D67ED400DA"
@@ -11042,6 +11191,23 @@
 						    (object Class "LibraryModule"
 							quid       	"56D67E2500EA"
 							stereotype 	"control"
+							used_nodes 	(list uses_relationship_list
+							    (object Uses_Relationship
+								quid       	"56D79AF701B5"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::Tag"
+								quidu      	"56D68185009C")
+							    (object Uses_Relationship
+								quid       	"56D79B43006D"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::Book"
+								quidu      	"56D68130033C")
+							    (object Uses_Relationship
+								quid       	"56D79B650242"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::BookMark"
+								quidu      	"56D6854A008C")
+							    (object Uses_Relationship
+								quid       	"56D79B870148"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::BorrowRecord"
+								quidu      	"56D67F9F033C"))
 							operations 	(list Operations
 							    (object Operation "action"
 								quid       	"56D680B6004E"
@@ -11089,6 +11255,11 @@
 						    (object Class "UserModule"
 							quid       	"56D67E3D03D8"
 							stereotype 	"control"
+							used_nodes 	(list uses_relationship_list
+							    (object Uses_Relationship
+								quid       	"56D79AB300CB"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::UserInfo"
+								quidu      	"56D6828703D8"))
 							operations 	(list Operations
 							    (object Operation "action"
 								quid       	"56D681CA000F"
@@ -11151,6 +11322,19 @@
 						    (object Class "SocialModule"
 							quid       	"56D67E560157"
 							stereotype 	"control"
+							used_nodes 	(list uses_relationship_list
+							    (object Uses_Relationship
+								quid       	"56D79ABB00FA"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::UserInfo"
+								quidu      	"56D6828703D8")
+							    (object Uses_Relationship
+								quid       	"56D79B0C031C"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::Friend"
+								quidu      	"56D684B003C8")
+							    (object Uses_Relationship
+								quid       	"56D79B970222"
+								supplier   	"Logical View::设计模型::com::hlwzd::personalibrary::bean::Request"
+								quidu      	"56D685150138"))
 							operations 	(list Operations
 							    (object Operation "action"
 								quid       	"56D683040177"
@@ -11216,9 +11400,9 @@
 							    (object ClassAttribute "manager"
 								quid       	"56D682FD01D4"))))
 						logical_presentations 	(list unit_reference_list
-						    (object ClassDiagram "Main"
+						    (object ClassDiagram "NewDiagram"
 							quid       	"56D68B9102FD"
-							title      	"Main"
+							title      	"NewDiagram"
 							zoom       	100
 							max_height 	28350
 							max_width  	21600
@@ -11299,23 +11483,6 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D67E000177"
-								compartment 	(object Compartment
-								    Parent_View 	@561
-								    location   	(951, 472)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    anchor     	2
-								    nlines     	3
-								    max_width  	206
-								    justify    	0)
 								width      	158
 								annotation 	8
 								autoResize 	TRUE)
@@ -11348,7 +11515,7 @@
 								quidu      	"56D67E2500EA"
 								compartment 	(object Compartment
 								    Parent_View 	@562
-								    location   	(1765, 504)
+								    location   	(1760, 504)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11395,7 +11562,7 @@
 								quidu      	"56D67E560157"
 								compartment 	(object Compartment
 								    Parent_View 	@563
-								    location   	(257, 1560)
+								    location   	(253, 1560)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11442,7 +11609,7 @@
 								quidu      	"56D67E3D03D8"
 								compartment 	(object Compartment
 								    Parent_View 	@564
-								    location   	(1120, 1640)
+								    location   	(1116, 1640)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11460,7 +11627,7 @@
 								width      	158
 								annotation 	8
 								autoResize 	TRUE)))))
-					    (object Class_Category "model"
+					    (object Class_Category "bean"
 						quid       	"56D67F9700DA"
 						exportControl 	"Public"
 						logical_models 	(list unit_reference_list
@@ -11642,16 +11809,16 @@
 							    (object ClassAttribute "request"
 								quid       	"56D687D301B5"))))
 						logical_presentations 	(list unit_reference_list
-						    (object ClassDiagram "NewDiagram"
+						    (object ClassDiagram "NewDiagram2"
 							quid       	"56D68BB3003E"
-							title      	"NewDiagram"
+							title      	"NewDiagram2"
 							zoom       	100
 							max_height 	28350
 							max_width  	21600
 							origin_x   	0
 							origin_y   	1844
 							items      	(list diagram_item_list
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::Book" @565
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Book" @565
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11670,7 +11837,7 @@
 								    location   	(272, 476)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	465
+								    max_width  	479
 								    justify    	0
 								    label      	"Book")
 								icon       	"entity"
@@ -11678,27 +11845,10 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D68130033C"
-								compartment 	(object Compartment
-								    Parent_View 	@565
-								    location   	(164, 515)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    anchor     	2
-								    nlines     	8
-								    max_width  	213
-								    justify    	0)
 								height     	154
 								annotation 	8
 								autoResize 	TRUE)
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::BookMark" @566
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::BookMark" @566
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11717,7 +11867,7 @@
 								    location   	(640, 492)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	469
+								    max_width  	504
 								    justify    	0
 								    label      	"BookMark")
 								icon       	"entity"
@@ -11727,7 +11877,7 @@
 								quidu      	"56D6854A008C"
 								compartment 	(object Compartment
 								    Parent_View 	@566
-								    location   	(515, 531)
+								    location   	(535, 531)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11740,12 +11890,12 @@
 								    icon_style 	"Icon"
 								    anchor     	2
 								    nlines     	14
-								    max_width  	247
+								    max_width  	208
 								    justify    	0)
 								height     	154
 								annotation 	8
 								autoResize 	TRUE)
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::BorrowRecord" @567
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::BorrowRecord" @567
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11764,7 +11914,7 @@
 								    location   	(1328, 556)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	472
+								    max_width  	476
 								    justify    	0
 								    label      	"BorrowRecord")
 								icon       	"entity"
@@ -11774,7 +11924,7 @@
 								quidu      	"56D67F9F033C"
 								compartment 	(object Compartment
 								    Parent_View 	@567
-								    location   	(1166, 595)
+								    location   	(1188, 595)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11787,12 +11937,12 @@
 								    icon_style 	"Icon"
 								    anchor     	2
 								    nlines     	11
-								    max_width  	322
+								    max_width  	278
 								    justify    	0)
 								height     	154
 								annotation 	8
 								autoResize 	TRUE)
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::CharacterEncodingRequest" @568
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::CharacterEncodingRequest" @568
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11811,7 +11961,7 @@
 								    location   	(1792, 588)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	474
+								    max_width  	506
 								    justify    	0
 								    label      	"CharacterEncodingRequest")
 								icon       	"entity"
@@ -11819,27 +11969,10 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D687B7007D"
-								compartment 	(object Compartment
-								    Parent_View 	@568
-								    location   	(1514, 651)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    anchor     	2
-								    nlines     	4
-								    max_width  	553
-								    justify    	0)
 								height     	154
 								annotation 	8
 								autoResize 	TRUE)
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::Friend" @569
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Friend" @569
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11858,7 +11991,7 @@
 								    location   	(2272, 652)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	560
+								    max_width  	495
 								    justify    	0
 								    label      	"Friend")
 								icon       	"entity"
@@ -11868,7 +12001,7 @@
 								quidu      	"56D684B003C8"
 								compartment 	(object Compartment
 								    Parent_View 	@569
-								    location   	(2161, 691)
+								    location   	(2184, 691)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11881,12 +12014,12 @@
 								    icon_style 	"Icon"
 								    anchor     	2
 								    nlines     	8
-								    max_width  	219
+								    max_width  	174
 								    justify    	0)
 								height     	154
 								annotation 	8
 								autoResize 	TRUE)
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::Request" @570
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Request" @570
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11905,7 +12038,7 @@
 								    location   	(464, 1580)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	562
+								    max_width  	502
 								    justify    	0
 								    label      	"Request")
 								icon       	"entity"
@@ -11915,7 +12048,7 @@
 								quidu      	"56D685150138"
 								compartment 	(object Compartment
 								    Parent_View 	@570
-								    location   	(352, 1619)
+								    location   	(374, 1619)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11928,12 +12061,12 @@
 								    icon_style 	"Icon"
 								    anchor     	2
 								    nlines     	6
-								    max_width  	222
+								    max_width  	177
 								    justify    	0)
 								height     	154
 								annotation 	8
 								autoResize 	TRUE)
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::Tag" @571
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Tag" @571
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11952,7 +12085,7 @@
 								    location   	(848, 1692)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	564
+								    max_width  	486
 								    justify    	0
 								    label      	"Tag")
 								icon       	"entity"
@@ -11962,7 +12095,7 @@
 								quidu      	"56D68185009C"
 								compartment 	(object Compartment
 								    Parent_View 	@571
-								    location   	(776, 1731)
+								    location   	(795, 1731)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -11975,12 +12108,12 @@
 								    icon_style 	"Icon"
 								    anchor     	2
 								    nlines     	4
-								    max_width  	141
+								    max_width  	104
 								    justify    	0)
 								height     	154
 								annotation 	8
 								autoResize 	TRUE)
-							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::model::UserInfo" @572
+							    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::UserInfo" @572
 								ShowCompartmentStereotypes 	TRUE
 								IncludeAttribute 	TRUE
 								IncludeOperation 	TRUE
@@ -11999,7 +12132,7 @@
 								    location   	(1280, 1788)
 								    anchor_loc 	1
 								    nlines     	2
-								    max_width  	567
+								    max_width  	490
 								    justify    	0
 								    label      	"UserInfo")
 								icon       	"entity"
@@ -12009,7 +12142,7 @@
 								quidu      	"56D6828703D8"
 								compartment 	(object Compartment
 								    Parent_View 	@572
-								    location   	(1168, 1827)
+								    location   	(1190, 1827)
 								    font       	(object Font
 									size       	9
 									face       	"Arial"
@@ -12022,7 +12155,7 @@
 								    icon_style 	"Icon"
 								    anchor     	2
 								    nlines     	8
-								    max_width  	222
+								    max_width  	178
 								    justify    	0)
 								height     	154
 								annotation 	8
@@ -12184,24 +12317,6 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D6869203D8"
-								compartment 	(object Compartment
-								    Parent_View 	@573
-								    location   	(135, 207)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    fill_color 	13434879
-								    anchor     	2
-								    nlines     	4
-								    max_width  	203
-								    justify    	1)
 								width      	452
 								height     	268
 								annotation 	8
@@ -12232,24 +12347,6 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D686D202FD"
-								compartment 	(object Compartment
-								    Parent_View 	@574
-								    location   	(733, 247)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    fill_color 	13434879
-								    anchor     	2
-								    nlines     	5
-								    max_width  	222
-								    justify    	1)
 								width      	344
 								height     	316
 								annotation 	8
@@ -12328,24 +12425,6 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D6873103D8"
-								compartment 	(object Compartment
-								    Parent_View 	@576
-								    location   	(216, 758)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    fill_color 	13434879
-								    anchor     	2
-								    nlines     	3
-								    max_width  	206
-								    justify    	1)
 								width      	226
 								height     	222
 								annotation 	8
@@ -12376,24 +12455,6 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D6873F002E"
-								compartment 	(object Compartment
-								    Parent_View 	@577
-								    location   	(671, 744)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    fill_color 	13434879
-								    anchor     	2
-								    nlines     	7
-								    max_width  	284
-								    justify    	1)
 								width      	372
 								height     	410
 								annotation 	8
@@ -12424,24 +12485,6 @@
 								line_color 	3342489
 								fill_color 	13434879
 								quidu      	"56D6875303C8"
-								compartment 	(object Compartment
-								    Parent_View 	@578
-								    location   	(1435, 775)
-								    font       	(object Font
-									size       	9
-									face       	"Arial"
-									bold       	FALSE
-									italics    	FALSE
-									underline  	FALSE
-									strike     	FALSE
-									color      	0
-									default_color 	TRUE)
-								    icon_style 	"Icon"
-								    fill_color 	13434879
-								    anchor     	2
-								    nlines     	5
-								    max_width  	391
-								    justify    	1)
 								width      	412
 								height     	316
 								annotation 	8
@@ -12482,9 +12525,1360 @@
 				    (object Class "FriendsModule.jsp"
 					quid       	"56D68B2C02AF"
 					stereotype 	"boundary"))
+				logical_presentations 	(list unit_reference_list))
+			    (object Class_Category "LoginRegister"
+				quid       	"56D7992900AB"
+				exportControl 	"Public"
+				logical_models 	(list unit_reference_list
+				    (object Class "Login"
+					quid       	"56D7993A033C"
+					stereotype 	"boundary")
+				    (object Class "Register"
+					quid       	"56D799BE0271"
+					stereotype 	"boundary"))
 				logical_presentations 	(list unit_reference_list)))
 			logical_presentations 	(list unit_reference_list)))
-		logical_presentations 	(list unit_reference_list)))
+		logical_presentations 	(list unit_reference_list
+		    (object ClassDiagram "Main"
+			quid       	"56D7983E03A9"
+			title      	"Main"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	50
+			origin_y   	1241
+			items      	(list diagram_item_list
+			    (object ClassView "Class" "Logical View::设计模型::jsp::BorrowManage::BorrowManage.jsp" @579
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2320, 2464)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@579
+				    location   	(2319, 2620)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	697
+				    justify    	0
+				    label      	"BorrowManage.jsp")
+				icon       	"boundary"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D68AF703D8"
+				width      	230
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::jsp::BookManage::BookDetails.jsp" @580
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2928, 2464)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@580
+				    location   	(2927, 2620)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	690
+				    justify    	0
+				    label      	"BookDetails.jsp")
+				icon       	"boundary"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D68ADA0203"
+				width      	230
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::jsp::BookManage::MyBook.jsp" @581
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(3376, 2464)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@581
+				    location   	(3375, 2620)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	693
+				    justify    	0
+				    label      	"MyBook.jsp")
+				icon       	"boundary"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D68AC60196"
+				width      	230
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::jsp::FriendsManage::FriendsModule.jsp" @582
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(224, 2464)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@582
+				    location   	(223, 2620)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	701
+				    justify    	0
+				    label      	"FriendsModule.jsp")
+				icon       	"boundary"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D68B2C02AF"
+				width      	230
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::jsp::FriendsManage::MyFriend.jsp" @583
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(832, 2464)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@583
+				    location   	(831, 2620)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	705
+				    justify    	0
+				    label      	"MyFriend.jsp")
+				icon       	"boundary"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D68B0D034B"
+				width      	230
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::jsp::LoginRegister::Login" @584
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1280, 2464)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@584
+				    location   	(1279, 2620)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	708
+				    justify    	0
+				    label      	"Login")
+				icon       	"boundary"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D7993A033C"
+				width      	230
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::jsp::LoginRegister::Register" @585
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1728, 2464)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@585
+				    location   	(1727, 2620)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	711
+				    justify    	0
+				    label      	"Register")
+				icon       	"boundary"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D799BE0271"
+				width      	230
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::UserInfo" @586
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(672, 336)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@586
+				    location   	(672, 492)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	492
+				    justify    	0
+				    label      	"UserInfo")
+				icon       	"entity"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D6828703D8"
+				compartment 	(object Compartment
+				    Parent_View 	@586
+				    location   	(560, 573)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	8
+				    max_width  	222
+				    justify    	0)
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Tag" @587
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(3680, 432)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@587
+				    location   	(3680, 588)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	488
+				    justify    	0
+				    label      	"Tag")
+				icon       	"entity"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D68185009C"
+				compartment 	(object Compartment
+				    Parent_View 	@587
+				    location   	(3608, 669)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	4
+				    max_width  	141
+				    justify    	0)
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Friend" @588
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1120, 336)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@588
+				    location   	(1120, 492)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	499
+				    justify    	0
+				    label      	"Friend")
+				icon       	"entity"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D684B003C8"
+				compartment 	(object Compartment
+				    Parent_View 	@588
+				    location   	(1009, 573)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	8
+				    max_width  	219
+				    justify    	0)
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Book" @589
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2320, 336)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@589
+				    location   	(2320, 492)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	483
+				    justify    	0
+				    label      	"Book")
+				icon       	"entity"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D68130033C"
+				compartment 	(object Compartment
+				    Parent_View 	@589
+				    location   	(2213, 573)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	8
+				    max_width  	212
+				    justify    	0)
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::BookMark" @590
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2784, 208)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@590
+				    location   	(2784, 364)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	509
+				    justify    	0
+				    label      	"BookMark")
+				icon       	"entity"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D6854A008C"
+				compartment 	(object Compartment
+				    Parent_View 	@590
+				    location   	(2659, 445)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	14
+				    max_width  	247
+				    justify    	0)
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::BorrowRecord" @591
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(3232, 272)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@591
+				    location   	(3232, 428)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	513
+				    justify    	0
+				    label      	"BorrowRecord")
+				icon       	"entity"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D67F9F033C"
+				compartment 	(object Compartment
+				    Parent_View 	@591
+				    location   	(3070, 509)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	11
+				    max_width  	322
+				    justify    	0)
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::bean::Request" @592
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(224, 384)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@592
+				    location   	(224, 540)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	516
+				    justify    	0
+				    label      	"Request")
+				icon       	"entity"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D685150138"
+				compartment 	(object Compartment
+				    Parent_View 	@592
+				    location   	(112, 621)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	6
+				    max_width  	222
+				    justify    	0)
+				height     	154
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::action::UserModule" @593
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1504, 1360)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@593
+				    location   	(1503, 1521)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	581
+				    justify    	0
+				    label      	"UserModule")
+				icon       	"control"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D67E3D03D8"
+				compartment 	(object Compartment
+				    Parent_View 	@593
+				    location   	(1264, 1602)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	13
+				    max_width  	475
+				    justify    	0)
+				width      	158
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$117" @594
+				location   	(1312, 2299)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D799EE0213"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$118" @595
+					Parent_View 	@594
+					location   	(1184, 2107)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D799EF0196"
+					client     	@594
+					supplier   	@593
+					vertices   	(list Points
+					    (1312, 2299)
+					    (1333, 2212))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$119" @596
+					Parent_View 	@594
+					location   	(1184, 2107)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D799EF0198"
+					client     	@594
+					supplier   	@584
+					vertices   	(list Points
+					    (1312, 2299)
+					    (1292, 2386))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$120" @597
+				location   	(1692, 2299)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D799F2000F"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$121" @598
+					Parent_View 	@597
+					location   	(1132, 2091)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D799F2031C"
+					client     	@597
+					supplier   	@593
+					vertices   	(list Points
+					    (1692, 2299)
+					    (1675, 2212))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$122" @599
+					Parent_View 	@597
+					location   	(1132, 2091)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D799F2031E"
+					client     	@597
+					supplier   	@585
+					vertices   	(list Points
+					    (1692, 2299)
+					    (1709, 2386))
+					line_style 	0)))
+			    (object UsesView "" @600
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79AB300CB"
+				client     	@593
+				supplier   	@586
+				vertices   	(list Points
+				    (1435, 1279)
+				    (750, 433))
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::action::LibraryModule" @601
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(3152, 1424)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@601
+				    location   	(3151, 1585)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	576
+				    justify    	0
+				    label      	"LibraryModule")
+				icon       	"control"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D67E2500EA"
+				compartment 	(object Compartment
+				    Parent_View 	@601
+				    location   	(2997, 1666)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	10
+				    max_width  	306
+				    justify    	0)
+				width      	158
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$105" @602
+				location   	(2971, 2261)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D798B0006D"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$106" @603
+					Parent_View 	@602
+					location   	(2571, 1989)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798B1033C"
+					client     	@602
+					supplier   	@601
+					vertices   	(list Points
+					    (2971, 2261)
+					    (3001, 2135))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$107" @604
+					Parent_View 	@602
+					location   	(2571, 1989)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798B1033E"
+					client     	@602
+					supplier   	@580
+					vertices   	(list Points
+					    (2971, 2261)
+					    (2942, 2388))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$108" @605
+				location   	(3329, 2261)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D798C30148"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$109" @606
+					Parent_View 	@605
+					location   	(2385, 1989)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798C40109"
+					client     	@605
+					supplier   	@601
+					vertices   	(list Points
+					    (3329, 2261)
+					    (3303, 2135))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$110" @607
+					Parent_View 	@605
+					location   	(2385, 1989)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798C4010B"
+					client     	@605
+					supplier   	@581
+					vertices   	(list Points
+					    (3329, 2261)
+					    (3356, 2388))
+					line_style 	0)))
+			    (object UsesView "" @608
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79AF701B5"
+				client     	@601
+				supplier   	@587
+				vertices   	(list Points
+				    (3192, 1343)
+				    (3636, 506))
+				line_style 	0)
+			    (object UsesView "" @609
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B43006D"
+				client     	@601
+				supplier   	@589
+				vertices   	(list Points
+				    (3089, 1343)
+				    (2376, 410))
+				line_style 	0)
+			    (object UsesView "" @610
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B650242"
+				client     	@601
+				supplier   	@590
+				vertices   	(list Points
+				    (3123, 1341)
+				    (2907, 619))
+				line_style 	0)
+			    (object UsesView "" @611
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B870148"
+				client     	@601
+				supplier   	@591
+				vertices   	(list Points
+				    (3154, 1341)
+				    (3176, 1025))
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::action::BorrowModule" @612
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2320, 1456)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@612
+				    location   	(2319, 1617)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	474
+				    justify    	0
+				    label      	"BorrowModule")
+				icon       	"control"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D67DD90177"
+				compartment 	(object Compartment
+				    Parent_View 	@612
+				    location   	(2033, 1698)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	9
+				    max_width  	569
+				    justify    	0)
+				width      	158
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$102" @613
+				location   	(2320, 2254)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79889036B"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$103" @614
+					Parent_View 	@613
+					location   	(832, 1982)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D7988B001F"
+					client     	@613
+					supplier   	@612
+					vertices   	(list Points
+					    (2320, 2254)
+					    (2320, 2120))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$104" @615
+					Parent_View 	@613
+					location   	(832, 1982)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D7988B0021"
+					client     	@613
+					supplier   	@579
+					vertices   	(list Points
+					    (2320, 2254)
+					    (2320, 2388))
+					line_style 	0)))
+			    (object UsesView "" @616
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B08008C"
+				client     	@612
+				supplier   	@588
+				vertices   	(list Points
+				    (2240, 1380)
+				    (1194, 405))
+				line_style 	0)
+			    (object UsesView "" @617
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B4701F4"
+				client     	@612
+				supplier   	@589
+				vertices   	(list Points
+				    (2320, 1374)
+				    (2320, 948))
+				line_style 	0)
+			    (object UsesView "" @618
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B69003E"
+				client     	@612
+				supplier   	@590
+				vertices   	(list Points
+				    (2346, 1374)
+				    (2658, 552))
+				line_style 	0)
+			    (object UsesView "" @619
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B8A02AF"
+				client     	@612
+				supplier   	@591
+				vertices   	(list Points
+				    (2378, 1374)
+				    (3103, 441))
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::action::SocialModule" @620
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(528, 1328)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@620
+				    location   	(527, 1489)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	578
+				    justify    	0
+				    label      	"SocialModule")
+				icon       	"control"
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D67E560157"
+				compartment 	(object Compartment
+				    Parent_View 	@620
+				    location   	(305, 1570)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    anchor     	2
+				    nlines     	14
+				    max_width  	441
+				    justify    	0)
+				width      	158
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$111" @621
+				location   	(272, 2278)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D798CF01E4"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$112" @622
+					Parent_View 	@621
+					location   	(-1808, 2006)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798D00128"
+					client     	@621
+					supplier   	@620
+					vertices   	(list Points
+					    (272, 2278)
+					    (304, 2170))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$113" @623
+					Parent_View 	@621
+					location   	(-1808, 2006)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798D0012A"
+					client     	@621
+					supplier   	@582
+					vertices   	(list Points
+					    (272, 2278)
+					    (241, 2387))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$114" @624
+				location   	(778, 2270)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D798D20203"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$115" @625
+					Parent_View 	@624
+					location   	(-1878, 1998)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798D30167"
+					client     	@624
+					supplier   	@620
+					vertices   	(list Points
+					    (778, 2270)
+					    (747, 2153))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$116" @626
+					Parent_View 	@624
+					location   	(-1878, 1998)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D798D30169"
+					client     	@624
+					supplier   	@583
+					vertices   	(list Points
+					    (778, 2270)
+					    (809, 2387))
+					line_style 	0)))
+			    (object UsesView "" @627
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79ABB00FA"
+				client     	@620
+				supplier   	@586
+				vertices   	(list Points
+				    (536, 1247)
+				    (586, 948))
+				line_style 	0)
+			    (object UsesView "" @628
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B0C031C"
+				client     	@620
+				supplier   	@588
+				vertices   	(list Points
+				    (573, 1247)
+				    (1056, 432))
+				line_style 	0)
+			    (object UsesView "" @629
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79B970222"
+				client     	@620
+				supplier   	@592
+				vertices   	(list Points
+				    (497, 1245)
+				    (335, 735))
+				line_style 	0)
+			    (object ClassView "Class" "Logical View::设计模型::com::hlwzd::personalibrary::util::DBHelper" @630
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1728, 608)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@630
+				    location   	(1538, 369)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	380
+				    justify    	0
+				    label      	"DBHelper")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"56D687210138"
+				compartment 	(object Compartment
+				    Parent_View 	@630
+				    location   	(1538, 469)
+				    font       	(object Font
+					size       	9
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	8
+				    max_width  	387
+				    justify    	1)
+				width      	398
+				height     	500
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$123" @631
+				location   	(1588, 1068)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79BB101E4"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$124" @632
+					Parent_View 	@631
+					location   	(1204, 348)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BB3029F"
+					client     	@631
+					supplier   	@630
+					vertices   	(list Points
+					    (1588, 1068)
+					    (1652, 858))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$125" @633
+					Parent_View 	@631
+					location   	(1204, 348)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BB302A1"
+					client     	@631
+					supplier   	@593
+					vertices   	(list Points
+					    (1588, 1068)
+					    (1524, 1279))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$126" @634
+				location   	(2500, 1049)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79BB7002E"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$127" @635
+					Parent_View 	@634
+					location   	(1316, 313)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BB801A5"
+					client     	@634
+					supplier   	@630
+					vertices   	(list Points
+					    (2500, 1049)
+					    (1927, 721))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$128" @636
+					Parent_View 	@634
+					location   	(1316, 313)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BB801A7"
+					client     	@634
+					supplier   	@601
+					vertices   	(list Points
+					    (2500, 1049)
+					    (3073, 1377))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$129" @637
+				location   	(2080, 1115)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79BBB02FD"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$130" @638
+					Parent_View 	@637
+					location   	(112, 363)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BBC03C8"
+					client     	@637
+					supplier   	@630
+					vertices   	(list Points
+					    (2080, 1115)
+					    (1902, 858))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$131" @639
+					Parent_View 	@637
+					location   	(112, 363)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BBC03CA"
+					client     	@637
+					supplier   	@612
+					vertices   	(list Points
+					    (2080, 1115)
+					    (2259, 1373))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$132" @640
+				location   	(1066, 1002)
+				font       	(object Font
+				    size       	9
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"56D79BC6000F"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$133" @641
+					Parent_View 	@640
+					location   	(-1622, 346)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BC700AB"
+					client     	@640
+					supplier   	@630
+					vertices   	(list Points
+					    (1066, 1002)
+					    (1528, 725))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$134" @642
+					Parent_View 	@640
+					location   	(-1622, 346)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"56D79BC700AD"
+					client     	@640
+					supplier   	@620
+					vertices   	(list Points
+					    (1066, 1002)
+					    (604, 1279))
+					line_style 	0))))))))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Welcome"
 		quid       	"3512226B0028"
@@ -12506,7 +13900,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @579
+		    (object NoteView @643
 			location   	(768, 384)
 			font       	(object Font
 			    size       	9
@@ -12518,7 +13912,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@579
+			    Parent_View 	@643
 			    location   	(121, 96)
 			    fill_color 	13434879
 			    nlines     	14
@@ -12569,7 +13963,7 @@
 			origin_x   	0
 			origin_y   	0
 			items      	(list diagram_item_list
-			    (object NoteView @580
+			    (object NoteView @644
 				location   	(624, 160)
 				font       	(object Font
 				    size       	9
@@ -12581,7 +13975,7 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@580
+				    Parent_View 	@644
 				    location   	(21, 26)
 				    fill_color 	13434879
 				    nlines     	5
@@ -12608,7 +14002,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object SubSysView "Component View::Implementation Model" @581
+		    (object SubSysView "Component View::Implementation Model" @645
 			location   	(736, 800)
 			font       	(object Font
 			    size       	9
@@ -12620,7 +14014,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@581
+			    Parent_View 	@645
 			    location   	(552, 713)
 			    fill_color 	13434879
 			    nlines     	2
@@ -12683,7 +14077,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object ProcessorView "<processor name>" @582
+		    (object ProcessorView "<processor name>" @646
 			location   	(512, 1056)
 			font       	(object Font
 			    size       	9
@@ -12695,7 +14089,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@582
+			    Parent_View 	@646
 			    location   	(276, 900)
 			    nlines     	2
 			    max_width  	400
@@ -12706,7 +14100,7 @@
 			width      	475
 			height     	381
 			annotation 	3)
-		    (object DeviceView "<device name>" @583
+		    (object DeviceView "<device name>" @647
 			location   	(1040, 1056)
 			font       	(object Font
 			    size       	9
@@ -12718,7 +14112,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@583
+			    Parent_View 	@647
 			    location   	(867, 950)
 			    nlines     	2
 			    max_width  	275
@@ -12729,16 +14123,16 @@
 			width      	350
 			height     	282
 			annotation 	0)
-		    (object ConnectionView "" @584
+		    (object ConnectionView "" @648
 			stereotype 	TRUE
 			quidu      	"34DBBD4B008C"
-			client     	@582
-			supplier   	@583
+			client     	@646
+			supplier   	@647
 			vertices   	(list Points
 			    (718, 1056)
 			    (865, 1056))
 			line_style 	0)
-		    (object NoteView @585
+		    (object NoteView @649
 			location   	(816, 304)
 			font       	(object Font
 			    size       	9
@@ -12750,7 +14144,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@585
+			    Parent_View 	@649
 			    location   	(38, 29)
 			    fill_color 	13434879
 			    nlines     	11

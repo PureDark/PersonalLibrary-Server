@@ -1,0 +1,45 @@
+nav ul li.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#Pinnedagree{
+	padding:0;
+	color:#44D644;
+	margin-right:55px;
+}
+
+#Pinnedreject{
+	color:#FF0000;
+	padding:0;
+	margin-right:10px;
+}
+
+ul.collection li a.secondary-content{
+    margin-top:8px;
+}
+
+ul.collection li #result{
+	margin-top:16px;
+	margin-right:56px;
+	color:#8C9EB1;
+}
+
+#OldRequest #result{
+	margin-right:40px;
+}
+
+#reject{
+    color:#FF0000;
+}
+
+#agree{
+    color:#44D644;
+}
+
+#RequestVerification{
+	width:60%;
+}
+
+#Blog{
+	width:70%;
+}

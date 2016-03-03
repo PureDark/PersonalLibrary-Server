@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>个人图书馆-我的书友</title>
+  
+  <link href="../../css/material_icons.css" rel="stylesheet">
+  <link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href='../../css/jquery-ui.min.css' rel='stylesheet' type='text/css'>
+  <link href="../../css/modules/FriendsManage/FriendsManage.css" rel="stylesheet" type="text/css">
+  
+  
+  <!--  Scripts-->
+  <script src="../../js/jquery-1.9.1.min.js"></script>
+  <script src="../../js/materialize.js"></script>
+  <script src="../../js/init.js"></script>
+  
+  
+  <script src='../../js/jquery-ui.min.js' type='text/javascript'></script>
+  <script src="../../js/modules/FriendsManage/FriendsManage.js"></script>
+
+</head>
+
+
+
+<body 
+    onselectstart ='return false' 
+    onselect='document.selection.empty()' >
+  <nav role="navigation" class="grey darken-4">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
+      <ul class="right hide-on-med-and-down">
+	      
+	    <li><a href="MyBook.html">我的藏书</a></li>  
+	    <li><a href="#">借书记录</a></li>
+	    <li class="active"><a href="#">我的书友</a></li>  
+	    <li><a href="#">书友动态</a></li> 
+                
+      </ul>
+      
+
+      <ul id="nav-mobile" class="side-nav">
+	    <li><a href="MyBook.html">我的藏书</a></li>  
+	    <li><a href="#">借书记录</a></li>
+	    <li class="active"><a href="FriendsModule">我的书友</a></li>  
+	    <li><a href="MyFriend.html">书友动态</a></li> 
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="parallax-container">
+      <div class="parallax" ><img src="../../images/background8.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
+  </div>
+  <div style="width: 90%; margin:auto;">  
+  	<div style="display: flex;">
+            <div class="row" style="flex:1;">
+                <div class="col s12 m12 l12">
+                  <div class="row" style="margin-bottom:0px">
+                  		<div class="col l4 m5 s6">
+                            <div class="input-field" style="min-width: 300px">
+                              <i class="material-icons prefix" style="margin-top:21px">search</i>
+                              <input id="icon_prefix" type="text" class="validate">
+                              <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
+                            </div>
+                        </div>
+                        <div class="col l8 m7 s6 hide-on-large-only">
+                            <a class="waves-effect waves-light btn modal-trigger" style="margin-top:25px;float:right" href="#modal1">书友请求</a>
+                        </div>
+                  </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">我的书友</span>
+                        </div>
+                        <ul class="collection">
+                            <li class="collection-item avatar">
+                               <img src="../../images/avater/a1.png" alt="" class="circle">
+                               <span class="title">昵称</span>
+                               <p id="Blog">南方姑娘 你是否爱上了北方 南方姑娘 你说今天你就要回到你的家乡 思念让人心伤 她呼唤着你的泪光 南方的果子已熟 那是最简单的理想</p>
+                               <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            
+                            <li class="collection-item avatar">
+                              <img src="../../images/avater/a2.png" alt="" class="circle">
+                              <span class="title">Title</span>
+                              <p id="Blog">First Line 
+                                 Second Line
+                              </p>
+                              <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            <li class="collection-item avatar">
+                              <i class="material-icons circle green">insert_chart</i>
+                              <span class="title">Title</span>
+                              <p id="Blog">First Line 
+                                 Second Line
+                              </p>
+                              <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            <li class="collection-item avatar">
+                              <i class="material-icons circle red">play_arrow</i>
+                              <span class="title">Title</span>
+                              <p id="Blog">First Line
+                                 Second Line
+                              </p>
+                              <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            <li class="collection-item avatar">
+                               <img src="../../images/avater/a1.png" alt="" class="circle">
+                               <span class="title">昵称</span>
+                               <p id="Blog">签名</p>
+                               <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            
+                            <li class="collection-item avatar">
+                              <img src="../../images/avater/a2.png" alt="" class="circle">
+                              <span class="title">Title</span>
+                              <p id="Blog">First Line 
+                                 Second Line
+                              </p>
+                              <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            <li class="collection-item avatar">
+                              <i class="material-icons circle green">insert_chart</i>
+                              <span class="title">Title</span>
+                              <p id="Blog">First Line 
+                                 Second Line
+                              </p>
+                              <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            <li class="collection-item avatar">
+                              <i class="material-icons circle red">play_arrow</i>
+                              <span class="title">Title</span>
+                              <p id="Blog">First Line 
+                                 Second Line
+                              </p>
+                              <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            <li class="collection-item avatar">
+                               <img src="../../images/avater/a1.png" alt="" class="circle">
+                               <span class="title">昵称</span>
+                               <p id="Blog">签名</p>
+                               <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                            
+                            <li class="collection-item avatar">
+                              <img src="../../images/avater/a2.png" alt="" class="circle">
+                              <span class="title">Title</span>
+                              <p id="Blog">First Line 
+                                 Second Line
+                              </p>
+                               <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                            </li>
+                          </ul>
+                      </div>
+                      <div class="row center">     
+                          <ul class="pagination">
+                            
+                            <li class="active"><a href="#!">1</a></li>
+                            <li class="waves-effect"><a href="#!">2</a></li>
+                            <li class="waves-effect"><a href="#!">3</a></li>
+                            <li class="waves-effect"><a href="#!">4</a></li>
+                            <li class="waves-effect"><a href="#!">5</a></li>
+                            
+                          </ul>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="hide-on-med-and-down" style="padding-left:15px;margin-top:76px;">
+            	<div class="card" id="requestWrapper" style=" width:350px">
+                    <ul class="tabs">
+                        <li class="tab"><a class="active" href="#NewRequest">新的请求</a></li>
+                        <li class="tab"><a href="#OldRequest">历史请求</a></li>
+                    </ul>
+                    <div id="NewRequest">
+                        <ul class="collection">
+                            <li class="collection-item avatar">
+                              <img src="../../images/avater/a2.png" alt="" class="circle">
+                              <span class="title">徐一飞</span>
+                              <p id="RequestVerification">我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！</p>
+                              <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="Pinnedagree">同意</a>
+                              <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="Pinnedreject">拒绝</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="OldRequest">
+                        <ul class="collection">
+                            <li class="collection-item avatar">
+                              <img src="../../images/avater/a2.png" alt="" class="circle">
+                              <span class="title">PureDark</span>
+                              <p id="RequestVerification">我是梁雨聪！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！我是徐一飞！</p>
+                              <p id="result" class="secondary-content">已同意</p>
+                            </li>
+                            <li class="collection-item avatar">
+                              <img src="../../images/avater/a2.png" alt="" class="circle">
+                              <span class="title">史雷思</span>
+                              <p id="RequestVerification">我是史雷思！</p>
+                              <p id="result" class="secondary-content">已拒绝</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    	
+    </div>     
+    
+  </div>
+    
+    
+    <div id="modal1" class="modal bottom-sheet" style="max-height:70%;height:70%">
+          <div class="modal-content">
+              <h4>书友请求</h4>
+              <ul class="collection">
+                
+                
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p id="RequestVerification">First Line
+                         Second Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="agree">同意</a>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="reject" style="margin-right:110px;">拒绝</a>
+                    </li>
+                     <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p id="RequestVerification">First Line
+                         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+                      </p>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="agree">同意</a>
+                      <a href="#!" class="secondary-content waves-effect waves-dark btn-flat" id="reject" style="margin-right:110px;">拒绝</a>
+                    </li>
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p id="RequestVerification">First Line 
+                         Second Line
+                      </p>
+                      <p id="result" class="secondary-content">已同意</p>
+                    </li>
+                    <li class="collection-item avatar">
+                      <img src="../../images/avater/a2.png" alt="" class="circle">
+                      <span class="title">Title</span>
+                      <p id="RequestVerification">First Line 
+                         Second Line
+                      </p>
+                      <p id="result" class="secondary-content">已拒绝</p>
+                    </li>
+               </ul>
+           </div>
+      </div> 
+</body>
+</html>

@@ -35,7 +35,7 @@
       <ul class="right hide-on-med-and-down">
 	      
 	    <li  class="active"><a href="MyBook.html">我的藏书</a></li>  
-	    <li><a href="#">借书记录</a></li>
+	    <li id="BorrowManage"><a href="#">借书记录</a></li>
 	    <li><a href="#">我的书友</a></li>  
 	    <li><a href="#">书友动态</a></li> 
                 
@@ -43,8 +43,8 @@
       
 
       <ul id="nav-mobile" class="side-nav">
-	    <li  class="active"><a href="MyBook.html">我的藏书</a></li>  
-	    <li><a href="#">借书记录</a></li>
+	    <li id="BookManage" class="active"><a href="MyBook.html">我的藏书</a></li>  
+	    <li ><a href="#">借书记录</a></li>
 	    <li><a href="#">我的书友</a></li>  
 	    <li><a href="#">书友动态</a></li> 
       </ul>
@@ -54,121 +54,124 @@
    
    <div class="parallax-container">
       <div class="parallax" ><img src="../../images/background2.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
-    </div>
-
-   <ul class="row" id="sortable">
-   			
-            <li id="book1" class="col s12 m6 l4 BookCard">
-              <div class="card white darken-1 hoverable" >
-                <div class="BookCover">
-                  <img src="../../images/book1.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-	                    <div>
-                          <span class="card-title truncate" style="line-height:1">思念人之屋</span>
-                          <h6 class="right-align grey-text text-darken-1 truncate">明前雨后</h6>
-	                    </div>
-	                    <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
+   </div>
+		<div id="TempPage">
+            <ul class="row" id="sortable">
+                
+                <li id="book1" class="col s12 m6 l4">
+                  <div class="card white darken-1 BookCard hoverable" >
+                    <div class="BookCover">
+                      <img src="../../images/book1.jpg" style="width: 150px; height: 222px">
                     </div>
-                </div>
-              </div>
-            </li>     
-            
-            <li id="book2" class="col s12 m6 l4">
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover">
-                  <img src="../../images/book7.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-	                    <div>
-                          <span class="card-title truncate" style="line-height:1">钓愚</span>
-                          <h6 class="right-align grey-text text-darken-1 truncate">(美)乔治·阿克洛夫</h6>
-	                    </div>
-	                    <hr size="1">
-                        <p class="BookDesc">自亚当·斯密以来，经济学的核心信条就是：自由市场制度就像一只“看不见的手”，但现在这只“看不见的手”已经变成了随时准备绊倒消费者的“看不见的脚”。</p>
+                    <div class="BookDetail">  
+                        <div class="card-content black-text" style="height: 100%">
+                            <div>
+                              <span class="card-title truncate" style="line-height:1">思念人之屋</span>
+                              <h6 class="right-align grey-text text-darken-1 truncate">明前雨后</h6>
+                            </div>
+                            <hr size="1">  
+                            <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
+                        </div>
                     </div>
-                </div>
-              </div>
-            </li>
-            
-            <li id="book3" class="col s12 m6 l4" >
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover">
-                  <img src="../../images/book3.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-	                    <div>
-                          <span class="card-title truncate" style="line-height:1">危地马拉传说</span>
-                          <h6 class="right-align grey-text text-darken-1 truncate">(危地马拉)米盖尔·安赫尔·阿斯图里亚斯 </h6>
-	                    </div>
-	                    <hr size="1">
-                        <p class="BookDesc">《危地马拉传说》是危地马拉作家米盖尔•安赫尔•阿斯图里亚斯早期的重要作品，是一本充满魔幻色彩的神话故事集，被称为拉丁美洲魔幻现实主义的开山之作。</p>
+                  </div>
+                </li>     
+                
+                <li id="book2" class="col s12 m6 l4">
+                  <div class="card white darken-1 BookCard hoverable">
+                    <div class="BookCover">
+                      <img src="../../images/book7.jpg" style="width: 150px; height: 222px">
                     </div>
-                </div>
-              </div>
-            </li>    
-            
-            <li id="book4" class="col s12 m6 l4">
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover">
-                  <img src="../../images/book4.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 212px">
-	                    <div>
-                          <span class="card-title truncate" style="line-height:1">关于山本耀司的一切</span>
-                          <h6 class="right-align grey-text text-darken-1 truncate">(日)田口淑子</h6>
-	                    </div>  
-	                    <hr size="1">
-                        <p class="BookDesc">本书呈现了山本耀司四十年设计生涯的轨迹，精选了不同时期对山本耀司的深度访谈，其中不仅涉及其对服装和设计的激进思考也包括其对时尚和社会潮流的深刻洞见。</p>
+                    <div class="BookDetail">  
+                        <div class="card-content black-text" style="height: 100%">
+                            <div>
+                              <span class="card-title truncate" style="line-height:1">钓愚</span>
+                              <h6 class="right-align grey-text text-darken-1 truncate">(美)乔治·阿克洛夫</h6>
+                            </div>
+                            <hr size="1">
+                            <p class="BookDesc">自亚当·斯密以来，经济学的核心信条就是：自由市场制度就像一只“看不见的手”，但现在这只“看不见的手”已经变成了随时准备绊倒消费者的“看不见的脚”。</p>
+                        </div>
                     </div>
-                </div>
-              </div>
-            </li>    
-            
-            
-            <li id="book5" class="col s12 m6 l4">
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover">
-                  <img src="../../images/book5.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-	                    <div>
-                          <span class="card-title truncate" style="line-height:1">观复猫</span>
-                          <h6 class="right-align grey-text text-darken-1 truncate">马未都</h6>
-	                    </div> 
-	                    <hr size="1"> 
-                        <p class="BookDesc">想再养一只，养猫真的是会上瘾的事儿。人和猫，各有各空间，不过分粘腻也不太疏远，完美的关系。</p>
+                  </div>
+                </li>
+                
+                <li id="book3" class="col s12 m6 l4" >
+                  <div class="card white darken-1 BookCard hoverable">
+                    <div class="BookCover">
+                      <img src="../../images/book3.jpg" style="width: 150px; height: 222px">
                     </div>
-                </div>
-              </div>
-            </li> 
-            
-            <li id="book6" class="col s12 m6 l4">
-              <div class="card white darken-1 BookCard hoverable">
-                <div class="BookCover">
-                  <img src="../../images/book6.jpg" style="width: 150px; height: 222px">
-                </div>
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 212px">
-	                    <div>
-                          <span class="card-title truncate" style="line-height:1">抓住时机</span>
-                          <h6 class="right-align grey-text text-darken-1 truncate">(美)索尔·贝娄</h6>
-	                    </div>  
-	                    <hr size="1">
-                        <p class="BookDesc">索尔贝娄的中篇《抓住时机》讲一个潦倒失意的中年男人在一次股票投机中被合作伙伴欺骗，故事中有讽刺也有同情，结合中国当下股市中投机热，更值得玩味。</p>
+                    <div class="BookDetail">  
+                        <div class="card-content black-text" style="height: 100%">
+                            <div>
+                              <span class="card-title truncate" style="line-height:1">危地马拉传说</span>
+                              <h6 class="right-align grey-text text-darken-1 truncate">(危地马拉)米盖尔·安赫尔·阿斯图里亚斯 </h6>
+                            </div>
+                            <hr size="1">
+                            <p class="BookDesc">《危地马拉传说》是危地马拉作家米盖尔•安赫尔•阿斯图里亚斯早期的重要作品，是一本充满魔幻色彩的神话故事集，被称为拉丁美洲魔幻现实主义的开山之作。</p>
+                        </div>
                     </div>
-                </div>
-              </div>
-            </li> 
-           
-   </ul>
-  	
-    
+                  </div>
+                </li>    
+                
+                <li id="book4" class="col s12 m6 l4">
+                  <div class="card white darken-1 BookCard hoverable">
+                    <div class="BookCover">
+                      <img src="../../images/book4.jpg" style="width: 150px; height: 222px">
+                    </div>
+                    <div class="BookDetail">  
+                        <div class="card-content black-text" style="height: 212px">
+                            <div>
+                              <span class="card-title truncate" style="line-height:1">关于山本耀司的一切</span>
+                              <h6 class="right-align grey-text text-darken-1 truncate">(日)田口淑子</h6>
+                            </div>  
+                            <hr size="1">
+                            <p class="BookDesc">本书呈现了山本耀司四十年设计生涯的轨迹，精选了不同时期对山本耀司的深度访谈，其中不仅涉及其对服装和设计的激进思考也包括其对时尚和社会潮流的深刻洞见。</p>
+                        </div>
+                    </div>
+                  </div>
+                </li>    
+                
+                <li id="book5" class="col s12 m6 l4">
+                  <div class="card white darken-1 BookCard hoverable">
+                    <div class="BookCover">
+                      <img src="../../images/book5.jpg" style="width: 150px; height: 222px">
+                    </div>
+                    <div class="BookDetail">  
+                        <div class="card-content black-text" style="height: 100%">
+                            <div>
+                              <span class="card-title truncate" style="line-height:1">观复猫</span>
+                              <h6 class="right-align grey-text text-darken-1 truncate">马未都</h6>
+                            </div> 
+                            <hr size="1"> 
+                            <p class="BookDesc">想再养一只，养猫真的是会上瘾的事儿。人和猫，各有各空间，不过分粘腻也不太疏远，完美的关系。</p>
+                        </div>
+                    </div>
+                  </div>
+                </li> 
+                
+                <li id="book6" class="col s12 m6 l4">
+                  <div class="card white darken-1 BookCard hoverable">
+                    <div class="BookCover">
+                      <img src="../../images/book6.jpg" style="width: 150px; height: 222px">
+                    </div>
+                    <div class="BookDetail">  
+                        <div class="card-content black-text" style="height: 212px">
+                            <div>
+                              <span class="card-title truncate" style="line-height:1">抓住时机</span>
+                              <h6 class="right-align grey-text text-darken-1 truncate">(美)索尔·贝娄</h6>
+                            </div>  
+                            <hr size="1">
+                            <p class="BookDesc">索尔贝娄的中篇《抓住时机》讲一个潦倒失意的中年男人在一次股票投机中被合作伙伴欺骗，故事中有讽刺也有同情，结合中国当下股市中投机热，更值得玩味。</p>
+                        </div>
+                    </div>
+                  </div>
+                </li> 
+               
+            </ul>
+  		</div>
+        
+      <!-- Modal Structure -->
+      <div id="bookDetailModal" class="modal" style="display:flex;overflow:hidden;">
+          <iframe id="BookDetailPage" name="BookDetailPage" src="BookDetails.html" style="flex:1;width: 100%; min-height:100%;"/>
+      </div>
 </body>
 </html>

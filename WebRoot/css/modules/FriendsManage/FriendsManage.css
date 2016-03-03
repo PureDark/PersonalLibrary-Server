@@ -2,10 +2,6 @@ nav ul li.active {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-#full {
-    width:100%;
-}
-
 #Pinnedagree{
 	padding:0;
 	color:#44D644;
@@ -27,7 +23,10 @@ ul.collection li #result{
 	margin-right:56px;
 	color:#8C9EB1;
 }
-	
+
+#OldRequest #result{
+	margin-right:40px;
+}
 
 #reject{
     color:#FF0000;
@@ -35,4 +34,12 @@ ul.collection li #result{
 
 #agree{
     color:#44D644;
+}
+
+#RequestVerification{
+	width:60%;
+}
+
+#Blog{
+	width:70%;
 }

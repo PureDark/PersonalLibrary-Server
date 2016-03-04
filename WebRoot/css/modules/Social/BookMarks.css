@@ -64,5 +64,7 @@ nav ul li:hover{
 @media only screen and (max-width: 600px) {
   .mains {
     width: 100% !important;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }

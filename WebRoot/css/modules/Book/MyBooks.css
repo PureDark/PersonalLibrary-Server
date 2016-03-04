@@ -22,3 +22,6 @@ body{
 nav ul li.active {
     background-color: rgba(255, 255, 255, 0.2);
 }
+nav ul li:hover{
+	background-color: rgba(255, 255, 255, 0.1);
+}

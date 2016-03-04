@@ -11,7 +11,7 @@
   <link href='../../css/jquery-ui.min.css' rel='stylesheet' type='text/css'>
   <link href="../../css/default.css" rel="stylesheet" type="text/css">
   <link href="../../css/component.css" rel="stylesheet" type="text/css">
-  <link href="../../css/modules/FriendsManage/MyFriend.css" rel="stylesheet" type="text/css">
+  <link href="../../css/modules/Social/BookMarks.css" rel="stylesheet" type="text/css">
   
   
   
@@ -25,7 +25,7 @@
   
   <script src="../../js/modernizr.custom.js" type="text/javascript"></script>
   
-  <script src="../../js/modules/BookManage/MyBooks.js"></script>
+  <script src="../../js/modules/Social/BookMarks.js"></script>
 
 </head>
 
@@ -203,5 +203,9 @@
 				   </ul>
   	        </div>
      </div>
+      <!-- Modal Structure -->
+      <div id="bookDetailModal" class="modal customModal" style="display:flex;overflow:hidden;">
+          <iframe id="BookDetailPage" name="BookDetailPage" src="../Book/BookDetails.html" style="flex:1;width: 100%; min-height:100%;"/>
+      </div>
 </body>
 </html>

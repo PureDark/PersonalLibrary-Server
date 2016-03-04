@@ -10,7 +10,7 @@
   <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href='../../css/jquery-ui.min.css' rel='stylesheet' type='text/css'>
   
-  <link href="../../css/modules/BookManage/MyBook.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../../css/modules/Book/MyBooks.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
   
   <!--  Scripts-->
@@ -21,7 +21,7 @@
   
   <script src='../../js/jquery-ui.min.js' type='text/javascript'></script>
   
-  <script src="../../js/modules/BookManage/MyBooks.js"></script>
+  <script src="../../js/modules/Book/MyBooks.js"></script>
 
 </head>
 
@@ -34,19 +34,19 @@
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
       <ul class="right hide-on-med-and-down">
 	      
-	    <li  class="active"><a href="MyBook.html">我的藏书</a></li>  
-	    <li id="BorrowManage"><a href="../BorrowManage/BorrowManage.html">借书记录</a></li>
-	    <li><a href="../FriendsManage/FriendsModule.html">我的书友</a></li>  
-	    <li><a href="../FriendsManage/MyFriend.html">书友动态</a></li> 
+	    <li class="active"><a href="MyBooks.html">我的藏书</a></li>  
+	    <li><a href="../Borrow/BorrowManage.html">借书记录</a></li>
+	    <li><a href="../Friend/FriendManage.html">我的书友</a></li>
+	    <li><a href="../Social/BookMarks.html">书友动态</a></li> 
                 
       </ul>
       
 
       <ul id="nav-mobile" class="side-nav">
-	    <li id="BookManage" class="active"><a href="MyBook.html">我的藏书</a></li>  
-	    <li ><a href="../BorrowManage/BorrowManage.html">借书记录</a></li>
-	    <li><a href="../FriendsManage/FriendsModule.html">我的书友</a></li>  
-	    <li><a href="../FriendsManage/MyFriend.html">书友动态</a></li> 
+	    <li class="active"><a href="MyBooks.html">我的藏书</a></li>  
+	    <li><a href="../Borrow/BorrowManage.html">借书记录</a></li>
+	    <li><a href="../Friend/FriendManage.html">我的书友</a></li>
+	    <li><a href="../Social/BookMarks.html">书友动态</a></li> 
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -170,7 +170,7 @@
   		</div>
         
       <!-- Modal Structure -->
-      <div id="bookDetailModal" class="modal" style="display:flex;overflow:hidden;">
+      <div id="bookDetailModal" class="modal customModal" style="display:flex;overflow:hidden;">
           <iframe id="BookDetailPage" name="BookDetailPage" src="BookDetails.html" style="flex:1;width: 100%; min-height:100%;"/>
       </div>
 </body>

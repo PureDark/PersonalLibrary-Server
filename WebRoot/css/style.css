@@ -17,11 +17,8 @@ body{
 	font-size: inherit;
 }
 
-.colorIndex{
-	background-color: #26A69A !important;
-}
-.colorMyBooks{
-	background-color: #000 !important;
+.nav-color{
+	background-color: #000;
 }
 
 .blackMask{

@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	$('.parallax').parallax();
+	$('.parallax img').attr("src","images/background2.jpg");
+	
 	$( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();
 	

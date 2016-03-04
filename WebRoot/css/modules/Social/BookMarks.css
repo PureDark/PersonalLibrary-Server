@@ -1,6 +1,9 @@
 body{
 	cursor: default;
 }
+.nav-color{
+	background-color: rgb(79,61,83);
+}
 .BookCover{
 	width: 150px; 
 	height: 222.5px;

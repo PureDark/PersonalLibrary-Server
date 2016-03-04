@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'ecoico';
-	src:url('../fonts/timelineicons/ecoico.eot');
-	src:url('../fonts/timelineicons/ecoico.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/timelineicons/ecoico.woff') format('woff'),
-		url('../fonts/timelineicons/ecoico.ttf') format('truetype'),
-		url('../fonts/timelineicons/ecoico.svg#ecoico') format('svg');
+	src:url('../font/timelineicons/ecoico.eot');
+	src:url('../font/timelineicons/ecoico.eot?#iefix') format('embedded-opentype'),
+		url('../font/timelineicons/ecoico.woff') format('woff'),
+		url('../font/timelineicons/ecoico.ttf') format('truetype'),
+		url('../font/timelineicons/ecoico.svg#ecoico') format('svg');
 	font-weight: normal;
 	font-style: normal;
 } /* Made with http://icomoon.io/ */

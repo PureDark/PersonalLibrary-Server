@@ -2,11 +2,11 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @font-face {
 	font-family: 'bpicons';
-	src:url('../fonts/bpicons/bpicons.eot');
-	src:url('../fonts/bpicons/bpicons.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/bpicons/bpicons.woff') format('woff'),
-		url('../fonts/bpicons/bpicons.ttf') format('truetype'),
-		url('../fonts/bpicons/bpicons.svg#bpicons') format('svg');
+	src:url('../font/bpicons/bpicons.eot');
+	src:url('../font/bpicons/bpicons.eot?#iefix') format('embedded-opentype'),
+		url('../font/bpicons/bpicons.woff') format('woff'),
+		url('../font/bpicons/bpicons.ttf') format('truetype'),
+		url('../font/bpicons/bpicons.svg#bpicons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 } /* Made with http://icomoon.io/ */

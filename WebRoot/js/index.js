@@ -1,18 +1,18 @@
 $(document).ready(function() {
 	$('.parallax').parallax();
 	
-	$.post("servlet/manager",
+	/*$.post("servlet/manager",
 		{
 			module: "user",
 			action: "checkIfLogedIn"
 		}, 
 		function(result){
-			
 			SelectModileFromUrl();
-			
 		},
 		"json"
-	);
+	);*/
+	
+	SelectModileFromUrl();
 	
 	if(window.history && window.history.pushState){
 		$(window).on("popstate", function(){

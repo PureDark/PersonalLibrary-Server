@@ -5,6 +5,10 @@ body{
 	background-image: url(../../images/bg/bg2.jpg);
 }
 
+.nav-color{
+	background-color: #26A69A;
+}
+
 .card .card-content {
 	padding: 40px;
 }

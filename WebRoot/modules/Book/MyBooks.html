@@ -1,67 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>个人图书馆-我的藏书</title>
-  
-  <link href="../../css/material_icons.css" rel="stylesheet">
-  <link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href='../../css/jquery-ui.min.css' rel='stylesheet' type='text/css'>
-  
-  <link href="../../css/modules/Book/MyBooks.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  
-  
-  <!--  Scripts-->
-  <script src="../../js/jquery-1.9.1.min.js"></script>
-  <script src="../../js/materialize.js"></script>
-  <script src="../../js/init.js"></script>
-  
-  
-  <script src='../../js/jquery-ui.min.js' type='text/javascript'></script>
-  
-  <script src="../../js/modules/Book/MyBooks.js"></script>
-
-</head>
-
-
-
-<body 
-    onselectstart ='return false' 
-    onselect='document.selection.empty()' >
-  <nav role="navigation" class="colorMyBooks">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">个人图书馆</a>
-      <ul class="right hide-on-med-and-down">
-	      
-	    <li class="active"><a href="MyBooks.html">我的藏书</a></li>  
-	    <li><a href="../Borrow/BorrowManage.html">借书记录</a></li>
-	    <li><a href="../Friend/FriendManage.html">我的书友</a></li>
-	    <li><a href="../Social/BookMarks.html">书友动态</a></li> 
-                
-      </ul>
-      
-
-      <ul id="nav-mobile" class="side-nav">
-	    <li class="active"><a href="MyBooks.html">我的藏书</a></li>  
-	    <li><a href="../Borrow/BorrowManage.html">借书记录</a></li>
-	    <li><a href="../Friend/FriendManage.html">我的书友</a></li>
-	    <li><a href="../Social/BookMarks.html">书友动态</a></li> 
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-   
-   <div class="parallax-container">
-      <div class="parallax" ><img src="../../images/background2.jpg" style="transform: translate3d(-50%, 257px, 0px); display: block;"></div>
-   </div>
+ 
+  <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/modules/Book/MyBooks.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="js/modules/Book/MyBooks.js"></script>
 		<div id="TempPage">
             <ul class="row" id="sortable">
                 
                 <li id="book1" class="col s12 m6 l4">
                   <div class="card white darken-1 BookCard hoverable" >
                     <div class="BookCover">
-                      <img src="../../images/book1.jpg" style="width: 150px; height: 222px">
+                      <img src="images/book1.jpg" style="width: 150px; height: 222px">
                     </div>
                     <div class="BookDetail">  
                         <div class="card-content black-text" style="height: 100%">
@@ -79,7 +27,7 @@
                 <li id="book2" class="col s12 m6 l4">
                   <div class="card white darken-1 BookCard hoverable">
                     <div class="BookCover">
-                      <img src="../../images/book7.jpg" style="width: 150px; height: 222px">
+                      <img src="images/book7.jpg" style="width: 150px; height: 222px">
                     </div>
                     <div class="BookDetail">  
                         <div class="card-content black-text" style="height: 100%">
@@ -97,7 +45,7 @@
                 <li id="book3" class="col s12 m6 l4" >
                   <div class="card white darken-1 BookCard hoverable">
                     <div class="BookCover">
-                      <img src="../../images/book3.jpg" style="width: 150px; height: 222px">
+                      <img src="images/book3.jpg" style="width: 150px; height: 222px">
                     </div>
                     <div class="BookDetail">  
                         <div class="card-content black-text" style="height: 100%">
@@ -115,7 +63,7 @@
                 <li id="book4" class="col s12 m6 l4">
                   <div class="card white darken-1 BookCard hoverable">
                     <div class="BookCover">
-                      <img src="../../images/book4.jpg" style="width: 150px; height: 222px">
+                      <img src="images/book4.jpg" style="width: 150px; height: 222px">
                     </div>
                     <div class="BookDetail">  
                         <div class="card-content black-text" style="height: 212px">
@@ -133,7 +81,7 @@
                 <li id="book5" class="col s12 m6 l4">
                   <div class="card white darken-1 BookCard hoverable">
                     <div class="BookCover">
-                      <img src="../../images/book5.jpg" style="width: 150px; height: 222px">
+                      <img src="images/book5.jpg" style="width: 150px; height: 222px">
                     </div>
                     <div class="BookDetail">  
                         <div class="card-content black-text" style="height: 100%">
@@ -151,7 +99,7 @@
                 <li id="book6" class="col s12 m6 l4">
                   <div class="card white darken-1 BookCard hoverable">
                     <div class="BookCover">
-                      <img src="../../images/book6.jpg" style="width: 150px; height: 222px">
+                      <img src="images/book6.jpg" style="width: 150px; height: 222px">
                     </div>
                     <div class="BookDetail">  
                         <div class="card-content black-text" style="height: 212px">
@@ -171,7 +119,5 @@
         
       <!-- Modal Structure -->
       <div id="bookDetailModal" class="modal customModal" style="display:flex;overflow:hidden;">
-          <iframe id="BookDetailPage" name="BookDetailPage" src="BookDetails.html" style="flex:1;width: 100%; min-height:100%;"/>
+          <iframe id="BookDetailPage" name="BookDetailPage" src="modules/Book/BookDetails.html" style="flex:1;width: 100%; min-height:100%;"/>
       </div>
-</body>
-</html>

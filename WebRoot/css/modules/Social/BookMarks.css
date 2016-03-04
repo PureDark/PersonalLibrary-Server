@@ -1,6 +1,9 @@
 body{
 	cursor: default;
 }
+.nav-color{
+	background-color: rgb(79,61,83);
+}
 .BookCover{
 	width: 150px; 
 	height: 222.5px;
@@ -60,4 +63,11 @@ nav ul li:hover{
 .row{
 	margin-bottom: 0px;
 	padding-bottom: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .mains {
+    width: 100% !important;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }

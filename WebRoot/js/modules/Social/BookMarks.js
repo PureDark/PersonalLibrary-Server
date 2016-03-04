@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	$('.parallax').parallax();	
+	
+	$('.parallax img').attr("src","images/background5.jpg");
 	
 	$(document).delegate(".BookCard", "click", function(e){
 		$("#bookDetailModal").openModal();

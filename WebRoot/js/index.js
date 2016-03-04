@@ -1,70 +1,53 @@
-var registercard=$("#RegisterCard");
-registercard.addClass("tempRegister");
-
-var currCard = $("#LoginCard");
-var animating = false;
-
-$(document).ready(function(e) {
+$(document).ready(function() {
+	$('.parallax').parallax();
+	
+	/*$.post("servlet/manager",
+		{
+			module: "user",
+			action: "checkIfLogedIn"
+		}, 
+		function(result){
+			SelectModileFromUrl();
+		},
+		"json"
+	);*/
+	
+	SelectModileFromUrl();
+	
+	if(window.history && window.history.pushState){
+		$(window).on("popstate", function(){
+			SelectModileFromUrl();
+		});
+	}
 	
 	
-    $("#RegisterCard").hide();
-    $("#NewPasswordCard").hide();
-	
-	
-	
-    $("#Register").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#RegisterCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Login").removeClass("active");
-			$("#Wrapper_Register").addClass("active");
-			currCard = $("#RegisterCard");
-		});
-		
-	});
-	$("#NewPassword").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#NewPasswordCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Login").removeClass("active");
-			$("#Wrapper_NewPassword").addClass("active");
-			currCard = $("#NewPasswordCard");
-		});
-		
-	});
-	$("#Wrapper_NewPassword").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#NewPasswordCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Login,#Wrapper_Register").removeClass("active");
-			$("#Wrapper_NewPassword").addClass("active");
-			currCard = $("#NewPasswordCard");
-		});
-		
-	});
-	$("#Wrapper_Login").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#LoginCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Register,#Wrapper_NewPassword").removeClass("active");
-			$("#Wrapper_Login").addClass("active");
-			currCard = $("#LoginCard");
-		});
-		
-	});
-	$("#Wrapper_Register").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#RegisterCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_NewPassword,#Wrapper_Login").removeClass("active");
-			$("#Wrapper_Register").addClass("active");
-			currCard = $("#RegisterCard");
-		});
-		
-	});
 });
+
+function SelectModileFromUrl(){
+	var names = window.location.href.split("#");
+	SelectModule(names[1]);
+}
+
+function SelectModule(name){
+		$(".nav-wrapper ul li").removeClass("active");
+	if(name=="Book"){
+		$(".nav-wrapper ul li:eq(0)").addClass("active");
+		LoadPage("Book/MyBooks.html");
+	}else if(name=="Borrow"){
+		$(".nav-wrapper ul li:eq(1)").addClass("active");
+		LoadPage("Borrow/BorrowManage.html");
+	}else if(name=="Friend"){
+		$(".nav-wrapper ul li:eq(2)").addClass("active");
+		LoadPage("Friend/FriendManage.html");
+	}else if(name=="Social"){
+		$(".nav-wrapper ul li:eq(3)").addClass("active");
+		LoadPage("Social/BookMarks.html");
+	}else{
+		$(".nav-wrapper ul li:eq(0)").addClass("active");
+		LoadPage("Book/MyBooks.html");
+	}
+}
+
+function LoadPage(path){
+	$("#PageContainer").load("modules/"+path);
+}

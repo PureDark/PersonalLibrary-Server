@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	$('.parallax').parallax();
+	$('.parallax img').attr("src","images/background10.jpg");
     $('.modal-trigger').leanModal();
+	
     $('#requestWrapper').pushpin({ top: $('#MyFriendsCard').offset().top });
     $('ul.tabs').tabs();
  });

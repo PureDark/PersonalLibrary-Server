@@ -1,0 +1,116 @@
+.image-wrapper {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.image-wrapper .inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrapper .inner:after, .image-wrapper .inner:before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10px;
+  width: 500px;
+  height: 1000px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.image-wrapper .inner:after {
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.BooksContainer{
+	width :550px; 
+	position: absolute; 
+	top: 220px; 
+	bottom: 0px; 
+	left: 0px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.bookMarkContainer{
+	width: auto; 
+	height: 100%; 
+	padding:20px; 
+	overflow: scroll;
+	overflow-x: hidden;
+	flex:1;
+}
+
+.booktab{
+  display: table;
+}
+.chips{
+  display: inline-block;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 40px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4;
+}
+
+.chips img {
+  float: left;
+  margin: 0 8px 0 -12px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.chips i.material-icons {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px;
+}
+.BookShow{
+	float:left;
+	margin-right:13px;
+}
+.BookTitle{
+	margin-top: 18px;
+}
+.BookDetail{
+	height: 222.5px;
+	overflow: hidden;
+}
+
+.BookDetail .BookDesc{
+	height: 134px;
+    overflow: hidden;
+	text-overflow:ellipsis;
+	line-height: 19px;
+}
+.writemark {
+	color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	border-radius: 5px;
+	background-color: black ; 
+	
+}

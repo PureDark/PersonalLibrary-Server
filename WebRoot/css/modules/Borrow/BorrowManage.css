@@ -1,48 +1,92 @@
-@charset "utf-8";
-/* CSS Document */
-
-.nav-color{
-    background-color: #000;
+body{
+	cursor: default;
 }
-
-.BorrowAvater{
-	margin-left:20px;
-	margin-top:6px;
-	width:69px;
-	float:left;
-	
+.BookCover{
+	width: 150px; 
+	height: 222.5px;
 }
-.BorrowDetail{
-	margin-left:150px;
+.BookTitle{
+	margin-top: 18px;
+}
+.BookDetail{
+	height: 222.5px;
 	overflow: hidden;
-	
+}
+
+.BookDetail .BookDesc{
+	height: 134px;
+    overflow: hidden;
+	text-overflow:ellipsis;
+	line-height: 19px;
+}
+.chips{
+  display: inline-block;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 40px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4;
+}
+
+.chips img {
+  float: left;
+  margin: 0 8px 0 -12px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.chips i.material-icons {
+  cursor: pointer;
+  float: right;
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 8px;
+}
+
+nav ul li.active {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.mains{
+	padding-bottom: 0px;
+}
+.row{
+	margin-bottom: 0px;
+	padding-bottom: 20px;
 }
 .status{
+	margin:auto;
+	margin-top:-13%;
 	float:right;
-	margin-top:-47px;
-	
+	width:20%
 }
-
-.tabs{
-  overflow-x:hidden;	
-}
-
 .agree{
 	color:#23C410;
 }
 .refuse{
 	color:#CD070A;
 }
-
-body{
-	cursor: default;
+.cbp_tmtime{
+	
 }
-
-nav ul li.active {
-    background-color: rgba(255, 255, 255, 0.2);
+.containers{
+	margin-top:70px;
 }
-
-nav ul li:hover{
-	background-color: rgba(255, 255, 255, 0.1);
+.borrowcard{
+	min-width:550px;
+	height:115px;
+	
 }
-
+.cbp_tmtimeline:before,.cbp_tmtimeline > li .cbp_tmicon {
+	margin-top:50px;
+}
+.cbp_tmtimeline:before {
+	left:50%;
+	}
+.cbp_tmtimeline > li .cbp_tmicon {
+	left:50%;
+}

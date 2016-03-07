@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();
 	
-	
+	$(document).undelegate(".BookCard", "click");
 	$(document).delegate(".BookCard", "click", function(e){
 		$("#bookDetailModal").openModal();
 		var id = $(this).parent("li").attr("id");

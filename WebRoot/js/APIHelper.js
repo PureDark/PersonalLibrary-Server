@@ -447,14 +447,15 @@
 			});
 		},
 		getBookDetails: function(isbn13, callback){
-			
 			$.ajax({
 				type: "GET",
-				url: "http://api.douban.com/v2/book/isbn/"+isbn13
+				url: "http://api.douban.com/v2/book/isbn/"+isbn13,
     			dataType: "json",
 			    success: function(result){
 					 if(result.status){
-						 callback.onSuccess();
+						 var data = result.data;
+						 var book = Book.newInstance(data.image, data.title, data.summary, data.pubdate, data.author[0], data.translator[0], data.pages, data.isbn13, data.price){;
+						 callback.onSuccess(book);
 					 }else{
 						var errorCode = result.errorCode;
 	                    if (errorCode === 1002){

@@ -132,3 +132,18 @@
 			return bookMark;
 		}
 	};
+	
+	var Book = {
+		newInstance: function(image, title, summary, pubdate, author, translator, pages, isbn13, price){
+			var book = {};
+			book.image = image;
+			book.title = title;
+			book.summary = summary;
+			book.author = author;
+			book.translator = translator;
+			book.pages = pages;
+			book.isbn13 = isbn13;
+			book.price = price;
+			return book;
+		}
+	};

@@ -17,7 +17,12 @@
 
 	  $(this).parents('.image-wrapper')
 			 .css({ background: data.color })
-	});
+			 
+			 
+});
+
+
+
 
 	// Run the A.B. plugin.
 	$.adaptiveBackground.run({ parent: "1" });
@@ -25,6 +30,11 @@
 
 })(window, document, jQuery)
 
-function getBook(bid){ 
-	  alert(bid);
+function getBook(bid,isbn13){ 
+	   PLServerAPI.getBookDetails(isbn13,{
+		   onSuccess: function(book){
+			   $(".inner img").attr("src",book.image);
+			   $(".inner div h5").html(book.author);
+		   }
+	   })
 }

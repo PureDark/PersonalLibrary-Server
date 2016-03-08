@@ -74,7 +74,7 @@
 	};
 	
 	var BorrowRecord = {
-		newInstance: function(brid, loan_uid, borrow_uid, nickname, book_id , book_name, borrow_time, return_time, status){
+		newInstance: function(brid, loan_uid, borrow_uid, nickname, book_id , book_name, borrow_time, return_time, status, isBorrowed){
 			var borrowRecord = {};
 			borrowRecord.brid = brid;
 			borrowRecord.loan_uid = loan_uid;
@@ -85,6 +85,7 @@
 			borrowRecord.borrow_time = borrow_time;
 			borrowRecord.return_time = return_time;
 			borrowRecord.status = status;
+			borrowRecord.isBorrowed = isBorrowed;
 			return borrowRecord;
 		}
 	};

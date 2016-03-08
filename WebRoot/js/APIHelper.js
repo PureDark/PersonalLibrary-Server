@@ -256,7 +256,7 @@
 							var borrowRecords = [];
 							$.each(data, function(i, br){
 								borrowRecords[i] = BorrowRecord.newInstance(br.brid, br.loan_uid, br.borrow_uid, 
-									br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status);
+								br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status, true);
 							});
 							callback.onSuccess(borrowRecords);
 						},
@@ -276,7 +276,7 @@
 							var borrowRecords = [];
 							$.each(data, function(i, br){
 								borrowRecords[i] = BorrowRecord.newInstance(br.brid, br.loan_uid, br.borrow_uid, 
-									br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status);
+								br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status, false);
 							});
 							callback.onSuccess(borrowRecords);
 						},

@@ -446,7 +446,30 @@
 						}
 			});
 		},
-
+		getBookDetails: function(isbn13, callback){
+			
+			$.ajax({
+				type: "GET",
+				url: "http://api.douban.com/v2/book/isbn/"+isbn13
+    			dataType: "json",
+			    success: function(result){
+					 if(result.status){
+						 callback.onSuccess();
+					 }else{
+						var errorCode = result.errorCode;
+	                    if (errorCode === 1002){
+	                        window.location.href = "./login.html";
+						}else{
+							callback.onFailure(ApiError.newInstance(errorCode));
+						}
+					 }
+				},
+				error:function(xhr){
+					 callback.onFailure(ApiError.newInstance(1009));
+				}
+			});
+		}
+	
 	};
 	
 	function postNoReturnData(params, callback){

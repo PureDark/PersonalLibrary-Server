@@ -19,3 +19,18 @@ PLServerAPI.searchUser($("#FriendName").val(), {
 		onFailure: function(apiError){
 		}
 	});
+	
+PLServerAPI.getFriendList("1",{
+		onSuccess: function(friends){
+			'<li class="collection-item avatar">'+
+                              '<img src="'+ +'" alt="" class="circle">'+
+                              '<span class="title">Title</span>'+
+                              '<p class="Blog">First Line '+
+                                ' Second Line'+
+                             ' </p>'+
+                              '<a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>'+
+                           ' </li>'
+		},
+		onFailure: function(apiError){
+		}
+});

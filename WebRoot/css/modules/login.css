@@ -31,10 +31,22 @@ img.responsive-img {
 	height: 32px;
 	line-height: 29px;	
 }
+.btn-flat{
+	color:#26a69a;
+}
 
 .myCard{
 	border-radius: 10px;
 	width: 347px;
 	margin: auto;
 	margin-top: 100px;
+}
+.input-field label{
+	width: 100%;
+	text-align: left;
+}
+.input-field label:after{
+	width: 100%;
+    text-align: right;
+    padding-right: 12px;
 }

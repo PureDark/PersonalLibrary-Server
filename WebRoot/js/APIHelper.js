@@ -450,7 +450,7 @@
 	};
 	
 	function postNoReturnData(params, callback){
-		var baseUrl = "./servlet/manager";
+		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
 			if(value!==null&&value!="")
@@ -480,7 +480,7 @@
 	}
 	
 	function postReturnJsonElement(params, callback){
-		var baseUrl = "./servlet/manager";
+		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
 			if(value!==null&&value!="")

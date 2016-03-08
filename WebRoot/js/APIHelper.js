@@ -452,18 +452,10 @@
 				url: "http://api.douban.com/v2/book/isbn/"+isbn13,
     			dataType: "json",
 			    success: function(result){
-					 if(result.status){
-						 var data = result.data;
-						 var book = Book.newInstance(data.image, data.title, data.summary, data.pubdate, data.author[0], data.translator[0], data.pages, data.isbn13, data.price){;
-						 callback.onSuccess(book);
-					 }else{
-						var errorCode = result.errorCode;
-	                    if (errorCode === 1002){
-	                        window.location.href = "./login.html";
-						}else{
-							callback.onFailure(ApiError.newInstance(errorCode));
-						}
-					 }
+					 
+					 var data = result.data;
+					 var book = Book.newInstance(data.image, data.title, data.summary, data.pubdate, data.author[0], data.translator[0], data.pages, data.isbn13, data.price);
+					 callback.onSuccess(book);
 				},
 				error:function(xhr){
 					 callback.onFailure(ApiError.newInstance(1009));

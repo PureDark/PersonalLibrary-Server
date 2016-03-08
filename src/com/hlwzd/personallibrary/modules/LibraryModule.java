@@ -66,7 +66,7 @@ public class LibraryModule extends Module {
 				String tidsStr = request.getParameter("tids");
 				String keyword = request.getParameter("keyword");
 				JsonParser parser = new JsonParser();
-				JsonArray tids = (tidsStr==null)?new JsonArray():parser.parse(tidsStr).getAsJsonArray();
+				JsonArray tids = (tidsStr==null||"".equals(tidsStr))?new JsonArray():parser.parse(tidsStr).getAsJsonArray();
 				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
 				return getBookList(uid, tids, keyword);
 			}
@@ -152,7 +152,7 @@ public class LibraryModule extends Module {
 	}
 	
 	private JsonObject getBookList(int uid, JsonArray tids, String keyword) throws SQLException{
-		keyword = (keyword==null)?null:"%"+keyword+"%";
+		keyword = (keyword==null||"".equals(keyword))?null:"%"+keyword+"%";
 		String where = (keyword==null)?"":" AND (`books`.`title` LIKE ? OR `books`.`author` LIKE ?) ";
 		ResultSet rs;
 		String sql = "";

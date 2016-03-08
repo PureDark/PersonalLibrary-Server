@@ -443,10 +443,15 @@
 	
 	function postNoReturnData(params, callback){
 		var baseUrl = "./servlet/manager";
+		var myparams = {};
+		$.each(params, function(key, value){
+			if(value!==null&&value!="")
+				myparams[key] = value;
+		});
 		$.ajax({
 			 type: "POST",
 			 url: baseUrl,
-			 data: params,
+			 data: myparams,
 			 dataType: "json",
 			 success: function(result){
 				 if(result.status){
@@ -468,10 +473,15 @@
 	
 	function postReturnJsonElement(params, callback){
 		var baseUrl = "./servlet/manager";
+		var myparams = {};
+		$.each(params, function(key, value){
+			if(value!==null&&value!="")
+				myparams[key] = value;
+		});
 		$.ajax({
 			 type: "POST",
 			 url: baseUrl,
-			 data: params,
+			 data: myparams,
 			 dataType: "json",
 			 success: function(result){
 				 if(result.status){

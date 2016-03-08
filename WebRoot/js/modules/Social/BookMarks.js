@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('.parallax img').attr("src","images/background5.jpg");
 	
 	$(document).undelegate(".BookCard", "click");
-	$(document).delegate(".BookCard", "click", function(e){
+	$(document).delegate(".BookCard", "click", function(){
 		$("#bookDetailModal").openModal();
 		var id = $(this).parent("li").attr("id");
 		 window.BookDetailPage.getBook(id);
@@ -13,17 +13,16 @@ $(document).ready(function(){
 	PLServerAPI.getRecentBookMarks(0, {
 		onSuccess: function(bookMarks){
 			$("#BookMarkContainer").empty();
-			
 			$.each(bookMarks, function(i,bookMark){
 				var avatar = "images/users/avatars/"+bookMark.uid+".png";
 				var time = bookMark.time.split(" ");
-				
+				time[1] = time[1].split(":");
 				
 				$("#BookMarkContainer").append(
 					'<li id="book1" class="row">'+
 				                '<time class="cbp_tmtime col m3 l3 hide-on-small-only"  datetime="'+time[0]+'">'+
 				                	'<span>'+time[0]+'</span>'+
-									'<span>'+time[1]+'</span>'+
+									'<span>'+time[1][0]+":"+time[1][1]+'</span>'+
 								'</time>'+
 				            
 							   	'<div class="cbp_tmicon cbp_tmicon-phone hide-on-med-and-down"></div>'+
@@ -43,7 +42,7 @@ $(document).ready(function(){
 					                          '<h6 class="right grey-text text-darken-1 BookTitle">'+bookMark.book_title+'</h6>'+
 						                    '</div>'+
 						                    '<hr size="1"> '+ 
-					                       ' <p class="BookDesc">'+bookMark_summary+'</p>'+
+					                       ' <p class="BookDesc">'+bookMark.summary+'</p>'+
 					                    '</div>'+
 					                '</div>'+
 					              '</div>'+
@@ -51,8 +50,11 @@ $(document).ready(function(){
 				    '</li> '           
 				                  
 
-				)
-			})
+				);
+			});
 		},
-	})
+		onFailure: function(apiError){
+			Materialize.toast(apiError.getErrorMessage(), 4000)
+		}
+	});
 });

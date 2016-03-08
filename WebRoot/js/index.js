@@ -7,16 +7,16 @@ $(document).ready(function() {
 			action: "checkIfLogedIn"
 		}, 
 		function(result){
-			SelectModileFromUrl();
+			SelectModuleFromUrl();
 		},
 		"json"
 	);*/
 	
-	SelectModileFromUrl();
+	SelectModuleFromUrl();
 	
 	if(window.history && window.history.pushState){
 		$(window).on("popstate", function(){
-			SelectModileFromUrl();
+			SelectModuleFromUrl();
 		});
 	}
 	
@@ -24,7 +24,7 @@ $(document).ready(function() {
 });
 
 
-function SelectModileFromUrl(){
+function SelectModuleFromUrl(){
 	var names = window.location.href.split("#");
 	SelectModule(names[1]);
 }
@@ -32,19 +32,24 @@ function SelectModileFromUrl(){
 function SelectModule(name){
 		$(".nav-wrapper ul li").removeClass("active");
 	if(name=="Book"){
-		$(".nav-wrapper ul li:eq(0)").addClass("active");
+		$(".nav-wrapper ul:eq(0) li:eq(0)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(0)").addClass("active");
 		LoadPage("Book/MyBooks.html");
 	}else if(name=="Borrow"){
-		$(".nav-wrapper ul li:eq(1)").addClass("active");
+		$(".nav-wrapper ul:eq(0) li:eq(1)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(1)").addClass("active");
 		LoadPage("Borrow/BorrowManage.html");
 	}else if(name=="Friend"){
-		$(".nav-wrapper ul li:eq(2)").addClass("active");
+		$(".nav-wrapper ul:eq(0) li:eq(2)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(2)").addClass("active");
 		LoadPage("Friend/FriendManage.html");
 	}else if(name=="Social"){
-		$(".nav-wrapper ul li:eq(3)").addClass("active");
+		$(".nav-wrapper ul:eq(0) li:eq(3)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(3)").addClass("active");
 		LoadPage("Social/BookMarks.html");
 	}else{
-		$(".nav-wrapper ul li:eq(0)").addClass("active");
+		$(".nav-wrapper ul:eq(0) li:eq(0)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(0)").addClass("active");
 		LoadPage("Book/MyBooks.html");
 	}
 }

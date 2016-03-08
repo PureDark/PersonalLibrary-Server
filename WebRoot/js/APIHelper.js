@@ -1,8 +1,9 @@
-/**
- * Created by PureDark on 2016/03/07.
- * 用于简化服务端API调用的帮助类，对所有API调用进行了封装
- */
- 
+	/**
+	 * Created by PureDark on 2016/03/07.
+	 * 用于简化服务端API调用的帮助类，对所有API调用进行了封装
+	 */
+	 
+ 	"use strict";
 	var PLServerAPI = {
 		login: function(cellphone, password, callback){
 			var params = {

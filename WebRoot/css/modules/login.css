@@ -31,6 +31,9 @@ img.responsive-img {
 	height: 32px;
 	line-height: 29px;	
 }
+.btn-flat{
+	color:#26a69a;
+}
 
 .myCard{
 	border-radius: 10px;

@@ -1,70 +1,193 @@
-var registercard=$("#RegisterCard");
-registercard.addClass("tempRegister");
 
-var currCard = $("#LoginCard");
+var currCard;
 var animating = false;
+var sending = false;
 
 $(document).ready(function(e) {
 	
-	
+	currCard = $("#LoginCard");
     $("#RegisterCard").hide();
     $("#NewPasswordCard").hide();
 	
+	SelectModuleFromUrl();
+	if(window.history && window.history.pushState){
+		$(window).on("popstate", function(){
+			SelectModuleFromUrl();
+		});
+	}
+	
+	$("#input_cellphone_login").bind('input propertychange', function() {
+        var cellphone = $("#input_cellphone_login").val();
+		if(cellphone.length===11){
+			PLServerAPI.getUidByCellphone(cellphone, {
+				onSuccess: function(uid){
+					$("#avatar").attr("src","http://115.28.135.76/images/users/avatars/"+uid+".png");
+				},
+				onFailure: function(apiError){
+					$("#avatar").attr("src","images/avater/a2.png");
+				}
+			});
+		}else{
+			$("#avatar").attr("src","images/avater/a2.png");
+		}
+	});
+
+
+	$("#btnLogin").click(function(e) {
+		if(sending){
+			return;
+		}
+        var cellphone = $("#input_cellphone_login").val();
+        var password = $("#input_password_login").val();
+		if(cellphone.length!==11){
+			Materialize.toast('手机号码格式不正确！', 4000)
+			return;
+		}else if(password.length<6||password.length>20){
+			Materialize.toast('密码长度6在9到20位之间！', 4000)
+			return;
+		}
+		sending = true;
+		PLServerAPI.login(cellphone, password, {
+			onSuccess: function(user){
+				sending = false;
+				$.cookie("uid",user.uid);
+				$.cookie("nickname",user.nickname);
+				window.location.href = "index.html";
+			},
+			onFailure: function(apiError){
+				sending = false;
+				Materialize.toast(apiError.getErrorMessage(), 4000)
+			}
+		});
+    });
+
+	$("#btnRegister").click(function(e) {
+		if(sending){
+			return;
+		}
+        var cellphone = $("#input_cellphone_register").val();
+        var password = $("#input_password_register").val();
+        var repassword = $("#input_repassword_register").val();
+        var captcha = $("#input_captcha_register").val();
+		if(cellphone.length!==11){
+			Materialize.toast('手机号码格式不正确！', 4000)
+			return;
+		}else if(password.length<9||password.length>20){
+			Materialize.toast('密码长度应在9到20位之间！', 4000)
+			return;
+		}else if(password!=repassword){
+			Materialize.toast('两次输入的密码不一致！', 4000)
+			return;
+		}
+		sending = true;
+		PLServerAPI.register(cellphone, password, captcha, {
+			onSuccess: function(){
+				sending = false;
+				Materialize.toast('注册成功！', 4000)
+				SelectModule("Login");
+			},
+			onFailure: function(apiError){
+				sending = false;
+				Materialize.toast(apiError.getErrorMessage(), 4000)
+			}
+		});
+    });
+
+	$("#btnForgetPassword").click(function(e) {
+		if(sending){
+			return;
+		}
+        var cellphone = $("#input_cellphone_forgetpassword").val();
+        var password = $("#input_password_forgetpassword").val();
+        var captcha = $("#input_captcha_register").val();
+		if(cellphone.length!==11){
+			Materialize.toast('手机号码格式不正确！', 4000)
+			return;
+		}else if(password.length<9||password.length>20){
+			Materialize.toast('密码长度应在9到20位之间！', 4000)
+			return;
+		}else if(captcha.length===0){
+			Materialize.toast('请输入验证码！', 4000)
+			return;
+		}
+		sending = true;
+		PLServerAPI.resetPassword(cellphone, password, captcha, {
+			onSuccess: function(){
+				sending = false;
+				Materialize.toast('密码修改成功！', 4000)
+				SelectModule("Login");
+			},
+			onFailure: function(apiError){
+				sending = false;
+				Materialize.toast(apiError.getErrorMessage(), 4000)
+			}
+		});
+    });
+	$("#btnSendCaptcha1,#btnSendCaptcha2").click(function(e) {
+		if($(this).hasClass("disabled")){
+			return;
+		}
+        $(this).html("已发送(60)");
+		$(this).attr("disabled","true");
+		$(this).addClass("disabled");
+		currBtn = $(this);
+		setTimeout("textCountDown(59)",1000);
+    });
 	
 	
-    $("#Register").click(function(){
+});
+
+	
+	var currBtn;
+	
+	function textCountDown(sec){
+		$(currBtn).html("已发送("+sec+")");
+		if((sec-1)===0){
+			$(currBtn).html("发送验证码");
+			$(currBtn).removeAttr("disabled");
+			$(currBtn).removeClass("disabled");
+		}else{
+			setTimeout("textCountDown("+(sec-1)+")",1000);
+		}
+	}
+
+
+function SelectModuleFromUrl(){
+	var names = window.location.href.split("#");
+	SelectModule(names[1]);
+}
+
+function SelectModule(name){
 		if(animating)return;
-		animating =true;
+		animating = true;
+		$(".nav-wrapper ul li").removeClass("active");
+	if(name=="Login"){
+		$(".nav-wrapper ul:eq(0) li:eq(0)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(0)").addClass("active");
 		$(currCard).fadeOut(200,function(){
-			$("#RegisterCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Login").removeClass("active");
-			$("#Wrapper_Register").addClass("active");
-			currCard = $("#RegisterCard");
-		});
-		
-	});
-	$("#NewPassword").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#NewPasswordCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Login").removeClass("active");
-			$("#Wrapper_NewPassword").addClass("active");
-			currCard = $("#NewPasswordCard");
-		});
-		
-	});
-	$("#Wrapper_NewPassword").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#NewPasswordCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Login,#Wrapper_Register").removeClass("active");
-			$("#Wrapper_NewPassword").addClass("active");
-			currCard = $("#NewPasswordCard");
-		});
-		
-	});
-	$("#Wrapper_Login").click(function(){
-		if(animating)return;
-		animating =true;
-		$(currCard).fadeOut(200,function(){
-			$("#LoginCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_Register,#Wrapper_NewPassword").removeClass("active");
-			$("#Wrapper_Login").addClass("active");
+			$("#LoginCard").fadeIn(200, function(){animating = false;});
 			currCard = $("#LoginCard");
 		});
-		
-	});
-	$("#Wrapper_Register").click(function(){
-		if(animating)return;
-		animating =true;
+	}else if(name=="Register"){
+		$(".nav-wrapper ul:eq(0) li:eq(1)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(1)").addClass("active");
 		$(currCard).fadeOut(200,function(){
-			$("#RegisterCard").fadeIn(200, function(){animating =false;});
-			$("#Wrapper_NewPassword,#Wrapper_Login").removeClass("active");
-			$("#Wrapper_Register").addClass("active");
+			$("#RegisterCard").fadeIn(200, function(){animating = false;});
 			currCard = $("#RegisterCard");
 		});
-		
-	});
-});
+	}else if(name=="ForgetPassword"){
+		$(".nav-wrapper ul:eq(0) li:eq(2)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(2)").addClass("active");
+		$(currCard).fadeOut(200,function(){
+			$("#NewPasswordCard").fadeIn(200, function(){animating = false;});
+			currCard = $("#NewPasswordCard");
+		});
+	}else{
+		$(".nav-wrapper ul:eq(0) li:eq(0)").addClass("active");
+		$(".nav-wrapper ul:eq(1) li:eq(0)").addClass("active");
+		$(currCard).fadeOut(200,function(){
+			$("#LoginCard").fadeIn(200, function(){animating = false;});
+			currCard = $("#LoginCard");
+		});
+	}
+}

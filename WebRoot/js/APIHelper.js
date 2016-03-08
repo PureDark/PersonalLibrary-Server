@@ -256,7 +256,7 @@
 							var borrowRecords = [];
 							$.each(data, function(i, br){
 								borrowRecords[i] = BorrowRecord.newInstance(br.brid, br.loan_uid, br.borrow_uid, 
-									br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status);
+								br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status, true);
 							});
 							callback.onSuccess(borrowRecords);
 						},
@@ -276,7 +276,7 @@
 							var borrowRecords = [];
 							$.each(data, function(i, br){
 								borrowRecords[i] = BorrowRecord.newInstance(br.brid, br.loan_uid, br.borrow_uid, 
-									br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status);
+								br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status, false);
 							});
 							callback.onSuccess(borrowRecords);
 						},
@@ -446,7 +446,23 @@
 						}
 			});
 		},
-
+		getBookDetails: function(isbn13, callback){
+			$.ajax({
+				type: "GET",
+				url: "http://api.douban.com/v2/book/isbn/"+isbn13,
+    			dataType: "json",
+			    success: function(result){
+					 
+					 var data = result.data;
+					 var book = Book.newInstance(data.image, data.title, data.summary, data.pubdate, data.author[0], data.translator[0], data.pages, data.isbn13, data.price);
+					 callback.onSuccess(book);
+				},
+				error:function(xhr){
+					 callback.onFailure(ApiError.newInstance(1009));
+				}
+			});
+		}
+	
 	};
 	
 	function postNoReturnData(params, callback){
@@ -508,3 +524,7 @@
 			}
 		});
 	}
+	
+	
+	
+	

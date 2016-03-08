@@ -7,7 +7,7 @@
 		newInstance: function(errorCode){
 			var apiError = {};
 			apiError.errorCode = errorCode;
-
+			
 			var errorString;
 			switch(errorCode){
 				case 1000:errorString="未知错误";break;

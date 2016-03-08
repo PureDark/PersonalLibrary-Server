@@ -21,14 +21,36 @@ $(document).ready(function(e) {
 		if(cellphone.length===11){
 			PLServerAPI.getUidByCellphone(cellphone, {
 				onSuccess: function(uid){
+					$("#input_cellphone_login").removeClass("invalid");
 					$("#avatar").attr("src","http://115.28.135.76/images/users/avatars/"+uid+".png");
 				},
 				onFailure: function(apiError){
 					$("#avatar").attr("src","images/avater/a2.png");
+					$("#input_cellphone_login").removeClass("valid");
+					$("#input_cellphone_login").addClass("invalid");
+					$("#input_cellphone_login").parent().children("label").attr("data-error",apiError.getErrorMessage());
 				}
 			});
 		}else{
 			$("#avatar").attr("src","images/avater/a2.png");
+		}
+	});
+	
+	$("#input_cellphone_register").bind('input propertychange', function() {
+        var cellphone = $("#input_cellphone_register").val();
+		if(cellphone.length===11){
+			PLServerAPI.verifyCellphoneUnused(cellphone, {
+				onSuccess: function(uid){
+					$("#input_cellphone_register").removeClass("invalid");
+					$("#input_cellphone_register").addClass("valid");
+					$("#input_cellphone_register").parent().children("label").attr("data-success","手机号可以使用");
+				},
+				onFailure: function(apiError){
+					$("#input_cellphone_register").removeClass("valid");
+					$("#input_cellphone_register").addClass("invalid");
+					$("#input_cellphone_register").parent().children("label").attr("data-error",apiError.getErrorMessage());
+				}
+			});
 		}
 	});
 
@@ -40,10 +62,14 @@ $(document).ready(function(e) {
         var cellphone = $("#input_cellphone_login").val();
         var password = $("#input_password_login").val();
 		if(cellphone.length!==11){
-			Materialize.toast('手机号码格式不正确！', 4000)
+			$("#input_cellphone_login").removeClass("valid");
+			$("#input_cellphone_login").addClass("invalid");
+			$("#input_cellphone_login").parent().children("label").attr("data-error",'手机号码格式不正确！');
 			return;
 		}else if(password.length<6||password.length>20){
-			Materialize.toast('密码长度6在9到20位之间！', 4000)
+			$("#input_password_login").removeClass("valid");
+			$("#input_password_login").addClass("invalid");
+			$("#input_password_login").parent().children("label").attr("data-error",'密码长度应在6到20位之间！');
 			return;
 		}
 		sending = true;
@@ -70,13 +96,19 @@ $(document).ready(function(e) {
         var repassword = $("#input_repassword_register").val();
         var captcha = $("#input_captcha_register").val();
 		if(cellphone.length!==11){
-			Materialize.toast('手机号码格式不正确！', 4000)
+			$("#input_cellphone_register").removeClass("valid");
+			$("#input_cellphone_register").addClass("invalid");
+			$("#input_cellphone_register").parent().children("label").attr("data-error",'手机号码格式不正确！');
 			return;
-		}else if(password.length<9||password.length>20){
-			Materialize.toast('密码长度应在9到20位之间！', 4000)
+		}else if(password.length<6||password.length>20){
+			$("#input_password_register").removeClass("valid");
+			$("#input_password_register").addClass("invalid");
+			$("#input_password_register").parent().children("label").attr("data-error",'密码长度应在6到20位之间！');
 			return;
 		}else if(password!=repassword){
-			Materialize.toast('两次输入的密码不一致！', 4000)
+			$("#input_repassword_register").removeClass("valid");
+			$("#input_repassword_register").addClass("invalid");
+			$("#input_repassword_register").parent().children("label").attr("data-error",'两次输入的密码不一致！');
 			return;
 		}
 		sending = true;
@@ -101,10 +133,14 @@ $(document).ready(function(e) {
         var password = $("#input_password_forgetpassword").val();
         var captcha = $("#input_captcha_register").val();
 		if(cellphone.length!==11){
-			Materialize.toast('手机号码格式不正确！', 4000)
+			$("#input_cellphone_forgetpassword").removeClass("valid");
+			$("#input_cellphone_forgetpassword").addClass("invalid");
+			$("#input_cellphone_forgetpassword").parent().children("label").attr("data-error",'手机号码格式不正确！');
 			return;
-		}else if(password.length<9||password.length>20){
-			Materialize.toast('密码长度应在9到20位之间！', 4000)
+		}else if(password.length<6||password.length>20){
+			$("#input_password_forgetpassword").removeClass("valid");
+			$("#input_password_forgetpassword").addClass("invalid");
+			$("#input_password_forgetpassword").parent().children("label").attr("data-error",'密码长度应在6到20位之间！');
 			return;
 		}else if(captcha.length===0){
 			Materialize.toast('请输入验证码！', 4000)

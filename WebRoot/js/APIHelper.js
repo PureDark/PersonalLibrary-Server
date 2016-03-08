@@ -1,8 +1,9 @@
-/**
- * Created by PureDark on 2016/03/07.
- * 用于简化服务端API调用的帮助类，对所有API调用进行了封装
- */
- 
+	/**
+	 * Created by PureDark on 2016/03/07.
+	 * 用于简化服务端API调用的帮助类，对所有API调用进行了封装
+	 */
+	 
+ 	"use strict";
 	var PLServerAPI = {
 		login: function(cellphone, password, callback){
 			var params = {
@@ -209,6 +210,14 @@
 							callback.onFailure(apiError);
 						}
 			});
+		},
+		reorderBooks: function(orders, callback){
+			var params = {
+						module: "library",
+						action: "reorderBooks",
+						orders: orders
+			};
+			postNoReturnData(params, callback);
 		},
 		addBorrowRecord: function(bid, loan_uid, callback){
 			var params = {
@@ -437,15 +446,43 @@
 						}
 			});
 		},
-
+		getBookDetails: function(isbn13, callback){
+			
+			$.ajax({
+				type: "GET",
+				url: "http://api.douban.com/v2/book/isbn/"+isbn13
+    			dataType: "json",
+			    success: function(result){
+					 if(result.status){
+						 callback.onSuccess();
+					 }else{
+						var errorCode = result.errorCode;
+	                    if (errorCode === 1002){
+	                        window.location.href = "./login.html";
+						}else{
+							callback.onFailure(ApiError.newInstance(errorCode));
+						}
+					 }
+				},
+				error:function(xhr){
+					 callback.onFailure(ApiError.newInstance(1009));
+				}
+			});
+		}
+	
 	};
 	
 	function postNoReturnData(params, callback){
-		var baseUrl = "./servlet/manager";
+		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
+		var myparams = {};
+		$.each(params, function(key, value){
+			if(value!==null&&value!="")
+				myparams[key] = value;
+		});
 		$.ajax({
 			 type: "POST",
 			 url: baseUrl,
-			 data: params,
+			 data: myparams,
 			 dataType: "json",
 			 success: function(result){
 				 if(result.status){
@@ -466,11 +503,16 @@
 	}
 	
 	function postReturnJsonElement(params, callback){
-		var baseUrl = "./servlet/manager";
+		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
+		var myparams = {};
+		$.each(params, function(key, value){
+			if(value!==null&&value!="")
+				myparams[key] = value;
+		});
 		$.ajax({
 			 type: "POST",
 			 url: baseUrl,
-			 data: params,
+			 data: myparams,
 			 dataType: "json",
 			 success: function(result){
 				 if(result.status){

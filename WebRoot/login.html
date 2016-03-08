@@ -12,8 +12,11 @@
 
   <!--  Scripts-->
   <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery.cookie.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/beans.js"></script>
+  <script src="js/APIHelper.js"></script>
   <script src="js/modules/login.js"></script>
    
 </head>
@@ -21,15 +24,15 @@
   <nav role="navigation" class="nav-color">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">个人图书馆</a>
       <ul class="right hide-on-med-and-down">
-        <li class="active" id="Wrapper_Login"><a href="#">登录</a></li>
-        <li id="Wrapper_Register"><a href="#">注册</a></li>
-        <li id="Wrapper_NewPassword"><a href="#">忘记密码</a></li>
+        <li class="active"><a href="#Login">登录</a></li>
+        <li><a href="#Register">注册</a></li>
+        <li><a href="#ForgetPassword">忘记密码</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav" style="left: -250px;">
-        <li class="active"><a href="#">登录</a></li>
-        <li><a href="#">注册</a></li>
-        <li><a href="#">忘记密码</a></li>
+        <li class="active"><a href="#Login">登录</a></li>
+        <li><a href="#Register">注册</a></li>
+        <li><a href="#ForgetPassword">忘记密码</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -38,97 +41,101 @@
 	<div id="index-container">
               <div id="LoginCard" class="card center cardcolor z-depth-2 myCard">
                     <div class="card-content">
-                         <img class=" circle responsive-img"src="images/avater/a2.png">
+                        <img id="avatar" class="circle responsive-img z-depth-1" 
+                        src="images/avater/a2.png" onerror="javascript:this.src='images/avater/a2.png'" >
+                        <div>
+                            <div class="input-field">
+                              <input id="input_cellphone_login" type="tel" class="validate tel-color">
+                              <label for="input_cellphone_login" class="">手机号</label>
+                            </div>
+                            <div class="input-field">
+                              <input id="input_password_login" type="password" class="validate">
+                              <label for="input_password_login" class="">密码</label>
+                            </div>
                             <div>
-                                <div class="input-field">
-                                  <input id="icon_telephone" type="tel" class="validate tel-color">
-                                  <label for="icon_telephone" class="">手机号</label>
+                              <a id="btnLogin" class="waves-effect waves-light btn-large" style="width: 100%;">登录</a>
+                            </div>
+                            
+                            <div style="overflow: auto; margin-top: 20px;">
+                                <div class="left">
+                                    <a href="#Register" class="#" style="color:#26a69a ">注册账户</a>
                                 </div>
-                                <div class="input-field">
-                                  <input id="icon_prefix" type="text" class="validate">
-                                  <label for="icon_prefix" class="">密码</label>
-                                </div>
-                                <div>
-                                  <a class="waves-effect waves-light btn-large" style="width: 100%;" href="modules/Book/MyBooks.html">登录</a>
-                                </div>
-                                
-                                <div style="overflow: auto; margin-top: 20px;">
-                                    <div class="left" id="Register">
-                                        <a href="#" class="#" style="color:#26a69a ">注册账户</a>
-                                    </div>
-                                    <div class="right" id="NewPassword">
-                                        <a href="#" class="#" style="color:#26a69a ">忘记密码</a>
-                                    </div>
+                                <div class="right">
+                                    <a href="#ForgetPassword" class="#" style="color:#26a69a ">忘记密码</a>
                                 </div>
                             </div>
+                        </div>
                      </div>
-                                        
               </div>
               
               <div id="RegisterCard" class="card center cardcolor z-depth-2 myCard">
                     <div class="card-content">
-                            <div style=" margin-top: -15px;"><h5>注 册</h5></div>
-                         
-                            <div>
-                                <div class="input-field">
-                                  <input id="icon_telephone" type="tel" class="validate tel-color">
-                                  <label for="icon_telephone" class="">手机号</label>
-                                </div>
-                                <div class="input-field">
-                                  <input id="icon_prefix" type="text" class="validate">
-                                  <label for="icon_prefix" class="">密码</label>
-                                </div><div>&nbsp;</div>
-                                <div>
-                                  <a class="waves-effect waves-light btn-large"style="width: 100%;">注册</a>
-                                </div>
-                                
-                                
+                        <div style=" margin-top: -15px;"><h5>注 册</h5></div>
+                     
+                        <div>
+                            <div class="input-field">
+                              <input id="input_cellphone_register" type="tel" class="validate tel-color">
+                              <label for="input_cellphone_register" class="">手机号</label>
                             </div>
+                            <div class="input-field">
+                              <input id="input_password_register" type="password" class="validate">
+                              <label for="input_password_register" class="">密码</label>
+                            </div>
+                            <div class="input-field">
+                              <input id="input_repassword_register" type="password" class="validate">
+                              <label for="input_repassword_register" class="">重输密码</label>
+                            </div>
+                            <div style="overflow: auto;">
+                                <div class="input-field left" style="width:120px">
+                                  <input id="input_captcha_register" type="text" class="validate tel-color">
+                                  <label for="input_captcha_register" class="">短信验证码</label>
+                                </div>
+                                <div class="right" style="margin-top:24px">
+                                    <a id="btnSendCaptcha1" class="waves-effect waves-teal btn-flat">发送验证码</a>
+                                </div>
+                            </div>
+                            <div>
+                              <a id="btnRegister" class="waves-effect waves-light btn-large"style="width: 100%;">注册</a>
+                            </div>
+                        </div>
                      </div>
                                         
               </div>
               
               <div id="NewPasswordCard" class="card center cardcolor z-depth-2 myCard">
                     <div class="card-content">
-                            <div style=" margin-top: -15px;"><h5>忘记密码</h5></div>
-                         
-                            <div>
-                                <div class="input-field">
-                                  <input id="icon_telephone" type="tel" class="validate tel-color">
-                                  <label for="icon_telephone" class="">手机号</label>
-                                </div>
-                                <div class="input-field">
-                                  <input id="icon_prefix" type="text" class="validate">
-                                  <label for="icon_prefix" class="">新密码</label>
-                                </div>
-                                <div style="overflow: auto; margin-top: 20px;">
-                                    <div class="input-field left" style="width:145px">
-                                      <input id="code" type="text" class="validate tel-color">
-                                      <label for="code" class="">验证码</label>
-                                    </div>
-                                    <div class="right" style="margin-top:40px">
-                                        <a href="#" class="#" style="color:#26a69a ">发送验证码</a>
-                                    </div>
-                                </div>
-                                
-                                
-                                <div>
-                                  <a class="waves-effect waves-light btn-large"style="width: 100%;">提交</a>
-                                </div>
-                                
-                                
+                        <div style=" margin-top: -15px;"><h5>忘记密码</h5></div>
+                     
+                        <div>
+                            <div class="input-field">
+                              <input id="input_cellphone_forgetpassword" type="tel" class="validate tel-color">
+                              <label for="input_cellphone_forgetpassword" class="">手机号</label>
                             </div>
+                            <div class="input-field">
+                              <input id="input_password_forgetpassword" type="password" class="validate">
+                              <label for="input_password_forgetpassword" class="">新密码</label>
+                            </div>
+                            <div style="overflow: auto; margin-top: 20px;">
+                                <div class="input-field left" style="width:120px">
+                                  <input id="input_captcha_forgetpassword" type="text" class="validate tel-color">
+                                  <label for="input_captcha_forgetpassword" class="">短信验证码</label>
+                                </div>
+                                <div class="right" style="margin-top:24px">
+                                    <a id="btnSendCaptcha2" class="waves-effect waves-teal btn-flat">发送验证码</a>
+                                </div>
+                            </div>
+                            
+                            
+                            <div>
+                              <a id="btnForgetPassword" class="waves-effect waves-light btn-large"style="width: 100%;">提交</a>
+                            </div>
+                            
+                            
+                        </div>
                      </div>
                                         
               </div>
               
 	</div>
-      <br>
-      <br>
-
-
-    <div class="hiddendiv common"></div>
-    <div class="drag-target" style="left: 0px; touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-    </div>
 </body>
 </html>

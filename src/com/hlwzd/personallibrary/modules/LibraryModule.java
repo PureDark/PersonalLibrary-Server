@@ -66,7 +66,7 @@ public class LibraryModule extends Module {
 				String tidsStr = request.getParameter("tids");
 				String keyword = request.getParameter("keyword");
 				JsonParser parser = new JsonParser();
-				JsonArray tids = (tidsStr==null)?new JsonArray():parser.parse(tidsStr).getAsJsonArray();
+				JsonArray tids = (tidsStr==null||"".equals(tidsStr))?new JsonArray():parser.parse(tidsStr).getAsJsonArray();
 				int uid = (uidStr==null)?User.getUid():Integer.parseInt(uidStr);
 				return getBookList(uid, tids, keyword);
 			}
@@ -79,6 +79,20 @@ public class LibraryModule extends Module {
 				int uidto = Integer.parseInt(uidstr);
 				return exchangeBook(bid, uid, uidto);
 			}
+			else if(action.equals("reorderBooks")){
+				String ordersStr = request.getParameter("orders");
+				if(ordersStr==null)return Error(1001);
+				JsonParser parser = new JsonParser();
+				JsonArray ordersJson = parser.parse(ordersStr).getAsJsonArray();
+				int[] bids = new int[ordersJson.size()];
+				int[] orders = new int[ordersJson.size()];
+				for(int i=0; i < ordersJson.size(); i++){
+					JsonObject order = ordersJson.get(i).getAsJsonObject();
+					bids[i] = order.get("bid").getAsInt();
+					orders[i] = order.get("order").getAsInt();
+				}
+				return reorderBooks(User.getUid(), bids, orders);
+			}
 			else
 				return Error(1006);
 			
@@ -89,6 +103,13 @@ public class LibraryModule extends Module {
 			e.printStackTrace();
 			return Error(1000);
 		}
+	}
+	
+	private JsonObject reorderBooks(int uid, int[] bids, int[] orders) throws SQLException{
+		for(int i=0; i< bids.length; i++){
+			DB.executeNonQuery("UPDATE `userbook` SET `order`=? WHERE `uid` = ? AND `bid` = ?", orders[i], uid, bids[i]);
+		}
+		return Success();
 	}
 
 	private JsonObject addBook(int uid, String isbn13, String title, String cover, String author, String summary) throws SQLException{
@@ -152,7 +173,7 @@ public class LibraryModule extends Module {
 	}
 	
 	private JsonObject getBookList(int uid, JsonArray tids, String keyword) throws SQLException{
-		keyword = (keyword==null)?null:"%"+keyword+"%";
+		keyword = (keyword==null||"".equals(keyword))?null:"%"+keyword+"%";
 		String where = (keyword==null)?"":" AND (`books`.`title` LIKE ? OR `books`.`author` LIKE ?) ";
 		ResultSet rs;
 		String sql = "";
@@ -160,7 +181,7 @@ public class LibraryModule extends Module {
 			sql = "SELECT `books`.* FROM `books` "
 				 + "INNER JOIN `userbook` ON `userbook`.`bid`=`books`.`bid` "
 				 + "WHERE `userbook`.`uid`=? "+where
-				 + "ORDER BY `datetime` DESC";
+				 + "ORDER BY `order` ASC, `datetime` DESC";
 		}else{
 			String tidClause = "";
 			for(int i=0;i<tids.size();i++){
@@ -177,7 +198,7 @@ public class LibraryModule extends Module {
 					+ "WHERE `userbook`.`uid` = ? AND "
 					+ "(SELECT COUNT(1) FROM `booktags` WHERE `booktags`.`bid` = `books`.`bid` "
 					+ "AND ("+ tidClause +"))>0 " +where
-					+ "ORDER BY `datetime` DESC";
+					+ "ORDER BY `order` ASC, `datetime` DESC";
 		}
 		if(keyword==null)
 			rs = DB.executeQuery(sql, uid);

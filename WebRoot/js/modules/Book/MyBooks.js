@@ -13,7 +13,8 @@ $(document).ready(function(){
 	
 	
 	PLServerAPI.getBookList(0, null, null, {
-		onSucess: function(books){
+		onSuccess: function(books){
+			$("#sortable").empty();
 			$.each(books, function(i,book){
 				$("#sortable").append(
 					

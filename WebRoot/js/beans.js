@@ -135,16 +135,18 @@
 	};
 	
 	var Book = {
-		newInstance: function(image, title, summary, pubdate, author, translator, pages, isbn13, price){
+		newInstance: function(image, title, summary, pubdate, author, translator, pages, isbn13, price, publisher){
 			var book = {};
 			book.image = image;
 			book.title = title;
 			book.summary = summary;
+			book.pubdate = pubdate;
 			book.author = author;
 			book.translator = translator;
 			book.pages = pages;
 			book.isbn13 = isbn13;
 			book.price = price;
+			book.publisher = publisher;
 			return book;
 		}
 	};

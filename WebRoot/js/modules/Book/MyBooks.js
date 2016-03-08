@@ -8,7 +8,8 @@ $(document).ready(function(){
 	$(document).delegate(".BookCard", "click", function(e){
 		$("#bookDetailModal").openModal();
 		var bid = $(this).parent("li").attr("bid");
-		 window.BookDetailPage.getBook(bid);
+		var isbn13 = $(this).parent("li").attr("isbn");
+		window.BookDetailPage.getBook(bid,isbn13);
 	});
 	
 	
@@ -18,7 +19,7 @@ $(document).ready(function(){
 			$.each(books, function(i,book){
 				$("#sortable").append(
 					
-					   '<li bid="'+book.bid+'" class="col s12 m6 l4">'+
+					   '<li bid="'+book.bid+'" isbn="'+book.isbn13+'" class="col s12 m6 l4">'+
 		                  '<div class="card white darken-1 BookCard hoverable" >'+
 		                    '<div class="BookCover">'+
 		                      '<img src="'+book.cover+'" style="width: 150px; height: 222px">'+

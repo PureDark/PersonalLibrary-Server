@@ -6,22 +6,33 @@
   	<div style="display: flex;">
             <div class="row" style="flex:1;">
                 <div class="col s12 m12 l12">
-                  <div class="row" style="margin-bottom:0px">
-                  		<div class="col l4 m5 s6">
-                            <div class="input-field" style="min-width: 300px">
-                              <i class="material-icons prefix" style="margin-top:21px">search</i>
-                              <input id="icon_prefix" type="text" class="validate">
-                              <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
+                  
+                    <div class="card" id="MyFriendsCard">
+                        <div class="card-content row" style="height:80px; margin-bottom:0px;">
+                            <span class="card-title hide-on-med-and-down">我的书友</span>
+                            <div class="col l6 m6 s6 hide-on-large-only">
+                            <a class="waves-effect waves-light btn modal-trigger" style="margin-top:5px;" href="#modal1">书友请求</a>
+                        </div>
+                            <div class="col l6 m6 s6" style="float:right">
+                                <div class="input-field">
+                                    <select class="icons">
+                                      <option value="" disabled selected>Choose your option</option>
+                                      <option value="" data-icon="../../images/avater/a2.png" class="left circle">example 1</option>
+                                      <option value="" data-icon="../../images/avater/a2.png" class="left circle">example 2</option>
+                                      <option value="" data-icon="../../images/avater/a2.png" class="left circle">example 3</option>
+                                    </select>
+                                    <label>Images in select</label>
+                                </div>
+                                
+                                <div class="input-field" style="width: 250px; margin-top:0px;float:right; display:none">
+                                  <i class="material-icons prefix" style="margin-top:21px">search</i>
+                                  <input id="FriendName" type="text" class="validate">
+                                  <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
+                                </div>
+                                
                             </div>
                         </div>
-                        <div class="col l8 m7 s6 hide-on-large-only">
-                            <a class="waves-effect waves-light btn modal-trigger" style="margin-top:25px;float:right" href="#modal1">书友请求</a>
-                        </div>
-                  </div>
-                    <div class="card" id="MyFriendsCard">
-                        <div class="card-content">
-                            <span class="card-title">我的书友</span>
-                        </div>
+                        <div>
                         <ul class="collection">
                             <li class="collection-item avatar">
                                <img src="images/avater/a1.png" alt="" class="circle">
@@ -101,6 +112,7 @@
                                <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
                             </li>
                           </ul>
+                          </div>
                       </div>
                       <div class="row center">     
                           <ul class="pagination">
@@ -116,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hide-on-med-and-down" style="padding-left:15px;margin-top:76px;width:350px">
+            <div class="hide-on-med-and-down" style="padding-left:15px;width:350px">
             	<div class="card" id="requestWrapper" style="width:350px">
                     <ul class="tabs">
                         <li class="tab"><a class="active" href="#NewRequest">新的请求</a></li>

@@ -4,8 +4,18 @@ $(document).ready(function(){
 	
     $('#requestWrapper').pushpin({ top: $('#MyFriendsCard').offset().top });
     $('ul.tabs').tabs();
+	
+
  });
  
  function accept(rid){
 	 $(".tabs li:eq(1) a").click();
  }
+
+PLServerAPI.searchUser($("#FriendName").val(), {
+		onSuccess: function(friends){
+			
+		},
+		onFailure: function(apiError){
+		}
+	});

@@ -45,10 +45,14 @@ ul.collection li a.secondary-content{
     color:#44D644;
 }
 
-.RequestVerification{
-	width:60%;
+ul.collection li.collection-item.avatar p.RequestVerification{
+	margin-right:235px;
 }
 
-.Blog{
-	width:70%;
+ul.collection li.collection-item.avatar p.Blog{
+	margin-right:200px;
+}
+
+#requestWrapper ul.collection li.collection-item.avatar p.RequestVerification{
+	margin-right:100px;
 }

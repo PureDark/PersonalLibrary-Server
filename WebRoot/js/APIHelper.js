@@ -211,6 +211,14 @@
 						}
 			});
 		},
+		reorderBooks: function(orders, callback){
+			var params = {
+						module: "library",
+						action: "reorderBooks",
+						orders: orders
+			};
+			postNoReturnData(params, callback);
+		},
 		addBorrowRecord: function(bid, loan_uid, callback){
 			var params = {
 						module: "borrow",

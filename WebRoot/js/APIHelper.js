@@ -470,8 +470,9 @@
 		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
-			if(value!==null&&value!="")
+			if(value!==null&&value!==""){
 				myparams[key] = value;
+			}
 		});
 		$.ajax({
 			 type: "POST",
@@ -500,8 +501,9 @@
 		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
-			if(value!==null&&value!="")
+			if(value!==null&&value!==""){
 				myparams[key] = value;
+			}
 		});
 		$.ajax({
 			 type: "POST",

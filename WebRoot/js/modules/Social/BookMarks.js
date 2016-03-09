@@ -10,7 +10,7 @@ $(document).ready(function(){
 	});
 	
 	
-	PLServerAPI.getRecentBookMarks(0, {
+	PLServerAPI.getRecentBookMarks(null,1, {
 		onSuccess: function(bookMarks){
 			$("#BookMarkContainer").empty();
 			$.each(bookMarks, function(i,bookMark){

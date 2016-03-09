@@ -85,7 +85,7 @@ $(document).ready(function(e) {
 				'<div class="cbp_tmicon cbp_tmicon-phone hide-on-med-and-down"></div>'+
 					'<div class="col s12 m10 l5 offset-l0">'+
 						'<div class="card white darken-1 hoverable borrowcard">'+
-							'<div class="BookDetail">'+
+							'<div>'+
 								'<div class="card-content black-text" style="height: 100%">'+
 									'<div style="overflow: auto;">'+
 										'<div class="chips">'+

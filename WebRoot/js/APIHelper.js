@@ -256,7 +256,7 @@
 							var borrowRecords = [];
 							$.each(data, function(i, br){
 								borrowRecords[i] = BorrowRecord.newInstance(br.brid, br.loan_uid, br.borrow_uid, 
-									br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status);
+								br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status, true);
 							});
 							callback.onSuccess(borrowRecords);
 						},
@@ -276,7 +276,7 @@
 							var borrowRecords = [];
 							$.each(data, function(i, br){
 								borrowRecords[i] = BorrowRecord.newInstance(br.brid, br.loan_uid, br.borrow_uid, 
-									br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status);
+								br.nickname, br.book_id , br.book_name, br.borrow_time, br.return_time, br.status, false);
 							});
 							callback.onSuccess(borrowRecords);
 						},
@@ -408,11 +408,12 @@
 						}
 			});
 		},
-		getRecentBookMarks: function(uid, callback){
+		getRecentBookMarks: function(uid, page, callback){
 			var params = {
 						module: "social",
 						action: "getRecentBookMarks",
-						uid: uid
+						uid: uid,
+						page: page
 			};
 			postReturnJsonElement(params, {
 						onSuccess : function(data){
@@ -447,22 +448,16 @@
 			});
 		},
 		getBookDetails: function(isbn13, callback){
-			
 			$.ajax({
 				type: "GET",
-				url: "http://api.douban.com/v2/book/isbn/"+isbn13
+				url: "http://api.douban.com/v2/book/isbn/"+isbn13,
     			dataType: "json",
 			    success: function(result){
-					 if(result.status){
-						 callback.onSuccess();
-					 }else{
-						var errorCode = result.errorCode;
-	                    if (errorCode === 1002){
-	                        window.location.href = "./login.html";
-						}else{
-							callback.onFailure(ApiError.newInstance(errorCode));
-						}
-					 }
+					 var data = result;
+					 if(typeof(data.images.large)!="undefined")
+					 	data.image = data.images.large;
+					 var book = Book.newInstance(data.image, data.title, data.summary, data.pubdate, data.author[0], data.translator[0], data.pages, data.isbn13, data.price,data.publisher);
+					 callback.onSuccess(book);
 				},
 				error:function(xhr){
 					 callback.onFailure(ApiError.newInstance(1009));
@@ -476,8 +471,9 @@
 		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
-			if(value!==null&&value!="")
+			if(value!==null&&value!==""){
 				myparams[key] = value;
+			}
 		});
 		$.ajax({
 			 type: "POST",
@@ -506,8 +502,9 @@
 		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
-			if(value!==null&&value!="")
+			if(value!==null&&value!==""){
 				myparams[key] = value;
+			}
 		});
 		$.ajax({
 			 type: "POST",
@@ -531,3 +528,7 @@
 			}
 		});
 	}
+	
+	
+	
+	

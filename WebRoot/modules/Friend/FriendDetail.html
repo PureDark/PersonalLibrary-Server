@@ -15,6 +15,8 @@
 		
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/jquery.adaptive-backgrounds.js"></script>
+        <script src="../../js/beans.js"></script>
+  		<script src="../../js/APIHelper.js"></script>
         <script src="../../js/modules/Friend/FriendDetail.js"></script>
 		
 	</head>
@@ -29,13 +31,13 @@
 			<div style="height: 220px;width: auto;">
             	  <div class="blackMask left" style="width: 550px; height: 220px"></div>
 				  <div class="inner" style="position: absolute;width: 550px; height: 220px; ">
-						<div style="margin: 25px;display: flex;">
+						<div id="FriendInfo" style="margin: 25px;display: flex;">
                         	<img src="../../images/avater/a2.png" alt="" class="circle" style="height:130px; margin-top:18px" data-adaptive-background="1">
 						    <ul style="margin-left: 40px ">
 								<li class="flow-text" style="width: 150px">
 									<h5 class="truncate" style="margin-left:10px ; margin-top:30px">徐一飞</h5>
 								</li>
-								<li class="chip booktab" style="margin-top: 15px"><span class="truncate" style="width: 300px">读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路</span>	</li>
+								<li class="chip booktab" style="margin-top: 15px"><span class="truncate" style="max-width: 300px">读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路读万卷书，行万里路</span>	</li>
 								
 							</ul>
 					    </div>
@@ -50,7 +52,7 @@
 			            </blockquote>
 						<blockquote>
 							
-                            <ul>
+                            <ul id="FriendBooks">
                             <li class="card hoverable BookCover BookShow">
                                 <img src="../../images/book1.jpg" class="BookCover">
                             </li>
@@ -75,7 +77,7 @@
 		    </div>	
 		</div>    
 		
-        <div class="bookMarkContainer">
+        <div id="bookMarksList" class="bookMarkContainer">
             <div class="card white darken-1 hoverable BookCard" >
                 <div class="BookDetail">  
                     <img src="../../images/book1.jpg" class="BookCover" style="float:right">

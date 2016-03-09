@@ -7,7 +7,7 @@
 		newInstance: function(errorCode){
 			var apiError = {};
 			apiError.errorCode = errorCode;
-
+			
 			var errorString;
 			switch(errorCode){
 				case 1000:errorString="未知错误";break;
@@ -74,7 +74,7 @@
 	};
 	
 	var BorrowRecord = {
-		newInstance: function(brid, loan_uid, borrow_uid, nickname, book_id , book_name, borrow_time, return_time, status){
+		newInstance: function(brid, loan_uid, borrow_uid, nickname, book_id , book_name, borrow_time, return_time, status, isBorrowed){
 			var borrowRecord = {};
 			borrowRecord.brid = brid;
 			borrowRecord.loan_uid = loan_uid;
@@ -85,6 +85,7 @@
 			borrowRecord.borrow_time = borrow_time;
 			borrowRecord.return_time = return_time;
 			borrowRecord.status = status;
+			borrowRecord.isBorrowed = isBorrowed;
 			return borrowRecord;
 		}
 	};
@@ -130,5 +131,22 @@
 			bookMark.nickname = nickname;
 			bookMark.signature = signature;
 			return bookMark;
+		}
+	};
+	
+	var Book = {
+		newInstance: function(image, title, summary, pubdate, author, translator, pages, isbn13, price, publisher){
+			var book = {};
+			book.image = image;
+			book.title = title;
+			book.summary = summary;
+			book.pubdate = pubdate;
+			book.author = author;
+			book.translator = translator;
+			book.pages = pages;
+			book.isbn13 = isbn13;
+			book.price = price;
+			book.publisher = publisher;
+			return book;
 		}
 	};

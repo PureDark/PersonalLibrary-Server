@@ -58,6 +58,7 @@
 
 .booktab{
   display: table;
+  max-width: 280px;
 }
 .chips{
   display: inline-block;

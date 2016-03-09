@@ -7,18 +7,19 @@ $(document).ready(function(){
 	$(document).undelegate(".BookCard", "click");
 	$(document).delegate(".BookCard", "click", function(e){
 		$("#bookDetailModal").openModal();
-		var id = $(this).parent("li").attr("id");
-		 window.BookDetailPage.getBook(id);
+		var bid = $(this).parent("li").attr("bid");
+		var isbn13 = $(this).parent("li").attr("isbn");
+		window.BookDetailPage.getBook(bid,isbn13);
 	});
 	
 	
-	PLServerAPI.getBookList(0, null, null, {
+	PLServerAPI.getBookList(null, null, null, {
 		onSuccess: function(books){
 			$("#sortable").empty();
 			$.each(books, function(i,book){
 				$("#sortable").append(
 					
-					   '<li id="book1" class="col s12 m6 l4">'+
+					   '<li bid="'+book.bid+'" isbn="'+book.isbn13+'" class="col s12 m6 l4">'+
 		                  '<div class="card white darken-1 BookCard hoverable" >'+
 		                    '<div class="BookCover">'+
 		                      '<img src="'+book.cover+'" style="width: 150px; height: 222px">'+

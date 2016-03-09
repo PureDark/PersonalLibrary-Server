@@ -6,28 +6,38 @@
   	<div style="display: flex;">
             <div class="row" style="flex:1;">
                 <div class="col s12 m12 l12">
-                  <div class="row" style="margin-bottom:0px">
-                  		<div class="col l4 m5 s6">
-                            <div class="input-field" style="min-width: 300px">
-                              <i class="material-icons prefix" style="margin-top:21px">search</i>
-                              <input id="icon_prefix" type="text" class="validate">
-                              <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
+                  
+                    <div class="card" id="MyFriendsCard">
+                        <div class="card-content row" style="height:80px; margin-bottom:0px;">
+                            <span class="card-title hide-on-med-and-down">我的书友</span>
+                            <div class="col l6 m6 s6 hide-on-large-only">
+                            <a class="waves-effect waves-light btn modal-trigger" style="margin-top:5px;" href="#modal1">书友请求</a>
+                        </div>
+                            <div class="col l6 m6 s6" style="float:right">
+  <div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>         
+                                <div class="input-field" style="width: 250px; margin-top:0px;float:right; display:none">
+                                  <i class="material-icons prefix" style="margin-top:21px">search</i>
+                                  <input id="FriendName" type="text" class="validate">
+                                  <label for="icon_prefix" style="margin-top:10px">搜索书友昵称</label>
+                                </div>
+                                
                             </div>
                         </div>
-                        <div class="col l8 m7 s6 hide-on-large-only">
-                            <a class="waves-effect waves-light btn modal-trigger" style="margin-top:25px;float:right" href="#modal1">书友请求</a>
-                        </div>
-                  </div>
-                    <div class="card" id="MyFriendsCard">
-                        <div class="card-content">
-                            <span class="card-title">我的书友</span>
-                        </div>
-                        <ul class="collection">
+                        <div>
+                        <ul id="FriendList" class="collection">
                             <li class="collection-item avatar">
                                <img src="images/avater/a1.png" alt="" class="circle">
                                <span class="title">昵称</span>
                                <p class="Blog">南方姑娘 你是否爱上了北方 南方姑娘 你说今天你就要回到你的家乡 思念让人心伤 她呼唤着你的泪光 南方的果子已熟 那是最简单的理想</p>
-                               <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                               <a  class="secondary-content waves-effect waves-light btn GetIn">进入TA的主页</a>
                             </li>
                             
                             <li class="collection-item avatar">
@@ -36,7 +46,7 @@
                               <p class="Blog">First Line 
                                  Second Line
                               </p>
-                              <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
+                              <a href="#!" class="secondary-content waves-effect waves-light btn GetIn">进入TA的主页</a>
                             </li>
                             <li class="collection-item avatar">
                               <i class="material-icons circle green">insert_chart</i>
@@ -101,22 +111,23 @@
                                <a href="#!" class="secondary-content waves-effect waves-light btn">进入TA的主页</a>
                             </li>
                           </ul>
+                          </div>
                       </div>
                       <div class="row center">     
                           <ul class="pagination">
                             
-                            <li class="active"><a href="#!">1</a></li>
-                            <li class="waves-effect"><a href="#!">2</a></li>
-                            <li class="waves-effect"><a href="#!">3</a></li>
-                            <li class="waves-effect"><a href="#!">4</a></li>
-                            <li class="waves-effect"><a href="#!">5</a></li>
+                            <li class="active"><a onClick="getFriendList(1)">1</a></li>
+                            <li class="waves-effect"><a onClick="getFriendList(2)">2</a></li>
+                            <li class="waves-effect"><a onClick="getFriendList(3)">3</a></li>
+                            <li class="waves-effect"><a onClick="getFriendList(4)">4</a></li>
+                            <li class="waves-effect"><a onClick="getFriendList(5)">5</a></li>
                             
                           </ul>
                     
                     </div>
                 </div>
             </div>
-            <div class="hide-on-med-and-down" style="padding-left:15px;margin-top:76px;width:350px">
+            <div class="hide-on-med-and-down" style="padding-left:15px;width:350px">
             	<div class="card" id="requestWrapper" style="width:350px">
                     <ul class="tabs">
                         <li class="tab"><a class="active" href="#NewRequest">新的请求</a></li>
@@ -195,4 +206,8 @@
                     </li>
                </ul>
            </div>
-      </div> 
+      </div>
+      
+ <div id="FriendDetailModal" class="modal customModal" style="display:flex;overflow:hidden;">
+          <iframe id="FriendDetailPage" name="FriendDetailPage" src="modules/Friend/FriendDetail.html" style="flex:1;width: 100%; min-height:100%;"/>
+ </div> 

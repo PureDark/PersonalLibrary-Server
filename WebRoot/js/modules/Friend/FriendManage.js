@@ -9,6 +9,10 @@ $(document).ready(function(){
 	$(document).undelegate(".GetIn", "click");
 	$(document).delegate(".GetIn", "click", function(e){
 		$("#FriendDetailModal").openModal();
+		var uid = $(this).parent("li").attr("uid");
+		var nickname = $(this).parent("li").attr("nickname");
+		var signature = $(this).parent("li").attr("signature");
+		window.FriendDetailPage.getUserInfo(uid,nickname,signature);
 	});
 	
 	getFriendList(1);
@@ -40,7 +44,7 @@ function getFriendList(page){
 				$.each(friends, function(i, friend){
 						
 						$("#FriendList").append(
-							  '<li class="collection-item avatar">'+
+							  '<li uid='+friend.uid+' nickname='+friend.nickname+' signature='+friend.signature+' class="collection-item avatar">'+
 								  '<img src="http://115.28.135.76/images/users/avatars/'+friend.uid+'.png" alt="" class="circle">'+
 								  '<span class="title">'+friend.nickname+'</span>'+
 								  '<p class="Blog">'+friend.signature+
@@ -56,6 +60,8 @@ function getFriendList(page){
 			}
 	});
 }
+
+
 
 
 

@@ -115,10 +115,10 @@ $(document).ready(function(e) {
 			status='<a class="waves-effect waves-dark btn-flat agree" onClick="acceptRecored('+record.brid+',true)">借出</a>'+
             	   '<a class="waves-effect waves-dark btn-flat refuse" onClick="acceptRecored('+record.brid+',false)">拒绝</a>';
 		}else if(record.status==2){
-			status='<span  style="color:#807e7e"><br>已同意</span>';
+			status='<a class="waves-effect waves-dark btn-flat agree" onClick="setReturned('+record.brid+')">确认已还</a>';
 		}else if(record.status==3){
 			status='<span  style="color:#807e7e"><br>已拒绝</span>';;
-		}else if(record.staus==4){
+		}else if(record.status==4){
 			status='<span  style="color:#807e7e"><br>已归还</span>';;
 		}else{
 			status="";
@@ -172,4 +172,15 @@ $(document).ready(function(e) {
 					Materialize.toast(apiError.getErrorMessage(), 4000);
 				}
 			});
+	}
+	function setReturned(brid){
+		PLServerAPI.setBookReturned(brid,{
+			onSuccess:function(){
+				getRecords();
+			},
+			onFailure:function(){
+					Materialize.toast(apiError.getErrorMessage(), 4000);
+			}
+		});
+		
 	}

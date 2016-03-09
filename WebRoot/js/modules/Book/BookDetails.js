@@ -1,5 +1,6 @@
 ;(function(window, document, $){
 
+  var WriteMarkOrNot = false;
   $(document).ready(function(){
 
 		// Make some selections.
@@ -22,6 +23,25 @@
   		});
   		
 
+        
+        $("#modifyMark").click(function(){
+	        
+	        if(WriteMarkOrNot==false) {
+		        $(".bookMarkContainer:eq(1)").css("display","none") ;
+				$(".bookMarkContainer:eq(0)").css("display","block");
+				$("#modifyMark .material-icons").html("done");
+				$(".valign-wrapper .writemark").html("提交");
+				//Materialize.toast("提交", 4000);
+				WriteMarkOrNot=true;
+	        }else if(WriteMarkOrNot==true) {
+	            $(".bookMarkContainer:eq(0)").css("display","none") ;
+				$(".bookMarkContainer:eq(1)").css("display","block");
+				$("#modifyMark .material-icons").html("mode_edit");
+				$(".valign-wrapper .writemark").html("写书评");
+				WriteMarkOrNot=false;
+            }
+        });
+               
 
 	// Run the A.B. plugin.
 	//$.adaptiveBackground.run({ parent: "1" });

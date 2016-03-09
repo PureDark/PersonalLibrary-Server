@@ -83,7 +83,7 @@ $(document).ready(function(e) {
 	});
 	
 	$("#input_repassword_register").focusout(function(e) {
-        var password = $("##input_password_register").val();
+        var password = $("#input_password_register").val();
         var repassword = $(this).val();
 		if(password!=repassword){
 			$(this).removeClass("valid");

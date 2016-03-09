@@ -8,6 +8,7 @@ $(document).ready(function(e) {
 	$("#BorrowOut .collapsible-header").click(function(){
 		$("#TabBorrowOut").children("a").click();
 	});
+	$("#Borrow").empty();
 	
 	getRecords();
 	

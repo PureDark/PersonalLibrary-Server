@@ -408,11 +408,12 @@
 						}
 			});
 		},
-		getRecentBookMarks: function(uid, callback){
+		getRecentBookMarks: function(uid, page, callback){
 			var params = {
 						module: "social",
 						action: "getRecentBookMarks",
-						uid: uid
+						uid: uid,
+						page: page
 			};
 			postReturnJsonElement(params, {
 						onSuccess : function(data){

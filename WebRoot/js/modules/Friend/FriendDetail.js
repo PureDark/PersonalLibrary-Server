@@ -26,38 +26,49 @@ var Info;
 
 })(window, document, jQuery)
 
-
-PLServerAPI.getUserInfo({
-	OnSuccess: function(userInfo){
-		Info = userInfo;
-		$("#FriendInfo").append(
-		'<img src="http://115.28.135.76/images/users/avatars/'+userInfo.uid+'.png" alt="" class="circle" style="height:130px; margin-top:18px" data-adaptive-background="1">'+
-		'<ul style="margin-left: 40px ">'+
-			'<li class="flow-text" style="width: 150px">'+
-				'<h5 class="truncate" style="margin-left:10px ; margin-top:30px">'+userInfo.nickname+'</h5>'+
-			'</li>'+
-			'<li class="chip booktab" style="margin-top: 15px"><span class="truncate" style="width: 300px">'+userInfo.signature+'</span>'	+
-			'</li>'+
-		'</ul>'
-		);
-	},
-	onFailure: function(apiError){
-		var ErrorCode = apiError.getErrorCode();
-		var ErrorMessage = apiError.getErrorMessage();
-		alert(ErrorCode+":"+ErrorMessage);
-	}
+function getUserInfo(uid,nickname,signature){
+	$("#FriendBooks").empty();
+	$("#bookMarksList").empty();
+	$("#FriendInfo img").attr("src", "http://115.28.135.76/images/users/avatars/"+uid+".png");
+	$("#FriendInfo h5").html(nickname);
+	$("#FriendInfo span").html(signature);
+	PLServerAPI.getBookList(uid,null,null,{
+		onSuccess :function(books){
+			$.each(books, function(i,book){
+				$("#FriendBooks").append(
+					'<li class="card hoverable BookCover BookShow">'+
+						'<img src='+book.cover+' class="BookCover">'+
+					'</li>'
+				);
+			});
+		},
+		onFailure:function(apiError){
+			Materialize.toast(apiError.getErrorMessage(), 4000);
+		}
+	});
+	PLServerAPI.getBookMarkList(null,uid,{
+		onSuccess:function(bookMarks){
+			$.each(bookMarks,function(i,bookMark){
+				
+				$("#bookMarksList").append(
+				'<div class="card white darken-1 hoverable BookCard" >'+
+					'<div class="BookDetail">'  +
+						'<img src='+bookMark.book_cover+' class="BookCover" style="float:right">'+
+						'<div class="card-content black-text" style="margin-right:145px">'+
+							'<div style="overflow: auto;">'+
+								'<h6 style="margin-top: 20px">'+bookMark.time+'</h6>'+
+							'</div>'+
+							'<hr size="1">  '+
+							'<p class="BookDesc">'+bookMark.summary+'</p>'+
+						'</div>'+
+					'</div>'+
+				'</div>'
+				);
+			});
+		},
+		onFailure:function(apiError){
+			Materialize.toast(apiError.getErrorMessage(), 4000);
+		}
 });
-/*PLServerAPI.getBookList(Info.uid,null,null,{
-	OnSuccess :function(books){
-		$.each(books, function(i,book){
-			$("#FriendBooks").append(
-				'<li class="card hoverable BookCover BookShow">'+
-                    '<img src='+book.cover+' class="BookCover">'+
-                '</li>'
-			);
-		})
-	},
-	onFailure:function(apiError){
-		
-	}
-});*/
+	
+}

@@ -92,7 +92,7 @@ public class UserModule extends Module {
 				String birthday = request.getParameter("birthday");
 		        return modifyUserInfo(User.getUid(), sex, nickname, signature, birthday);
 			}
-			else if(action.equals("getUserinfo")){	//获取用户个人信息
+			else if(action.equals("getUserInfo")){	//获取用户个人信息
 				return getUserInfo(User.getUid());
 			}
 			else if(action.equals("getUidByCellphone")){ //给手机发验证码

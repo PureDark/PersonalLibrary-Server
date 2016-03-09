@@ -408,11 +408,12 @@
 						}
 			});
 		},
-		getRecentBookMarks: function(uid, callback){
+		getRecentBookMarks: function(uid, page, callback){
 			var params = {
 						module: "social",
 						action: "getRecentBookMarks",
-						uid: uid
+						uid: uid,
+						page: page
 			};
 			postReturnJsonElement(params, {
 						onSuccess : function(data){
@@ -470,8 +471,9 @@
 		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
-			if(value!==null&&value!="")
+			if(value!==null&&value!==""){
 				myparams[key] = value;
+			}
 		});
 		$.ajax({
 			 type: "POST",
@@ -500,8 +502,9 @@
 		var baseUrl = "http://115.28.135.76/PersonalLibrary/servlet/manager";
 		var myparams = {};
 		$.each(params, function(key, value){
-			if(value!==null&&value!="")
+			if(value!==null&&value!==""){
 				myparams[key] = value;
+			}
 		});
 		$.ajax({
 			 type: "POST",

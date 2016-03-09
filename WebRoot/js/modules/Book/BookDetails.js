@@ -92,7 +92,7 @@ var WriteMarkOrNot = false;
 
 				 var len = bookMarks.length;
 				 if(len===0){
-					 $(".noResult").css("display","table");
+					 $(".noResult").css("display","block");
 					 $(".bookMarkContainer").css("display","none");
 				 }else{
 					 $(".noResult").css("display","none");

@@ -5,15 +5,15 @@
 
   <!-- CSS  -->
   <link href="css/material_icons.css" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/modules/login.css" type="text/css" rel="stylesheet" media="screen,projection">
   
 
   <!--  Scripts-->
-  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/jquery.cookie.js"></script>
-  <script src="js/materialize.js"></script>
+  <script src="js/materialize.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/beans.js"></script>
   <script src="js/APIHelper.js"></script>
@@ -38,6 +38,7 @@
     </div>
   </nav>
   <div>&nbsp;</div><div>&nbsp;</div>
+  
 	<div id="index-container">
               <div id="LoginCard" class="card center cardcolor z-depth-2 myCard">
                     <div class="card-content">
@@ -45,14 +46,14 @@
                         src="images/avater/a2.png" onerror="javascript:this.src='images/avater/a2.png'" >
                         <div>
                             <div class="input-field">
-                              <input id="input_cellphone_login" type="tel" class="validate tel-color">
+                              <input id="input_cellphone_login" type="tel" class="tel-color">
                               <label for="input_cellphone_login" class="">手机号</label>
                             </div>
                             <div class="input-field">
-                              <input id="input_password_login" type="password" class="validate">
+                              <input id="input_password_login" type="password" class="">
                               <label for="input_password_login" class="">密码</label>
                             </div>
-                            <div>
+                            <div style="margin-top: 16px;">
                               <a id="btnLogin" class="waves-effect waves-light btn-large" style="width: 100%;">登录</a>
                             </div>
                             
@@ -74,20 +75,20 @@
                      
                         <div>
                             <div class="input-field">
-                              <input id="input_cellphone_register" type="tel" class="validate tel-color">
+                              <input id="input_cellphone_register" type="tel" class="tel-color">
                               <label for="input_cellphone_register" class="">手机号</label>
                             </div>
                             <div class="input-field">
-                              <input id="input_password_register" type="password" class="validate">
+                              <input id="input_password_register" type="password" class="">
                               <label for="input_password_register" class="">密码</label>
                             </div>
                             <div class="input-field">
-                              <input id="input_repassword_register" type="password" class="validate">
+                              <input id="input_repassword_register" type="password" class="">
                               <label for="input_repassword_register" class="">重输密码</label>
                             </div>
                             <div style="overflow: auto;">
                                 <div class="input-field left" style="width:120px">
-                                  <input id="input_captcha_register" type="text" class="validate tel-color">
+                                  <input id="input_captcha_register" type="text" class="tel-color">
                                   <label for="input_captcha_register" class="">短信验证码</label>
                                 </div>
                                 <div class="right" style="margin-top:24px">
@@ -108,16 +109,16 @@
                      
                         <div>
                             <div class="input-field">
-                              <input id="input_cellphone_forgetpassword" type="tel" class="validate tel-color">
+                              <input id="input_cellphone_forgetpassword" type="tel" class="tel-color">
                               <label for="input_cellphone_forgetpassword" class="">手机号</label>
                             </div>
                             <div class="input-field">
-                              <input id="input_password_forgetpassword" type="password" class="validate">
+                              <input id="input_password_forgetpassword" type="password" class="">
                               <label for="input_password_forgetpassword" class="">新密码</label>
                             </div>
                             <div style="overflow: auto; margin-top: 20px;">
                                 <div class="input-field left" style="width:120px">
-                                  <input id="input_captcha_forgetpassword" type="text" class="validate tel-color">
+                                  <input id="input_captcha_forgetpassword" type="text" class="tel-color">
                                   <label for="input_captcha_forgetpassword" class="">短信验证码</label>
                                 </div>
                                 <div class="right" style="margin-top:24px">

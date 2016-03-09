@@ -1,7 +1,8 @@
 var bookid;
+var WriteMarkOrNot = false;
 ;(function(window, document, $){
 
-  var WriteMarkOrNot = false;
+ 
   $(document).ready(function(){
 
 		// Make some selections.
@@ -25,8 +26,10 @@ var bookid;
   		
                
         $("#modifyMark").click(function(){
-	        
+	       
 	        if(WriteMarkOrNot==false) {
+		        $(".noResult").css("display","none");
+	        
 		        $(".bookMarkContainer:eq(1)").css("display","none") ;
 				$(".bookMarkContainer:eq(0)").css("display","block");
 				$("#modifyMark .material-icons").html("done");
@@ -36,6 +39,8 @@ var bookid;
 				//Materialize.toast("提交", 4000);
 				WriteMarkOrNot=true;
 	        }else if(WriteMarkOrNot==true) {
+		        $(".noResult").css("display","none");
+	        
 	            $(".bookMarkContainer:eq(0)").css("display","none") ;
 				$(".bookMarkContainer:eq(1)").css("display","block");
 				$("#modifyMark .material-icons").html("mode_edit");
@@ -84,6 +89,20 @@ var bookid;
 		 PLServerAPI.getBookMarkList(bid,0,{
 			 onSuccess: function(bookMarks){
 				 $(".bookMarkContainer:eq(1)").empty();
+				 $("#modifyMark .material-icons").html("mode_edit");
+				 $("#modifyMark").removeClass("green");
+				 $("#modifyMark").addClass("red");
+				 $(".valign-wrapper .writemark").html("写书评");
+				 WriteMarkOrNot=false;
+
+
+				 var len = bookMarks.length;
+				 if(len==0){
+					 $(".noResult").css("display","block");
+					 $(".bookMarkContainer:eq(0)").css("display","none");
+					 $(".bookMarkContainer:eq(1)").css("display","none");
+
+				 }
 				 $.each(bookMarks, function(i,bookMark){
 					 var avatar = "images/users/avatars/"+bookMark.uid+".png";
 					 $(".bookMarkContainer:eq(1)").append(

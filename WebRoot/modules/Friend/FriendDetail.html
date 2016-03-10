@@ -27,7 +27,7 @@
                 display: -ms-flexbox;
                 display: -webkit-flex;
                 display: flex; height: 100%;">
-		<div class="image-wrapper"  style="background-color: #87C3EC;width: 550px ; ">
+		<div class="image-wrapper"  style="width: 550px ; ">
 			<div style="height: 220px;width: auto;">
             	  <div class="blackMask left" style="width: 550px; height: 220px"></div>
 				  <div class="inner" style="position: absolute;width: 550px; height: 220px; ">
@@ -53,24 +53,24 @@
 						<blockquote>
 							
                             <ul id="FriendBooks">
-                            <li class="card hoverable BookCover BookShow">
-                                <img src="../../images/book1.jpg" class="BookCover">
-                            </li>
-                            <li class="card hoverable BookCover BookShow">
-                                <img src="../../images/book1.jpg" class="BookCover">
-                            </li>
-                            <li class="card hoverable BookCover BookShow">
-                                <img src="../../images/book1.jpg" class="BookCover">
-                            </li>
-                            <li class="card hoverable BookCover BookShow">
-                                <img src="../../images/book1.jpg" class="BookCover">
-                            </li>
-                            <li class="card hoverable BookCover BookShow">
-                                <img src="../../images/book1.jpg" class="BookCover">
-                            </li>
-                            <li class="card hoverable BookCover BookShow">
-                                <img src="../../images/book1.jpg" class="BookCover">
-                            </li>
+	                            <li class="card hoverable BookCover BookShow">
+	                                <img src="../../images/book1.jpg" class="BookCover">
+	                            </li>
+	                            <li class="card hoverable BookCover BookShow">
+	                                <img src="../../images/book1.jpg" class="BookCover">
+	                            </li>
+	                            <li class="card hoverable BookCover BookShow">
+	                                <img src="../../images/book1.jpg" class="BookCover">
+	                            </li>
+	                            <li class="card hoverable BookCover BookShow">
+	                                <img src="../../images/book1.jpg" class="BookCover">
+	                            </li>
+	                            <li class="card hoverable BookCover BookShow">
+	                                <img src="../../images/book1.jpg" class="BookCover">
+	                            </li>
+	                            <li class="card hoverable BookCover BookShow">
+	                                <img src="../../images/book1.jpg" class="BookCover">
+	                            </li>
 							</ul>
 		        		</blockquote>
                   </div>
@@ -101,7 +101,7 @@
      			</div>
                 <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
 					
-                	<a class="btn-floating btn-large waves-effect waves-light red z-depth-2" onClick="getBack();">
+                	<a class="btn-floating btn-large waves-effect waves-light blue z-depth-2" onClick="getBack();">
 					   	<i class="large material-icons">arrow_back</i>
 					</a>
                     <ul>
@@ -116,73 +116,18 @@
 		
         
         
-        <div id="bookMarksList" class="bookMarkContainer">
-            <div class="card white darken-1 hoverable BookCard" onClick="getMarkDetail();">
-                <div class="BookDetail">  
-                    <img src="../../images/book1.jpg" class="BookCover" style="float:right">
-                    <div class="card-content black-text" style="margin-right:145px">
-                        <div style="overflow: auto;">
-                          
-                          <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
+        <div id="bookMarksList" class="bookMarkContainer" style="display: none">
+                       
+        </div>
+        
+        
+        <div id="pageNoResult" class="noResult rightContent" style="display: block;">
+        		<div style="display: table;width: 100%;height: 100%;"> 
+                    <div style="display: table-cell; text-align:center; vertical-align:middle;">
+                    	<span class="Backtest">没有相关数据</span>
                     </div>
                 </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <img src="../../images/book1.jpg" class="BookCover" style="float:right">
-                    <div class="card-content black-text" style="margin-right:145px">
-                        <div style="overflow: auto;">
-                          
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <img src="../../images/book1.jpg" class="BookCover" style="float:right">
-                    <div class="card-content black-text" style="margin-right:145px">
-                        <div style="overflow: auto;">
-                          
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <img src="../../images/book1.jpg" class="BookCover" style="float:right">
-                    <div class="card-content black-text" style="margin-right:145px">
-                        <div style="overflow: auto;">
-                          
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <img src="../../images/book1.jpg" class="BookCover" style="float:right">
-                    <div class="card-content black-text" style="margin-right:145px">
-                        <div style="overflow: auto;">
-                          
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-        </div>  
+		</div>  
 	</div>
 	</body>
 </html>

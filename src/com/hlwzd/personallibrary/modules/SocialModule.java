@@ -179,8 +179,8 @@ public class SocialModule extends Module {
 		ResultSet rs = DB.executeQuery("SELECT 1 FROM `books` WHERE `bid`=?", bid);
 		if(!rs.next()) return Error(1022);
 		String summary;
-		if(content.length()>100)
-			summary = content.substring(0,99);
+		if(content.length()>200)
+			summary = content.substring(0,199);
 		else 
 			summary = content;
 		DB.executeNonQuery("INSERT INTO `bookmarks` (`uid`,`bid`,`title`,`summary`,`content`,`time`) VALUES (?,?,?,?,?,NOW())", uid, bid, title, summary, content);

@@ -32,14 +32,13 @@ var WriteMark = false;
 			if(bookid>0){
 				if($(this).hasClass("disabled")){return;}
 				if(WriteMark==false) {
-					$(".noResult").css("display","none");
-					$(".bookMarkContainer:eq(0)").css("display","block");
-					$(".bookMarkContainer:eq(1)").css("display","none") ;
+					$(".rightContent").css("display","none");
+					$("#pageWriteMark").css("display","block");
 					
 					$("#modifyMark .material-icons").html("done");
 					$("#modifyMark").removeClass("red");
 					$("#modifyMark").addClass("green");
-					$(".valign-wrapper .writemark").html("提交");
+					$("#markButton").html("提交");
 					$("#input_mark_title").val("");
 					$("#input_mark_content").val("");
 					WriteMark=true;
@@ -74,7 +73,20 @@ var WriteMark = false;
 							$("#modifyMark .material-icons").html("mode_edit");
 							$("#modifyMark").removeClass("green");
 							$("#modifyMark").addClass("red");
-							$(".valign-wrapper .writemark").html("写书评");
+							$("#markButton").html("写书评");
+							
+							$("#pageWriteMark .row").html(
+					                        '<div class="input-field col s12">'+
+												'<input id="input_mark_title" type="text">'+
+												'<label for="input_mark_title">书评标题</label>'+
+					                        '</div>'+
+					                        '<br />'+
+								      
+					                        '<div class="input-field col s12">'+
+					                          '<textarea id="input_mark_content" class="materialize-textarea"></textarea>'+
+					                          '<label for="input_mark_content">书评内容</label>'+
+					                        '</div>'			
+							);
 							WriteMark=false;
 						},
 						onFailure: function(apiError){
@@ -90,7 +102,7 @@ var WriteMark = false;
 			}
         });
 		
-		$("#input_mark_title").focusout(function() {
+		$(document).delegate("#input_mark_title","focusout",function() {
 				var markTitle = $(this).val();
 				if(markTitle.length===0){
 					$(this).removeClass("valid");
@@ -104,11 +116,11 @@ var WriteMark = false;
 					$(this).removeClass("invalid");
 					$(this).addClass("valid");
 				}
-        }).focusin(function() {
+        }).delegate("#input_mark_title","focusin",function() {
 				$(this).removeClass("valid");
 				$(this).removeClass("invalid");
         });
-		$("#input_mark_content").focusout(function() {
+		$(document).delegate("#input_mark_content","focusout",function() {
 				var markContent = $(this).val();
 				if(markContent.length===0){
 					$(this).removeClass("valid");
@@ -122,7 +134,7 @@ var WriteMark = false;
 					$(this).removeClass("invalid");
 					$(this).addClass("valid");
 				}
-        }).focusin(function() {
+        }).delegate("#input_mark_content","focusin",function() {
 				$(this).removeClass("valid");
 				$(this).removeClass("invalid");
         });
@@ -154,7 +166,6 @@ var WriteMark = false;
 			   }
 			});
 			bookid = bid;
-			getMarkList(bid);
 	}
 	function getMarkList(bid){
 		 PLServerAPI.getBookMarkList(bid,0,{
@@ -162,18 +173,18 @@ var WriteMark = false;
 
 				 var len = bookMarks.length;
 				 if(len===0){
-					 $(".noResult").css("display","block");
-					 $(".bookMarkContainer").css("display","none");
+					 $(".rightContent").css("display","none");
+					 $("#pageNoResult").css("display","block");
 				 }else{
-					 $(".noResult").css("display","none");
-					 $(".bookMarkContainer:eq(0)").css("display","none");
-					 $(".bookMarkContainer:eq(1)").css("display","block");
-					 $(".bookMarkContainer:eq(1)").empty();
+					 $(".rightContent").css("display","none");
+					 $("#pageBookMarkList").css("display","block");
+					 $("#pageBookMarkList").empty();
 				 }
 				 $.each(bookMarks, function(i,bookMark){
 					 var avatar = "http://115.28.135.76/images/users/avatars/"+bookMark.uid+".png";
-					 $(".bookMarkContainer:eq(1)").append(
-						 '<div class="card white darken-1 hoverable BookCard">'+
+					 var summary = bookMark.summary.replace(/\n/g, "<br />");
+					 $("#pageBookMarkList").append(
+						 '<div class="card white darken-1 hoverable BookCard" onClick="getMarkDetail('+bookMark.mid+', true);">'+
 			                '<div class="BookDetail">'+ 
 			                    '<div class="card-content black-text" style="height: 100%">'+
 			                        '<div style="overflow: auto;">'+
@@ -181,10 +192,11 @@ var WriteMark = false;
 			                                '<img src="'+avatar+'" alt="Contact Person">'+
 			                                bookMark.nickname+
 			                          '</div>'+
-			                          '<h6 style="margin-top: 20px">'+bookMark.time+'</h6>'+
+			                          '<h6 style="margin-top:0px">'+bookMark.title+'</h6>'+
+			                          '<h6>'+bookMark.time+'</h6>'+
 			                        '</div>'+
 			                        '<hr size="1">'+  
-			                        '<p class="BookDesc">'+bookMark.summary+'</p>'+
+			                        '<p class="BookDesc">'+summary+'</p>'+
 			                    '</div>'+
 			                '</div>'+
 			            '</div>'
@@ -210,18 +222,59 @@ var WriteMark = false;
 		$(".inner div ul li:eq(4)").html("定价：.....");
 		$(".bookDescContainer blockquote:eq(1)").html(".....");
 		
-		$(".bookMarkContainer:eq(1)").empty();
+		$("#pageBookMarkList").empty();
 		$("#modifyMark .material-icons").html("mode_edit");
 		$("#modifyMark").removeClass("green");
 		$("#modifyMark").addClass("red");
-		$(".valign-wrapper .writemark").html("写书评");
+		$("#markButton").html("写书评");
 		
-		$("#input_mark_title").val("");
-		$("#input_mark_content").val("");
+		$("#pageWriteMark .row").html(
+                        '<div class="input-field col s12">'+
+							'<input id="input_mark_title" type="text">'+
+							'<label for="input_mark_title">书评标题</label>'+
+                        '</div>'+
+                        '<br />'+
+			      
+                        '<div class="input-field col s12">'+
+                          '<textarea id="input_mark_content" class="materialize-textarea"></textarea>'+
+                          '<label for="input_mark_content">书评内容</label>'+
+                        '</div>'			
+		)
 		
 		$("#input_mark_title").removeClass("valid");
 		$("#input_mark_title").removeClass("invalid");
 		$("#input_mark_content").removeClass("valid");
 		$("#input_mark_content").removeClass("invalid");
+		
+		$(".rightContent").css("display","none");
+		$("#pageNoResult").css("display","block");
+		
 		WriteMark=false;
 	}
+	
+	function getMarkDetail(mid, showBtn){
+		$(".rightContent").css("display","none");
+		$("#pageBookMarkDetail").css("display","block");
+		if(showBtn){
+			$(".btn-floating").show();
+		}else{
+			$(".btn-floating").hide();
+		}
+		$("#pageBookMarkDetail #markContent").empty();
+		PLServerAPI.getBookMarkDetails(mid,{
+			onSuccess:function(bookMark){
+				$("#pageBookMarkDetail #markTitle").html(bookMark.title);
+				var content = "<p>"+bookMark.content.replace(/\n/g, "</p><p>")+"</p>";
+				
+				$("#pageBookMarkDetail #markContent").html(content);
+			},
+			onFailure:function(apiError){
+				Materialize.toast(apiError.getErrorMessage(), 4000);
+			}
+		});
+	}
+	
+	function getBack(){
+			$(".rightContent").css("display","none");
+			$("#pageBookMarkList").css("display","block");
+    }

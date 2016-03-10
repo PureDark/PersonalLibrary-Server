@@ -52,6 +52,7 @@ function getFriendList(page){
 	currPage = page;
 	PLServerAPI.getFriendList(currPage,{
 			onSuccess: function(friends){
+				$("#FriendList").empty();
 				$.each(friends, function(i, friend){
 						
 						$("#FriendList").append(

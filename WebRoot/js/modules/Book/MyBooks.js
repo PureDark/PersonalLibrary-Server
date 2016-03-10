@@ -16,6 +16,12 @@ $(document).ready(function(){
 	PLServerAPI.getBookList(null, null, null, {
 		onSuccess: function(books){
 			$("#sortable").empty();
+			var len = books.length;
+			if(len!=0){
+				$(".noResult").css("display","none");
+			}else{
+				$(".noResult").css("display","block");
+			}
 			$.each(books, function(i,book){
 				$("#sortable").append(
 					

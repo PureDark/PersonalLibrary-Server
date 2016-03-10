@@ -13,6 +13,12 @@ $(document).ready(function(){
 	PLServerAPI.getRecentBookMarks(null,1, {
 		onSuccess: function(bookMarks){
 			$("#BookMarkContainer").empty();
+			var len = bookMarks.length;
+			if(len!=0){
+				$(".noResult").css("display","none");
+			}else{
+				$(".noResult").css("display","block");
+			}
 			$.each(bookMarks, function(i,bookMark){
 				var avatar = "http://115.28.135.76/images/users/avatars/"+bookMark.uid+".png";
 				var time = bookMark.time.split(" ");

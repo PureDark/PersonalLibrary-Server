@@ -166,7 +166,6 @@ var WriteMark = false;
 			   }
 			});
 			bookid = bid;
-			getMarkList(bid);
 	}
 	function getMarkList(bid){
 		 PLServerAPI.getBookMarkList(bid,0,{
@@ -185,7 +184,7 @@ var WriteMark = false;
 					 var avatar = "http://115.28.135.76/images/users/avatars/"+bookMark.uid+".png";
 					 var summary = bookMark.summary.replace(/\n/g, "<br />");
 					 $("#pageBookMarkList").append(
-						 '<div class="card white darken-1 hoverable BookCard" onClick="getMarkDetail('+bookMark.mid+');">'+
+						 '<div class="card white darken-1 hoverable BookCard" onClick="getMarkDetail('+bookMark.mid+', true);">'+
 			                '<div class="BookDetail">'+ 
 			                    '<div class="card-content black-text" style="height: 100%">'+
 			                        '<div style="overflow: auto;">'+
@@ -252,11 +251,16 @@ var WriteMark = false;
 		WriteMark=false;
 	}
 	
-	function getMarkDetail(mid){
+	function getMarkDetail(mid, showBtn){
+		$(".rightContent").css("display","none");
+		$("#pageBookMarkDetail").css("display","block");
+		if(showBtn){
+			$(".btn-floating").show();
+		}else{
+			$(".btn-floating").hide();
+		}
 		PLServerAPI.getBookMarkDetails(mid,{
 			onSuccess:function(bookMark){
-				$(".rightContent").css("display","none");
-				$("#pageBookMarkDetail").css("display","block");
 				$("#pageBookMarkDetail #markTitle").html(bookMark.title);
 				var content = "<p>"+bookMark.content.replace(/\n/g, "</p><p>")+"</p>";
 				$("#pageBookMarkDetail #markContent").html(content);

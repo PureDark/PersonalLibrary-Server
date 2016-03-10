@@ -26,6 +26,7 @@ $(document).ready(function(){
 		var bid = $(this).parent("li").attr("bid");
 		var isbn13 = $(this).parent("li").attr("isbn");
 		window.BookDetailPage.getBook(bid,isbn13);
+		window.BookDetailPage.getMarkList(bid);
 	});
 	
 	

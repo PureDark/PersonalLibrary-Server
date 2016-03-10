@@ -26,7 +26,7 @@ var WriteMark = false;
                
 	
 		// Run the A.B. plugin.
-		//$.adaptiveBackground.run({ parent: "1" });
+		//$.adaptiveBackground.run();
 		
 		$("#modifyMark").click(function() {
 			if(bookid>0){
@@ -82,6 +82,10 @@ var WriteMark = false;
 							WriteMark=false;
 						}
 					});
+					$("#input_mark_title").removeClass("valid");
+					$("#input_mark_title").removeClass("invalid");
+					$("#input_mark_content").removeClass("valid");
+					$("#input_mark_content").removeClass("invalid");
 				}
 			}
         });
@@ -93,6 +97,9 @@ var WriteMark = false;
 					$(this).addClass("invalid");
 					$(this).parent().children("label").attr("data-error",'标题长度应在5到40字之间！');
 					return;
+				}else if(markTitle.length===0){
+					$(this).removeClass("valid");
+					$(this).removeClass("invalid");
 				}else{
 					$(this).removeClass("invalid");
 					$(this).addClass("valid");
@@ -108,6 +115,9 @@ var WriteMark = false;
 					$(this).addClass("invalid");
 					$(this).parent().children("label").attr("data-error",'书评长度应大于20字！');
 					return;
+				}else if(markContent.length===0){
+					$(this).removeClass("valid");
+					$(this).removeClass("invalid");
 				}else{
 					$(this).removeClass("invalid");
 					$(this).addClass("valid");
@@ -145,7 +155,6 @@ var WriteMark = false;
 			});
 			bookid = bid;
 			getMarkList(bid);
-		   
 	}
 	function getMarkList(bid){
 		 PLServerAPI.getBookMarkList(bid,0,{
@@ -209,5 +218,10 @@ var WriteMark = false;
 		
 		$("#input_mark_title").val("");
 		$("#input_mark_content").val("");
+		
+		$("#input_mark_title").removeClass("valid");
+		$("#input_mark_title").removeClass("invalid");
+		$("#input_mark_content").removeClass("valid");
+		$("#input_mark_content").removeClass("invalid");
 		WriteMark=false;
 	}

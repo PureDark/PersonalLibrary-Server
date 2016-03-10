@@ -65,6 +65,9 @@ $(document).ready(function(e) {
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'手机号码格式不正确！');
+		}else if(cellphone.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
 		}else{
 			$(this).addClass("valid");
 		}
@@ -79,6 +82,9 @@ $(document).ready(function(e) {
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'密码长度应在6到20位之间！');
+		}else if(password.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
 		}else{
 			$(this).addClass("valid");
 		}
@@ -95,6 +101,9 @@ $(document).ready(function(e) {
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'两次输入的密码不一致！');
 			return;
+		}else if(repassword.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
 		}else{
 			$(this).addClass("valid");
 		}

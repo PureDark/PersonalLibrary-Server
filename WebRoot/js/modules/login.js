@@ -61,13 +61,13 @@ $(document).ready(function(e) {
 	
 	$("#input_cellphone_login,#input_cellphone_register,#input_cellphone_forgetpassword").focusout(function(e) {
         var cellphone = $(this).val();
-		if(cellphone.length!==11){
+		if(cellphone.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
+		}else if(cellphone.length!==11){
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'手机号码格式不正确！');
-		}else if(cellphone.length===0){
-			$(this).removeClass("valid");
-			$(this).removeClass("invalid");
 		}else{
 			$(this).addClass("valid");
 		}
@@ -78,13 +78,13 @@ $(document).ready(function(e) {
 	
 	$("#input_password_login,#input_password_register,#input_password_forgetpassword").focusout(function(e) {
         var password = $(this).val();
-		if(password.length<6||password.length>20){
+		if(password.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
+		}else if(password.length<6||password.length>20){
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'密码长度应在6到20位之间！');
-		}else if(password.length===0){
-			$(this).removeClass("valid");
-			$(this).removeClass("invalid");
 		}else{
 			$(this).addClass("valid");
 		}
@@ -96,14 +96,14 @@ $(document).ready(function(e) {
 	$("#input_repassword_register").focusout(function(e) {
         var password = $("#input_password_register").val();
         var repassword = $(this).val();
-		if(password!=repassword){
+		if(repassword.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
+		}else if(password!=repassword){
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'两次输入的密码不一致！');
 			return;
-		}else if(repassword.length===0){
-			$(this).removeClass("valid");
-			$(this).removeClass("invalid");
 		}else{
 			$(this).addClass("valid");
 		}

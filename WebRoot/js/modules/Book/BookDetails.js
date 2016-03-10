@@ -92,14 +92,14 @@ var WriteMark = false;
 		
 		$("#input_mark_title").focusout(function() {
 				var markTitle = $(this).val();
-				if(markTitle.length<5||markTitle.length>40){
+				if(markTitle.length===0){
+					$(this).removeClass("valid");
+					$(this).removeClass("invalid");
+				}else if(markTitle.length<5||markTitle.length>40){
 					$(this).removeClass("valid");
 					$(this).addClass("invalid");
 					$(this).parent().children("label").attr("data-error",'标题长度应在5到40字之间！');
 					return;
-				}else if(markTitle.length===0){
-					$(this).removeClass("valid");
-					$(this).removeClass("invalid");
 				}else{
 					$(this).removeClass("invalid");
 					$(this).addClass("valid");
@@ -110,14 +110,14 @@ var WriteMark = false;
         });
 		$("#input_mark_content").focusout(function() {
 				var markContent = $(this).val();
-				if(markContent.length<20){
+				if(markContent.length===0){
+					$(this).removeClass("valid");
+					$(this).removeClass("invalid");
+				}else if(markContent.length<20){
 					$(this).removeClass("valid");
 					$(this).addClass("invalid");
 					$(this).parent().children("label").attr("data-error",'书评长度应大于20字！');
 					return;
-				}else if(markContent.length===0){
-					$(this).removeClass("valid");
-					$(this).removeClass("invalid");
 				}else{
 					$(this).removeClass("invalid");
 					$(this).addClass("valid");

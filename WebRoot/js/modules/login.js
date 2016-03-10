@@ -33,6 +33,7 @@ $(document).ready(function(e) {
 			});
 		}else{
 			$("#input_cellphone_login").removeClass("invalid");
+			$("#input_cellphone_login").addClass("valid");
 			$("#avatar").attr("src","images/avater/a2.png");
 		}
 	});
@@ -64,6 +65,8 @@ $(document).ready(function(e) {
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'手机号码格式不正确！');
+		}else{
+			$(this).addClass("valid");
 		}
     }).focusin(function(e) {
 			$(this).removeClass("valid");
@@ -76,6 +79,8 @@ $(document).ready(function(e) {
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'密码长度应在6到20位之间！');
+		}else{
+			$(this).addClass("valid");
 		}
     }).focusin(function(e) {
 			$(this).removeClass("valid");
@@ -90,6 +95,8 @@ $(document).ready(function(e) {
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'两次输入的密码不一致！');
 			return;
+		}else{
+			$(this).addClass("valid");
 		}
     }).focusin(function(e) {
 			$(this).removeClass("valid");
@@ -124,7 +131,7 @@ $(document).ready(function(e) {
 			},
 			onFailure: function(apiError){
 				sending = false;
-				Materialize.toast(apiError.getErrorMessage(), 4000)
+				Materialize.toast(apiError.getErrorMessage(), 4000);
 			}
 		});
     });
@@ -157,12 +164,12 @@ $(document).ready(function(e) {
 		PLServerAPI.register(cellphone, password, captcha, {
 			onSuccess: function(){
 				sending = false;
-				Materialize.toast('注册成功！', 4000)
+				Materialize.toast('注册成功！', 4000);
 				SelectModule("Login");
 			},
 			onFailure: function(apiError){
 				sending = false;
-				Materialize.toast(apiError.getErrorMessage(), 4000)
+				Materialize.toast(apiError.getErrorMessage(), 4000);
 			}
 		});
     });
@@ -197,7 +204,7 @@ $(document).ready(function(e) {
 			},
 			onFailure: function(apiError){
 				sending = false;
-				Materialize.toast(apiError.getErrorMessage(), 4000)
+				Materialize.toast(apiError.getErrorMessage(), 4000);
 			}
 		});
     });

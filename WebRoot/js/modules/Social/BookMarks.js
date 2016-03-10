@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$('.parallax img').attr("src","images/background5.jpg");
+	$('.parallax img').attr("src","images/background/background5.jpg");
 	
 	$(document).undelegate(".BookCard", "click");
 	$(document).delegate(".BookCard", "click", function(){
@@ -14,7 +14,7 @@ $(document).ready(function(){
 		onSuccess: function(bookMarks){
 			$("#BookMarkContainer").empty();
 			$.each(bookMarks, function(i,bookMark){
-				var avatar = "images/users/avatars/"+bookMark.uid+".png";
+				var avatar = "http://115.28.135.76/images/users/avatars/"+bookMark.uid+".png";
 				var time = bookMark.time.split(" ");
 				time[1] = time[1].split(":");
 				

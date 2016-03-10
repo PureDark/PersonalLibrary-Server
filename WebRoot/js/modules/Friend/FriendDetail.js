@@ -29,6 +29,7 @@ var Info;
 function getUserInfo(uid,nickname,signature){
 	$("#FriendBooks").empty();
 	$("#bookMarksList").empty();
+	getBack();
 	$("#FriendInfo img").attr("src", "http://115.28.135.76/images/users/avatars/"+uid+".png");
 	$("#FriendInfo h5").html(nickname);
 	$("#FriendInfo span").html(signature);
@@ -51,7 +52,7 @@ function getUserInfo(uid,nickname,signature){
 			$.each(bookMarks,function(i,bookMark){
 				
 				$("#bookMarksList").append(
-				'<div class="card white darken-1 hoverable BookCard" >'+
+				'<div class="card white darken-1 hoverable BookCard" onClick="getMarkDetail('+bookMark.mid+');">'+
 					'<div class="BookDetail">'  +
 						'<img src='+bookMark.book_cover+' class="BookCover" style="float:right">'+
 						'<div class="card-content black-text" style="margin-right:145px">'+
@@ -59,16 +60,38 @@ function getUserInfo(uid,nickname,signature){
 								'<h6 style="margin-top: 20px">'+bookMark.time+'</h6>'+
 							'</div>'+
 							'<hr size="1">  '+
-							'<p class="BookDesc">'+bookMark.summary+'</p>'+
+							'<p class="BookDesc">'+bookMark.summary+'...</p>'+
 						'</div>'+
 					'</div>'+
 				'</div>'
 				);
+				
+				
 			});
 		},
 		onFailure:function(apiError){
 			Materialize.toast(apiError.getErrorMessage(), 4000);
 		}
-});
+	});
+	
+}
+
+function getMarkDetail(mid){
+	PLServerAPI.getBookMarkDetails(mid,{
+		onSuccess:function(bookMark){
+			$("#bookMark #markTitle").html(bookMark.title);
+			$("#bookMark #markContent").html(bookMark.content);
+			$("#bookMark").css("display", "");
+			$("#bookMarksList").css("display", "none");
+		},
+		onFailure:function(apiError){
+			Materialize.toast(apiError.getErrorMessage(), 4000);
+		}
+	});
+}
+
+function getBack(){
+	$("#bookMark").css("display", "none");
+	$("#bookMarksList").css("display", "");
 	
 }

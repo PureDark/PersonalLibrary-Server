@@ -33,6 +33,7 @@ $(document).ready(function(e) {
 			});
 		}else{
 			$("#input_cellphone_login").removeClass("invalid");
+			$("#input_cellphone_login").addClass("valid");
 			$("#avatar").attr("src","images/avater/a2.png");
 		}
 	});
@@ -60,10 +61,15 @@ $(document).ready(function(e) {
 	
 	$("#input_cellphone_login,#input_cellphone_register,#input_cellphone_forgetpassword").focusout(function(e) {
         var cellphone = $(this).val();
-		if(cellphone.length!==11){
+		if(cellphone.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
+		}else if(cellphone.length!==11){
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'手机号码格式不正确！');
+		}else{
+			$(this).addClass("valid");
 		}
     }).focusin(function(e) {
 			$(this).removeClass("valid");
@@ -72,10 +78,15 @@ $(document).ready(function(e) {
 	
 	$("#input_password_login,#input_password_register,#input_password_forgetpassword").focusout(function(e) {
         var password = $(this).val();
-		if(password.length<6||password.length>20){
+		if(password.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
+		}else if(password.length<6||password.length>20){
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'密码长度应在6到20位之间！');
+		}else{
+			$(this).addClass("valid");
 		}
     }).focusin(function(e) {
 			$(this).removeClass("valid");
@@ -85,11 +96,16 @@ $(document).ready(function(e) {
 	$("#input_repassword_register").focusout(function(e) {
         var password = $("#input_password_register").val();
         var repassword = $(this).val();
-		if(password!=repassword){
+		if(repassword.length===0){
+			$(this).removeClass("valid");
+			$(this).removeClass("invalid");
+		}else if(password!=repassword){
 			$(this).removeClass("valid");
 			$(this).addClass("invalid");
 			$(this).parent().children("label").attr("data-error",'两次输入的密码不一致！');
 			return;
+		}else{
+			$(this).addClass("valid");
 		}
     }).focusin(function(e) {
 			$(this).removeClass("valid");
@@ -124,7 +140,7 @@ $(document).ready(function(e) {
 			},
 			onFailure: function(apiError){
 				sending = false;
-				Materialize.toast(apiError.getErrorMessage(), 4000)
+				Materialize.toast(apiError.getErrorMessage(), 4000);
 			}
 		});
     });
@@ -157,12 +173,12 @@ $(document).ready(function(e) {
 		PLServerAPI.register(cellphone, password, captcha, {
 			onSuccess: function(){
 				sending = false;
-				Materialize.toast('注册成功！', 4000)
+				Materialize.toast('注册成功！', 4000);
 				SelectModule("Login");
 			},
 			onFailure: function(apiError){
 				sending = false;
-				Materialize.toast(apiError.getErrorMessage(), 4000)
+				Materialize.toast(apiError.getErrorMessage(), 4000);
 			}
 		});
     });
@@ -197,7 +213,7 @@ $(document).ready(function(e) {
 			},
 			onFailure: function(apiError){
 				sending = false;
-				Materialize.toast(apiError.getErrorMessage(), 4000)
+				Materialize.toast(apiError.getErrorMessage(), 4000);
 			}
 		});
     });

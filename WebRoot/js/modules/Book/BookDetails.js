@@ -1,5 +1,5 @@
-var bookid;
-var WriteMarkOrNot = false;
+var bookid = 0;
+var WriteMark = false;
 ;(function(window, document, $){
 
  
@@ -23,44 +23,115 @@ var WriteMarkOrNot = false;
 			 
 			 
   		});
-  		
                
-        $("#modifyMark").click(function(){
-	       
-	        if(WriteMarkOrNot==false) {
-		        $(".noResult").css("display","none");
-	        
-		        $(".bookMarkContainer:eq(1)").css("display","none") ;
-				$(".bookMarkContainer:eq(0)").css("display","block");
-				$("#modifyMark .material-icons").html("done");
-				$("#modifyMark").removeClass("red");
-				$("#modifyMark").addClass("green");
-				$(".valign-wrapper .writemark").html("提交");
-				//Materialize.toast("提交", 4000);
-				WriteMarkOrNot=true;
-	        }else if(WriteMarkOrNot==true) {
-		        $(".noResult").css("display","none");
-	        
-	            $(".bookMarkContainer:eq(0)").css("display","none") ;
-				$(".bookMarkContainer:eq(1)").css("display","block");
-				$("#modifyMark .material-icons").html("mode_edit");
-				$("#modifyMark").removeClass("green");
-				$("#modifyMark").addClass("red");
-				$(".valign-wrapper .writemark").html("写书评");
-				WriteMarkOrNot=false;
-            }
+	
+		// Run the A.B. plugin.
+		//$.adaptiveBackground.run();
+		
+		$("#modifyMark").click(function() {
+			if(bookid>0){
+				if($(this).hasClass("disabled")){return;}
+				if(WriteMark==false) {
+					$(".noResult").css("display","none");
+					$(".bookMarkContainer:eq(0)").css("display","block");
+					$(".bookMarkContainer:eq(1)").css("display","none") ;
+					
+					$("#modifyMark .material-icons").html("done");
+					$("#modifyMark").removeClass("red");
+					$("#modifyMark").addClass("green");
+					$(".valign-wrapper .writemark").html("提交");
+					$("#input_mark_title").val("");
+					$("#input_mark_content").val("");
+					WriteMark=true;
+				}else if(WriteMark==true) {
+					
+					var markTitle = $("#input_mark_title").val();
+					var markContent = $("#input_mark_content").val();
+					
+					if(markTitle.length<5||markTitle.length>40){
+						$("#input_mark_title").removeClass("valid");
+						$("#input_mark_title").addClass("invalid");
+						$("#input_mark_title").parent().children("label").attr("data-error",'标题长度应在5到40字之间！');
+						return;
+					}else{
+						$("#input_mark_title").removeClass("invalid");
+						$("#input_mark_title").addClass("valid");
+					}
+					if(markContent.length<20){
+						$("#input_mark_content").removeClass("valid");
+						$("#input_mark_content").addClass("invalid");
+						$("#input_mark_content").parent().children("label").attr("data-error",'书评长度应大于20字！');
+						return;
+					}else{
+						$("#input_mark_content").removeClass("invalid");
+						$("#input_mark_content").addClass("valid");
+					}
+					$("#modifyMark").addClass("disabled");
+					PLServerAPI.addBookMark(bookid, markTitle, markContent, {
+						onSuccess: function(){
+							getMarkList(bookid);
+							$("#modifyMark").removeClass("disabled");
+							$("#modifyMark .material-icons").html("mode_edit");
+							$("#modifyMark").removeClass("green");
+							$("#modifyMark").addClass("red");
+							$(".valign-wrapper .writemark").html("写书评");
+							WriteMark=false;
+						},
+						onFailure: function(apiError){
+							Materialize.toast(apiError.getErrorMessage(), 4000);
+							WriteMark=false;
+						}
+					});
+					$("#input_mark_title").removeClass("valid");
+					$("#input_mark_title").removeClass("invalid");
+					$("#input_mark_content").removeClass("valid");
+					$("#input_mark_content").removeClass("invalid");
+				}
+			}
         });
-               
-
-	// Run the A.B. plugin.
-	//$.adaptiveBackground.run({ parent: "1" });
+		
+		$("#input_mark_title").focusout(function() {
+				var markTitle = $(this).val();
+				if(markTitle.length===0){
+					$(this).removeClass("valid");
+					$(this).removeClass("invalid");
+				}else if(markTitle.length<5||markTitle.length>40){
+					$(this).removeClass("valid");
+					$(this).addClass("invalid");
+					$(this).parent().children("label").attr("data-error",'标题长度应在5到40字之间！');
+					return;
+				}else{
+					$(this).removeClass("invalid");
+					$(this).addClass("valid");
+				}
+        }).focusin(function() {
+				$(this).removeClass("valid");
+				$(this).removeClass("invalid");
+        });
+		$("#input_mark_content").focusout(function() {
+				var markContent = $(this).val();
+				if(markContent.length===0){
+					$(this).removeClass("valid");
+					$(this).removeClass("invalid");
+				}else if(markContent.length<20){
+					$(this).removeClass("valid");
+					$(this).addClass("invalid");
+					$(this).parent().children("label").attr("data-error",'书评长度应大于20字！');
+					return;
+				}else{
+					$(this).removeClass("invalid");
+					$(this).addClass("valid");
+				}
+        }).focusin(function() {
+				$(this).removeClass("valid");
+				$(this).removeClass("invalid");
+        });
 
 
 	
   });
 
 })(window, document, jQuery);
-
 
 	function getBook(bid,isbn13){
 			toTheBeginning();
@@ -84,7 +155,6 @@ var WriteMarkOrNot = false;
 			});
 			bookid = bid;
 			getMarkList(bid);
-		   
 	}
 	function getMarkList(bid){
 		 PLServerAPI.getBookMarkList(bid,0,{
@@ -98,6 +168,7 @@ var WriteMarkOrNot = false;
 					 $(".noResult").css("display","none");
 					 $(".bookMarkContainer:eq(0)").css("display","none");
 					 $(".bookMarkContainer:eq(1)").css("display","block");
+					 $(".bookMarkContainer:eq(1)").empty();
 				 }
 				 $.each(bookMarks, function(i,bookMark){
 					 var avatar = "http://115.28.135.76/images/users/avatars/"+bookMark.uid+".png";
@@ -147,5 +218,10 @@ var WriteMarkOrNot = false;
 		
 		$("#input_mark_title").val("");
 		$("#input_mark_content").val("");
-		WriteMarkOrNot=false;
+		
+		$("#input_mark_title").removeClass("valid");
+		$("#input_mark_title").removeClass("invalid");
+		$("#input_mark_content").removeClass("valid");
+		$("#input_mark_content").removeClass("invalid");
+		WriteMark=false;
 	}

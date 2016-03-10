@@ -1,6 +1,9 @@
 body{
 	cursor: default;
 }
+.nav-color{
+	background-color: rgb(158,145,129) !important;
+}
 
 .BookDetail .BookDesc{
 	height: 134px;

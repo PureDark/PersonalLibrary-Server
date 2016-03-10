@@ -212,10 +212,11 @@
 			});
 		},
 		reorderBooks: function(orders, callback){
+			var orderString = JSON.stringify(orders);
 			var params = {
 						module: "library",
 						action: "reorderBooks",
-						orders: orders
+						orders: orderString
 			};
 			postNoReturnData(params, callback);
 		},

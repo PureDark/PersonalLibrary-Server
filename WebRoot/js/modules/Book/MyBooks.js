@@ -1,7 +1,23 @@
 $(document).ready(function(){
 	$('.parallax img').attr("src","images/background/background2.jpg");
 	
-	$( "#sortable" ).sortable();
+	$( "#sortable" ).sortable({ 
+		update: function(event, ui) {
+			var orders = [];
+			$("#sortable li").each(function(i, element) {
+				var bid = $(element).attr("bid");
+				var order = {bid: bid, order: i};
+                orders[i] = order;
+            });
+			PLServerAPI.reorderBooks(orders, {
+				onSuccess: function(){
+				},
+				onFailure: function(apiError){
+					Materialize.toast(apiError.getErrorMessage(), 4000);
+				}
+			});
+		} 
+	}); 
     $( "#sortable" ).disableSelection();
 	
 	$(document).undelegate(".BookCard", "click");

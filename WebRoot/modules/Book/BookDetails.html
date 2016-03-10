@@ -10,7 +10,7 @@
 		<link href="../../css/modules/Book/BookDetails.css" rel="stylesheet">
 		
 		
-		<script src="../../js/jquery-1.9.1.min.js"> </script>
+		<script src="../../js/jquery-2.1.4.min.js"> </script>
 		<script src="../../js/jquery-ui.min.js"></script>
 		
 		<script src="../../js/materialize.js"></script>
@@ -35,19 +35,18 @@
 						<div style="margin: 25px;display: flex;">
 							<div>
 								<div class="z-depth-1">
-									<img src="../../images/book1.jpg" 
-				                    	style="width: 150px; height: 222px" data-adaptive-background="1">
+									<img style="width: 150px; height: 222px; background: gray" data-adaptive-background="1" />
 								</div>
 								<div class="flow-text" style="width: 150px">
-									<h5 class="truncate center-align">思念人之屋</h5>
+									<h5 class="truncate center-align">.....</h5>
 								</div>
 							</div>
 							<ul style="margin-left: 40px">
-								<li class="chip booktab truncate">作者：[中]明前雨后 </li>
-								<li class="chip booktab truncate" style="margin-top: 20px">出版年: 2016-1</li>
-								<li class="chip booktab truncate" style="margin-top: 20px">出版社: 北京联合出版公司·未读  </li>
-								<li class="chip booktab truncate" style="margin-top: 20px">页数: 448 </li>
-								<li class="chip booktab truncate" style="margin-top: 20px">定价: 65.00元</li>
+								<li class="chip booktab truncate">作者：..... </li>
+								<li class="chip booktab truncate" style="margin-top: 20px">出版年: .....</li>
+								<li class="chip booktab truncate" style="margin-top: 20px">出版社: .....  </li>
+								<li class="chip booktab truncate" style="margin-top: 20px">页数: ..... </li>
+								<li class="chip booktab truncate" style="margin-top: 20px">定价: .....</li>
 							</ul>
 						</div>
 						
@@ -59,16 +58,16 @@
 			
 			
 			            <div class="fixed-action-btn horizontal" style="bottom: 45px; right: 24px;">
-					   		<a class="btn-floating btn-large waves-effect waves-light red z-depth-2">
+					   		<a class="btn-floating btn-large waves-effect waves-light red z-depth-2" id="modifyMark">
 					   			<i class="large material-icons">mode_edit</i>
 					   		</a>
-	                            <ul>
-					   				 <li>		                           
-					   				 	 <div class="valign-wrapper">
-					   				 		<span class="z-depth-2 writemark grey darken-2" >写书评</span>
-					   				 	 </div>
-					   				 </li>
-					   			</ul>
+                            <ul>
+				   				 <li>		                           
+				   				 	 <div class="valign-wrapper">
+				   				 		<span class="z-depth-2 writemark grey darken-2" >写书评</span>
+				   				 	 </div>
+				   				 </li>
+				   			</ul>
 						  </div>
 			
 			
@@ -80,115 +79,38 @@
 				           	 	<p style="font-size: 20px">内容简介<p>
 						   	</blockquote>
 						   	<blockquote style="margin-right: 26px">
-								
-								<p>“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-								<p>一次亚热带海岛的独自旅行谱写出一段恋曲。民风古朴的海边小镇，两个不同背景的陌生人，三年的独自等待，千里迢迢的追寻……你是否还在等待思念的那个人？你是否还在寻找爱情的意义？也许有一天，你会恍然间发现，等待，并不漫长。</p>
-								<p>人的一生中，至少要有两次冲动，一次为奋不顾身的爱情，一次为说走就走的旅行。当年少的冲动与激情褪去后，那些疯狂的时光，往往是我们*珍贵的青春回忆。</p>
-								<p>晋江网知名小说、原创青春文学经典作品，首次修订再版，新增多篇番外近3万余字；</p>
-						        <p>四色全彩图文视觉小说。</p>
-								<p>随书附赠亚热带海岛风情精美明信片6张。</p>
-								<p>“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-								<p>“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-								<p>“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
+								<p>.....</p>
 		        		</blockquote>
                   </div>
 		    </div>	
 		</div>    
-		<div class="bookMarkContainer">
+        
+		<div class="noResult" style="display: block;">
+        		<div style="display: table;width: 100%;height: 100%;"> 
+                    <div style="display: table-cell; text-align:center; vertical-align:middle;">
+                    	<span class="Backtest">没有相关数据</span>
+                    </div>
+                </div>
+		</div>
+        
+		<div class="bookMarkContainer" style="display: none">
 				<div class="row">
 						<div class="input-field col s12">
-						<input id="last_name" type="text" class="validate">
-						<label for="last_name">书评标题</label>
-		        </div>
-		        <br />
-			    
+							<input id="input_mark_title" type="text" class="validate">
+							<label for="input_mark_title">书评标题</label>
+                        </div>
+                        <br />
 			      
-			        <div class="input-field col s12">
-			          <textarea id="textarea1" class="materialize-textarea"></textarea>
-			          <label for="textarea1">书评内容</label>
-			        </div>
-			      
-			   
+                        <div class="input-field col s12">
+                          <textarea id="input_mark_content" class="materialize-textarea"></textarea>
+                          <label for="input_mark_content">书评内容</label>
+                        </div>
      			</div>
 		</div>
+		
 
-        <div class="bookMarkContainer" style="display: none">
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-                        <div style="overflow: auto;">
-                          <div class="chips right">
-                                <img src="../../images/touxiang1.jpg" alt="Contact Person">
-                                太阳骑士BC君
-                          </div>
-                          <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-                        <div style="overflow: auto;">
-                          <div class="chips right">
-                                <img src="../../images/touxiang1.jpg" alt="Contact Person">
-                                太阳骑士BC君
-                             
-                          </div>
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-                        <div style="overflow: auto;">
-                          <div class="chips right">
-                                <img src="../../images/touxiang1.jpg" alt="Contact Person">
-                                太阳骑士BC君
-                          </div>
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-                        <div style="overflow: auto;">
-                          <div class="chips right">
-                                <img src="../../images/touxiang1.jpg" alt="Contact Person">
-                                太阳骑士BC君
-                          </div>
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card white darken-1 hoverable BookCard" >
-                <div class="BookDetail">  
-                    <div class="card-content black-text" style="height: 100%">
-                        <div style="overflow: auto;">
-                          <div class="chips right">
-                                <img src="../../images/touxiang1.jpg" alt="Contact Person">
-                                太阳骑士BC君
-                          </div>
-                           <h6 style="margin-top: 20px">2016-2-29 15:45:50</h6>
-                        </div>
-                        <hr size="1">  
-                        <p class="BookDesc">“我舍不得走太远，又不敢离得太近。这里的距离刚刚好，而且面向外海。有时候我就站在岬角看过去，总觉得他就在海那边，只不过是我视线所不及的地方。”</p>
-                    </div>
-                </div>
-            </div>
+        <div class="bookMarkContainer" style="display: none;">
+   				
         </div>  
 	</div>			
 	</body>

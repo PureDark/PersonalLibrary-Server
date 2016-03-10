@@ -82,7 +82,7 @@ function getMarkDetail(mid){
 	PLServerAPI.getBookMarkDetails(mid,{
 		onSuccess:function(bookMark){
 			$("#bookMark #markTitle").html(bookMark.title);
-			var content = bookMark.content.replace(/\n/g, "<br />");
+			var content = "<p>"+bookMark.content.replace(/\n/g, "</p><p>")+"</p>";
 			$("#bookMark #markContent").html(content);
 			$("#bookMark").css("display", "");
 			$("#bookMarksList").css("display", "none");

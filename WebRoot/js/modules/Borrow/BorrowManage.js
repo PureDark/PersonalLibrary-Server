@@ -17,9 +17,23 @@ $(document).ready(function(e) {
 	function getRecords(){
 		PLServerAPI.getBorrowedBookRecordList(0, {
 			onSuccess:function(borrowRecords){
+				
+				var lenb = borrowRecords.length;
+				
 				borrowtime=borrowRecords.borrow_time;
 				PLServerAPI.getLoanedBookRecordList(0, {
 					onSuccess:function(loanedRecords){
+						
+						var lenl = loanedRecords.length;
+						
+						if((lenb!=0)&&(lenl!=0)){
+							$(".noResult").css("display","none");
+							$(".containers").css("display","block");
+						}else{
+							$(".noResult").css("display","block");
+							$(".containers").css("display","none");
+						}
+						
 						$("#Borrow").empty();
 						var records = borrowRecords.concat(loanedRecords);
 						$.each(records, function(i, record){

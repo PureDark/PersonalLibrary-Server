@@ -16,7 +16,7 @@ $(document).ready(function(){
 	});
 	
 	getFriendList(1);
-
+	getRequestList(1);
  });
  
  function accept(rid){
@@ -54,13 +54,79 @@ function getFriendList(page){
 				});
 			},
 			onFailure: function(apiError){
-			var ErrorCode = apiError.getErrorCode();
-			var ErrorMessage = apiError.getErrorMessage();
-			alert(ErrorCode+":"+ErrorMessage);
+				Materialize.toast(apiError.getErrorMessage(), 4000);
 			}
 	});
 }
 
+function getRequestList(page){
+	PLServerAPI.getRequestList(page,{
+		onSuccess:function(requests){
+			var num = 0;
+			$("#untreated").empty();
+			$("#treated").empty();
+			$.each(requests,function(i,request){
+				if(request.nickname == "") request.nickname="该用户暂未设置昵称";
+				
+				if(request.status == 0){
+					num++;
+					$("#untreated").append(
+					'<li class="collection-item avatar">'+
+						 '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+						 '<span class="title">'+request.nickname+'</span>'+
+						 '<p class="RequestVerification">对方请求添加您为书友</p>'+
+						 '<a onclick="accept(true,'+request.rid+');" class="secondary-content waves-effect waves-dark btn-flat Pinnedagree">同意</a>'+
+						 '<a onclick="accept(false,'+request.rid+');" class="secondary-content waves-effect waves-dark btn-flat Pinnedreject">拒绝</a>'+
+					'</li>'
+					);
+					
+				}else if(request.status == 1){
+					$("#treated").append(
+					'<li class="collection-item avatar">'+
+                         '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                         '<span class="title">'+request.nickname+'</span>'+
+                         '<p class="RequestVerification">对方请求添加您为书友</p>'+
+                         '<p class="secondary-content result">已同意</p>'+
+                    '</li>'
+					);
+				}else{
+					$("#treated").append(
+					'<li class="collection-item avatar">'+
+                         '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                         '<span class="title">'+request.nickname+'</span>'+
+                         '<p class="RequestVerification">对方请求添加您为书友</p>'+
+                         '<p class="secondary-content result">已拒绝</p>'+
+                    '</li>'
+					)
+				}
+			});
+			if(num == 0){
+					$("#untreated").append(
+					'<li class="collection-item avatar">'+
+						 '<p class="RequestVerification" style="margin-left: 65px;margin-top: 20px;">暂无新消息</p>'+
+					'</li>'
+					);
+				}
+		},
+		onFailure:function(apiError){
+			Materialize.toast(apiError.getErrorMessage(), 4000);
+		}
+	});
+}
+
+function accept(accept, rid){
+	PLServerAPI.responseRequest(rid, accept, {
+		onSuccess: function(){
+			$("#untreated").empty();
+			$("#treated").empty();
+			getRequestList(1);
+			getFriendList(1);
+		},
+		onFailure: function(apiError){
+			Materialize.toast(apiError.getErrorMessage(), 4000);
+		}
+	});
+};
 
 
 

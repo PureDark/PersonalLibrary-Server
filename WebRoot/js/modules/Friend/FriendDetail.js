@@ -52,7 +52,7 @@ function getUserInfo(uid,nickname,signature){
 	PLServerAPI.getBookMarkList(null,uid,{
 		onSuccess:function(bookMarks){
 			$.each(bookMarks,function(i,bookMark){
-				
+				var summary = bookMark.summary.replace(/\n/g, "<br />");
 				$("#bookMarksList").append(
 				'<div class="card white darken-1 hoverable BookCard" onClick="getMarkDetail('+bookMark.mid+');">'+
 					'<div class="BookDetail">'  +
@@ -62,7 +62,7 @@ function getUserInfo(uid,nickname,signature){
 								'<h6 style="margin-top: 20px">'+bookMark.time+'</h6>'+
 							'</div>'+
 							'<hr size="1">  '+
-							'<p class="BookDesc">'+bookMark.summary+'...</p>'+
+							'<p class="BookDesc">'+summary+'...</p>'+
 						'</div>'+
 					'</div>'+
 				'</div>'
@@ -82,7 +82,8 @@ function getMarkDetail(mid){
 	PLServerAPI.getBookMarkDetails(mid,{
 		onSuccess:function(bookMark){
 			$("#bookMark #markTitle").html(bookMark.title);
-			$("#bookMark #markContent").html(bookMark.content);
+			var content = "<p>"+bookMark.content.replace(/\n/g, "</p><p>")+"</p>";
+			$("#bookMark #markContent").html(content);
 			$("#bookMark").css("display", "");
 			$("#bookMarksList").css("display", "none");
 		},

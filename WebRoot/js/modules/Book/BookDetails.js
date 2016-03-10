@@ -192,7 +192,8 @@ var WriteMark = false;
 			                                '<img src="'+avatar+'" alt="Contact Person">'+
 			                                bookMark.nickname+
 			                          '</div>'+
-			                          '<h6 style="margin-top: 20px">'+bookMark.time+'</h6>'+
+			                          '<h6 style="margin-top:0px">'+bookMark.title+'</h6>'+
+			                          '<h6>'+bookMark.time+'</h6>'+
 			                        '</div>'+
 			                        '<hr size="1">'+  
 			                        '<p class="BookDesc">'+summary+'</p>'+
@@ -259,10 +260,12 @@ var WriteMark = false;
 		}else{
 			$(".btn-floating").hide();
 		}
+		$("#pageBookMarkDetail #markContent").empty();
 		PLServerAPI.getBookMarkDetails(mid,{
 			onSuccess:function(bookMark){
 				$("#pageBookMarkDetail #markTitle").html(bookMark.title);
 				var content = "<p>"+bookMark.content.replace(/\n/g, "</p><p>")+"</p>";
+				
 				$("#pageBookMarkDetail #markContent").html(content);
 			},
 			onFailure:function(apiError){

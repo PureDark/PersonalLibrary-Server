@@ -31,7 +31,9 @@ function getUserInfo(uid,nickname,signature){
 	$("#bookMarksList").empty();
 	getBack();
 	$("#FriendInfo img").attr("src", "http://115.28.135.76/images/users/avatars/"+uid+".png");
+	if(nickname == undefined)nickname = "该用户暂未设置昵称";
 	$("#FriendInfo h5").html(nickname);
+	if(signature == undefined)signature = "该用户暂未设置签名";
 	$("#FriendInfo span").html(signature);
 	PLServerAPI.getBookList(uid,null,null,{
 		onSuccess :function(books){

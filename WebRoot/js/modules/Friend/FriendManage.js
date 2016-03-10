@@ -17,6 +17,17 @@ $(document).ready(function(){
 	
 	getFriendList(1);
 	getRequestList(1);
+	
+	$("#FriendName").bind('input propertychange', function() {
+		var keyword = $(this).val();
+		if(keyword.length===0){
+			$("#searchUser").css("display", "none");
+			$("#searchUser").empty();
+		}else{
+			searchUser(keyword);
+		}
+	});
+	
  });
  
  function accept(rid){
@@ -126,8 +137,41 @@ function accept(accept, rid){
 			Materialize.toast(apiError.getErrorMessage(), 4000);
 		}
 	});
-};
+}
 
 
+function searchUser(keyword){
+	PLServerAPI.searchUser(keyword,{
+		onSuccess:function(friends){
+			$("#searchUser").css("display", "");
+			$("#searchUser").empty();
+			$.each(friends, function(i, friend){
+				if(!friend.isFriend){
+					$("#searchUser").append(
+						'<li class="collection-item">'+
+							  '<div style="overflow:auto;">'+
+									'<img src="http://115.28.135.76/images/users/avatars/'+friend.uid+'.png" alt="" class="circle left" style="width:42px">'+
+									'<span class="left" style="margin-top:10px;margin-left:10px;">'+friend.nickname+'</span><i class="material-icons cursor right" style="margin-top:10px;color: #0478EC" onClick="addRequest('+friend.uid+');">add</i>'+
+							  '</div>'+
+						'</li>'
+					);
+				}
+			});
+		},
+		onFailure:function(apiError){
+			$("#searchUser").empty();
+			Materialize.toast(apiError.getErrorMessage(), 4000);
+		}
+	});
+}
 
-
+function addRequest(fid){
+	PLServerAPI.addRequest(fid,{
+		onSuccess:function(){
+			Materialize.toast("请求发送成功！", 4000);
+		},
+		onFailure:function(apiError){
+			Materialize.toast(apiError.getErrorMessage(), 4000);
+		}
+	});
+}

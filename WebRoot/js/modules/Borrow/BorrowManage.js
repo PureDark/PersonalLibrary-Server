@@ -1,5 +1,5 @@
 $(document).ready(function(e) {
-	$('.parallax img').attr("src","images/background2.jpg");
+	$('.parallax img').attr("src","images/background/background11.jpg");
 		
 	$("#BorrowIn .collapsible-header").click(function(){
 		$("#TabBorrowIn").children("a").click();

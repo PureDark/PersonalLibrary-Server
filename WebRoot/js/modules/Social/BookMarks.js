@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$('.parallax img').attr("src","images/background5.jpg");
+	$('.parallax img').attr("src","images/background/background5.jpg");
 	
 	$(document).undelegate(".BookCard", "click");
 	$(document).delegate(".BookCard", "click", function(){

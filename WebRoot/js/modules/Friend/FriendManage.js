@@ -1,6 +1,6 @@
 var currPage = 1;
 $(document).ready(function(){
-	$('.parallax img').attr("src","images/background10.jpg");
+	$('.parallax img').attr("src","images/background/background10.jpg");
     $('.modal-trigger').leanModal();
 	
     $('#requestWrapper').pushpin({ top: $('#MyFriendsCard').offset().top });

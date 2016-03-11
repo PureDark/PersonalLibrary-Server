@@ -77,9 +77,9 @@ function getRequestList(page){
 			var num = 0;
 			$("#untreated").empty();
 			$("#treated").empty();
+			$("#modalrequestList").empty();
 			$.each(requests,function(i,request){
 				if(request.nickname == "") request.nickname="该用户暂未设置昵称";
-				
 				if(request.status == 0){
 					num++;
 					$("#untreated").append(
@@ -91,6 +91,15 @@ function getRequestList(page){
 						 '<a onclick="accept(false,'+request.rid+');" class="secondary-content waves-effect waves-dark btn-flat Pinnedreject">拒绝</a>'+
 					'</li>'
 					);
+					$("#modalrequestList").append(
+					'<li class="collection-item avatar">'+
+                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                      '<span class="title">'+request.nickname+'</span>'+
+                      '<p class="RequestVerification">对方请求添加您为书友</p>'+
+                      '<a onclick="accept(true,'+request.rid+');" class="secondary-content waves-effect waves-dark btn-flat agree" style="margin-right:110px;">同意</a>'+
+                      '<a onclick="accept(false,'+request.rid+');" class="secondary-content waves-effect waves-dark btn-flat reject">拒绝</a>'+
+                    '</li>'
+					);
 					
 				}else if(request.status == 1){
 					$("#treated").append(
@@ -101,6 +110,14 @@ function getRequestList(page){
                          '<p class="secondary-content result">已同意</p>'+
                     '</li>'
 					);
+					$("#modalrequestList").append(
+					'<li class="collection-item avatar">'+
+                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                      '<span class="title">'+request.nickname+'</span>'+
+                      '<p class="RequestVerification">对方请求添加您为书友</p>'+
+                      '<p class="secondary-content result">已同意</p>'+
+                    '</li>'
+					);
 				}else{
 					$("#treated").append(
 					'<li class="collection-item avatar">'+
@@ -109,7 +126,15 @@ function getRequestList(page){
                          '<p class="RequestVerification">对方请求添加您为书友</p>'+
                          '<p class="secondary-content result">已拒绝</p>'+
                     '</li>'
-					)
+					);
+					$("#modalrequestList").append(
+					'<li class="collection-item avatar">'+
+                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                      '<span class="title">'+request.nickname+'</span>'+
+                      '<p class="RequestVerification">对方请求添加您为书友</p>'+
+                      '<p class="secondary-content result">已拒绝</p>'+
+                    '</li>'
+					);
 				}
 			});
 			if(num == 0){

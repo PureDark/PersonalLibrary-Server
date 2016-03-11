@@ -189,7 +189,7 @@ var WriteMark = false;
 			                    '<div class="card-content black-text" style="height: 100%">'+
 			                        '<div style="overflow: auto;">'+
 			                         ' <div class="chips right">'+
-			                                '<img src="'+avatar+'" alt="Contact Person">'+
+			                                '<img src="'+avatar+'" onError="javascript:this.src=\'images/avater/a2.png\'"/>'+
 			                                bookMark.nickname+
 			                          '</div>'+
 			                          '<h6 style="margin-top:0px">'+bookMark.title+'</h6>'+

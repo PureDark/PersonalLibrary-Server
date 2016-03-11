@@ -103,7 +103,7 @@ $(document).ready(function(e) {
 								'<div class="card-content black-text" style="height: 100%">'+
 									'<div style="overflow: auto;">'+
 										'<div class="chips">'+
-											'<img src="http://115.28.135.76/images/users/avatars/'+record.loan_uid+'.png" alt="Contact Person">'+
+											'<img src="http://115.28.135.76/images/users/avatars/'+record.loan_uid+'.png"  onError="javascript:this.src=\'images/avater/a2.png\'" />'+
 											record.nickname+
 										'</div>'+
 										'<div>'+
@@ -154,7 +154,7 @@ $(document).ready(function(e) {
 										'<div class="card-content black-text" style="height: 100%">'+
 											'<div style="overflow: auto;">'+
 												'<div class="chips">'+
-													'<img src="http://115.28.135.76/images/users/avatars/'+record.borrow_uid+'.png" alt="Contact Person">'+
+													'<img src="http://115.28.135.76/images/users/avatars/'+record.borrow_uid+'.png" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
 													record.nickname+
 												'</div>'+
 												'<div>'+

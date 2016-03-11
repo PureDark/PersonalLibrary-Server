@@ -57,7 +57,7 @@ function getFriendList(page){
 						
 						$("#FriendList").append(
 							  '<li uid="'+friend.uid+'" nickname="'+friend.nickname+'" signature="'+friend.signature+'" class="collection-item avatar">'+
-								  '<img src="http://115.28.135.76/images/users/avatars/'+friend.uid+'.png" alt="" class="circle">'+
+								  '<img src="http://115.28.135.76/images/users/avatars/'+friend.uid+'.png" alt="" class="circle" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
 								  '<span class="title">'+friend.nickname+'</span>'+
 								  '<p class="Blog">'+friend.signature+
 								  '</p>'+
@@ -84,7 +84,7 @@ function getRequestList(page){
 					num++;
 					$("#untreated").append(
 					'<li class="collection-item avatar">'+
-						 '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+						 '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" class="circle" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
 						 '<span class="title">'+request.nickname+'</span>'+
 						 '<p class="RequestVerification">对方请求添加您为书友</p>'+
 						 '<a onclick="accept(true,'+request.rid+');" class="secondary-content waves-effect waves-dark btn-flat Pinnedagree">同意</a>'+
@@ -93,7 +93,7 @@ function getRequestList(page){
 					);
 					$("#modalrequestList").append(
 					'<li class="collection-item avatar">'+
-                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" class="circle" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
                       '<span class="title">'+request.nickname+'</span>'+
                       '<p class="RequestVerification">对方请求添加您为书友</p>'+
                       '<a onclick="accept(true,'+request.rid+');" class="secondary-content waves-effect waves-dark btn-flat agree" style="margin-right:110px;">同意</a>'+
@@ -104,7 +104,7 @@ function getRequestList(page){
 				}else if(request.status == 1){
 					$("#treated").append(
 					'<li class="collection-item avatar">'+
-                         '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                         '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" class="circle" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
                          '<span class="title">'+request.nickname+'</span>'+
                          '<p class="RequestVerification">对方请求添加您为书友</p>'+
                          '<p class="secondary-content result">已同意</p>'+
@@ -112,7 +112,7 @@ function getRequestList(page){
 					);
 					$("#modalrequestList").append(
 					'<li class="collection-item avatar">'+
-                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" class="circle" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
                       '<span class="title">'+request.nickname+'</span>'+
                       '<p class="RequestVerification">对方请求添加您为书友</p>'+
                       '<p class="secondary-content result">已同意</p>'+
@@ -121,7 +121,7 @@ function getRequestList(page){
 				}else{
 					$("#treated").append(
 					'<li class="collection-item avatar">'+
-                         '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                         '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" class="circle" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
                          '<span class="title">'+request.nickname+'</span>'+
                          '<p class="RequestVerification">对方请求添加您为书友</p>'+
                          '<p class="secondary-content result">已拒绝</p>'+
@@ -129,7 +129,7 @@ function getRequestList(page){
 					);
 					$("#modalrequestList").append(
 					'<li class="collection-item avatar">'+
-                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" alt="" class="circle">'+
+                      '<img src="http://115.28.135.76/images/users/avatars/'+request.uid+'.png" class="circle" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
                       '<span class="title">'+request.nickname+'</span>'+
                       '<p class="RequestVerification">对方请求添加您为书友</p>'+
                       '<p class="secondary-content result">已拒绝</p>'+
@@ -176,7 +176,7 @@ function searchUser(keyword){
 					$("#searchUser").append(
 						'<li class="collection-item">'+
 							  '<div style="overflow:auto;">'+
-									'<img src="http://115.28.135.76/images/users/avatars/'+friend.uid+'.png" alt="" class="circle left" style="width:42px">'+
+									'<img src="http://115.28.135.76/images/users/avatars/'+friend.uid+'.png" class="circle left" style="width:42px" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
 									'<span class="left" style="margin-top:10px;margin-left:10px;">'+friend.nickname+'</span><i class="material-icons cursor right" style="margin-top:10px;color: #0478EC" onClick="addRequest('+friend.uid+');">add</i>'+
 							  '</div>'+
 						'</li>'

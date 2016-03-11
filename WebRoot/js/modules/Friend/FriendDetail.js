@@ -67,7 +67,7 @@ function getUserInfo(uid,nickname,signature){
 				$("#bookMarksList").append(
 				'<div class="card white darken-1 hoverable BookCard" onClick="getMarkDetail('+bookMark.mid+');">'+
 					'<div class="BookDetail">'  +
-						'<img src='+bookMark.book_cover+' class="BookCover" style="float:right">'+
+						'<img src='+bookMark.book_cover+' class="BookCover" style="float:right" />'+
 						'<div class="card-content black-text" style="margin-right:145px">'+
 							'<div style="overflow: auto;">'+
 								'<h6 style="margin-top:0px">'+bookMark.title+'</h6>'+

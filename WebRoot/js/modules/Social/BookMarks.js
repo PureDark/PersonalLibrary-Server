@@ -45,7 +45,7 @@ $(document).ready(function(){
 					                    '<div class="card-content black-text" style="height: 100%">'+
 						                    '<div style="overflow: auto;">'+
 					                         ' <div class="chips left">'+
-											  		'<img src="'+avatar+'" alt="Contact Person">'+
+											  		'<img src="'+avatar+'" onError="javascript:this.src=\'images/avater/a2.png\'" />'+
 											  		bookMark.nickname+
 											  '</div>'+
 					                          '<h6 class="right grey-text text-darken-1 BookTitle">'+bookMark.title+'</h6>'+

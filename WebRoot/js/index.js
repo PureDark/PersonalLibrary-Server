@@ -47,6 +47,8 @@ function SelectModule(name){
 		$(".nav-wrapper ul:eq(0) li:eq(3)").addClass("active");
 		$(".nav-wrapper ul:eq(1) li:eq(3)").addClass("active");
 		LoadPage("Social/BookMarks.html");
+	}else if(name=="Logout"){
+		Logout();
 	}else{
 		$(".nav-wrapper ul:eq(0) li:eq(0)").addClass("active");
 		$(".nav-wrapper ul:eq(1) li:eq(0)").addClass("active");
@@ -56,4 +58,16 @@ function SelectModule(name){
 
 function LoadPage(path){
 	$("#PageContainer").load("modules/"+path);
+}
+
+function Logout(){
+	PLServerAPI.logout({
+		onSuccess: function(){
+			window.location.href = "./login.html";
+		},
+		onFailure: function(apiError){
+			window.location.href = "./login.html";
+		}
+	});
+	setTimeout("window.location.href = './login.html';",1000);
 }

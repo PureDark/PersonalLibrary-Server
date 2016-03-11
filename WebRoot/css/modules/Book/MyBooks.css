@@ -6,6 +6,17 @@ body{
 	background-color: #000 !important;
 }
 
+.BookCard .material-icons{
+	display:none;
+}
+
+.BookCard:hover .material-icons{
+	display:block;
+}
+.BookCard:hover .material-icons:hover{
+	text-shadow: 2px 2px rgba(0,0,0,0.16);
+}
+
 .BookCover{
 	width: 150px; 
 	height: 222.5px;
